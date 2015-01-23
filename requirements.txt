@@ -1,0 +1,18 @@
+Item Table:
+-----------
+No
+Description
+UOM
+Shelf No
+Quantity
+
+Location Table:
+---------------
+Code
+Name
+Address
+Address 2
+Post Code
+City
+Country
+
