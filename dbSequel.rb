@@ -1,20 +1,14 @@
-require 'rubygems'
+require 'rubygems' # may not be needed, depending on platform
 require 'sinatra'
-require 'sequel'
-require 'sqlite3'
+require 'activerecord'
 
-DB = Sequel.sqlite
-
-DB.create_table :links do
-    primary_key :id
-    varchar :title
-    varchar :link
+class Article < ActiveRecord::Base
 end
 
-class Link < Sequel::Model; end
-
 get '/' do
-  @links = Link.all
-    haml :links
-    end
-
+  Article.establish_connection(
+    :adapter => "sqlite3",
+    :database => "hw.db"
+  )
+  Article.first.title
+end
