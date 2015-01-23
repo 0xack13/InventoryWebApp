@@ -1,6 +1,6 @@
 require 'rubygems' # may not be needed, depending on platform
 require 'sinatra'
-require 'activerecord'
+require 'active_record'
 
 class Article < ActiveRecord::Base
 end
