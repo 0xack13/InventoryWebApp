@@ -37,44 +37,90 @@ __END__
      <form>
        <input type='text' placeholder='Item #:'  />
        <input type='text' placeholder='Name:'  />
-       <input type='text' placeholder='Description:'  />
-       <input type='text' placeholder='Phone:'  />
+       <input type='text' placeholder='Warehouse:'  />
+       <input type='text' placeholder='Quantity:'  />
        <input type='submit' placeholder='SUBMIT' />
      </form>
   </div>
   <div class='whysign'>
     <h1>Inventory Management</h1>
     <p>Basic stock information</p>
-       <table class="table table-striped">
+      <table class="table table-striped">
         <thead>
             <tr>
                 <th>Row</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
+                <th>Item #</th>
+                <th>Name</th>
+                <th>Warehouse</th>
+                <th>Quantity</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
-                <td>John</td>
-                <td>Carter</td>
-                <td>johncarter@mail.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Peter</td>
-                <td>Parker</td>
-                <td>peterparker@mail.com</td>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>John</td>
-                <td>Rambo</td>
-                <td>johnrambo@mail.com</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
             </tr>
         </tbody>
-    </table>
+      </table>
     <p>Learn: 
       <span>In</span>
       <span>Out</span>
