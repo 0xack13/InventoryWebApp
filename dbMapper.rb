@@ -14,6 +14,8 @@ class Post
   property :id,    Serial, :serial => true
   property :title, String
   property :desc, String
+  property :loc, String
+  property :qty, String 
 end
 
 Post.auto_migrate!
