@@ -57,6 +57,12 @@ body {
   border-color: #53CACE;
 }
 
+.form-control {
+  background-color: #53CACE !important;
+  color: white !important;
+  margin-top: 10px; 
+}
+
 h1 {
   color: rgba(0,0,0,.7);
   font-weight: 900;

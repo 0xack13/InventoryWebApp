@@ -37,15 +37,30 @@ __END__
      <form>
        <input type='text' placeholder='Code:'  />
        <input type='text' placeholder='Name:'  />
-       <!-- <input type='text' placeholder='Size:'  />-->
        <select class="form-control">
+        <option value="" disabled selected>Size</option>
         <option value="A3">A3</option>
         <option value="A4">A4</option>
         <option value="XL">XL</option>
         <option value="XXL">XXL</option>
       </select>
        <input type='text' placeholder='Quantity:'  />
-       <input type='text' placeholder='Type:'  />
+       <select class="form-control">
+        <option value="" disabled selected>Type</option>
+        <option value="Catalogue">Catalogue</option>
+        <option value="Flyer">Flyer</option>
+        <option value="Sticker">Sticker</option>
+        <option value="Poster">Poster</option>
+        <option value="Folder">Folder</option>
+      </select>
+      <select class="form-control">
+        <option value="" disabled selected>Location</option>
+        <option value="Catalogue">Catalogue</option>
+        <option value="Flyer">Flyer</option>
+        <option value="Sticker">Sticker</option>
+        <option value="Poster">Poster</option>
+        <option value="Folder">Folder</option>
+      </select>
        <input type='text' placeholder='Picture:'  />
        <input type='submit' placeholder='SUBMIT' />
      </form>
@@ -62,6 +77,7 @@ __END__
                 <th>Size</th>
                 <th>Quantity</th>
                 <th>Type</th>
+                <th>Location</th>
                 <th>Picture</th>
             </tr>
         </thead>
@@ -73,6 +89,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -82,6 +99,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -91,6 +109,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -100,6 +119,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -109,6 +129,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -118,6 +139,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -127,6 +149,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -136,6 +159,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -145,6 +169,7 @@ __END__
                 <td>JED-WH</td>
                 <td>14</td>
                 <td>14</td>
+                <td>JED-WH</td>
                 <td>14</td>
             </tr>
         </tbody>
