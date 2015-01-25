@@ -30,7 +30,7 @@ body {
 [type=text] {
   display: block;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   border: 0;
   border-bottom: 1px solid rgba(0,0,0,.2);
   height: 45px;

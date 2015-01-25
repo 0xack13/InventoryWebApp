@@ -33,12 +33,12 @@ __END__
 </head>
 <body>
 <div id='container'>
-  <div class='signup'>
+  <div class='signup form-group'>
      <form>
        <input type='text' placeholder='Code:'  />
        <input type='text' placeholder='Name:'  />
        <!-- <input type='text' placeholder='Size:'  />-->
-       <select>
+       <select class="form-control">
         <option value="A3">A3</option>
         <option value="A4">A4</option>
         <option value="XL">XL</option>
