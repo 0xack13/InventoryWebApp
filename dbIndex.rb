@@ -37,7 +37,13 @@ __END__
      <form>
        <input type='text' placeholder='Code:'  />
        <input type='text' placeholder='Name:'  />
-       <input type='text' placeholder='Size:'  />
+       <!-- <input type='text' placeholder='Size:'  />-->
+       <select>
+        <option value="A3">A3</option>
+        <option value="A4">A4</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
        <input type='text' placeholder='Quantity:'  />
        <input type='text' placeholder='Type:'  />
        <input type='text' placeholder='Picture:'  />
