@@ -61,7 +61,7 @@ __END__
         <option value="Poster">Poster</option>
         <option value="Folder">Folder</option>
       </select>
-       <input type='text' placeholder='Picture:'  />
+       <input type="file" name="picture" class="form-control">
        <input type='submit' placeholder='SUBMIT' />
      </form>
   </div>
