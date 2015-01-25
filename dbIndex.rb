@@ -14,7 +14,7 @@ end
 
 __END__
 @@layout
-<% title="Songs By Sinatra" %>
+<% title="Inventory Management" %>
 <!doctype html>
 
 <html class=''>
