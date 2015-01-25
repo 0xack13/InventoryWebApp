@@ -19,12 +19,12 @@ __END__
 
 <html class=''>
 <head><meta charset='UTF-8'><meta name="robots" content="noindex">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
-  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="<%= url("app.js")%>"></script>
   <style type="text/css">
       .bs-example{
         margin: 20px;
@@ -33,7 +33,8 @@ __END__
 </head>
 <body>
 <div id='container'>
-  <div class='signup form-group'>
+  
+  <div class='signup form-group' id='panel'>
      <form>
        <input type='text' placeholder='Code:'  />
        <input type='text' placeholder='Name:'  />
@@ -64,7 +65,9 @@ __END__
        <input type="file" name="picture" class="form-control">
        <input type='submit' placeholder='SUBMIT' />
      </form>
-  </div>
+</div>
+  <div id='click'>
+</div>
   <div class='whysign'>
     <h1>Inventory Management</h1>
     <p>Stock Summary</p>
@@ -183,7 +186,9 @@ __END__
 </div>
 
 
-</body></html>
+</body>
+
+</html>
 
 @@home
 <p>Welcome to this website that's all about the songs of the great

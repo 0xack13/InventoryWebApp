@@ -3,6 +3,27 @@ body {
   font: 1em Helvetica;
 }
 
+/*
+#panel
+{
+     height: 500px;
+     width: 200px;
+     background: black;
+     float: left;
+     display: none;    
+     color: white;
+     font-size: xx-large;
+}*/
+
+#click
+{
+     height: 50px;
+     width: 25px;
+     background: red;
+     float: left; 
+     margin-top: 200px;
+}
+
 #container {
   width: 100%;
   margin: 25px auto;
