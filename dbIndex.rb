@@ -35,32 +35,47 @@ __END__
 <div id='container'>
   <div class='signup'>
      <form>
-       <input type='text' placeholder='Item #:'  />
+       <input type='text' placeholder='Code:'  />
        <input type='text' placeholder='Name:'  />
-       <input type='text' placeholder='Warehouse:'  />
+       <input type='text' placeholder='Size:'  />
        <input type='text' placeholder='Quantity:'  />
+       <input type='text' placeholder='Type:'  />
+       <input type='text' placeholder='Picture:'  />
        <input type='submit' placeholder='SUBMIT' />
      </form>
   </div>
   <div class='whysign'>
     <h1>Inventory Management</h1>
-    <p>Basic stock information</p>
+    <p>Stock Summary</p>
       <table class="table table-striped">
         <thead>
             <tr>
                 <th>Row</th>
-                <th>Item #</th>
+                <th>Code</th>
                 <th>Name</th>
-                <th>Warehouse</th>
+                <th>Size</th>
                 <th>Quantity</th>
+                <th>Type</th>
+                <th>Picture</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>3</td>
+                <td>1</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
+                <td>14</td>
+                <td>14</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>213444</td>
+                <td>Caps Green</td>
+                <td>JED-WH</td>
+                <td>14</td>
+                <td>14</td>
                 <td>14</td>
             </tr>
             <tr>
@@ -69,54 +84,61 @@ __END__
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
+                <td>14</td>
+                <td>14</td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>4</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
+                <td>14</td>
+                <td>14</td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>5</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
+                <td>14</td>
+                <td>14</td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>6</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
+                <td>14</td>
+                <td>14</td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>7</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
+                <td>14</td>
+                <td>14</td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>8</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
+                <td>14</td>
+                <td>14</td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>9</td>
                 <td>213444</td>
                 <td>Caps Green</td>
                 <td>JED-WH</td>
                 <td>14</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
+                <td>14</td>
                 <td>14</td>
             </tr>
         </tbody>
