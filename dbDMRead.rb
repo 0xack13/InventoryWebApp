@@ -126,18 +126,18 @@ __END__
   
   <div id='click'></div>
   <div class='signup form-group' id='panel'>
-     <form>
-       <input type='text' placeholder='Code:'  />
-       <input type='text' placeholder='Name:'  />
-       <select class="form-control">
+     <form action="/new" type="post">
+       <input type='text' name="code" placeholder='Code:'  />
+       <input type='text' name="name" placeholder='Name:'  />
+       <select class="form-control" name="size">
         <option value="" disabled selected>Size</option>
         <option value="A3">A3</option>
         <option value="A4">A4</option>
         <option value="XL">XL</option>
         <option value="XXL">XXL</option>
       </select>
-       <input type='text' placeholder='Quantity:'  />
-       <select class="form-control">
+       <input type='text' name="quantity" placeholder='Quantity:'  />
+       <select class="form-control" name="type">
         <option value="" disabled selected>Type</option>
         <option value="Catalogue">Catalogue</option>
         <option value="Flyer">Flyer</option>
@@ -145,7 +145,7 @@ __END__
         <option value="Poster">Poster</option>
         <option value="Folder">Folder</option>
       </select>
-      <select class="form-control">
+      <select class="form-control" name="location">
         <option value="" disabled selected>Location</option>
         <option value="Catalogue">Catalogue</option>
         <option value="Flyer">Flyer</option>
