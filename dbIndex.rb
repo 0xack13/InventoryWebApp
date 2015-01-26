@@ -76,7 +76,7 @@ __END__
 </div>
   <div id='click'>
     >>
-</div>
+  </div>
   <div class='whysign'>
     <h1>Inventory Management</h1>
     <p>Stock Summary</p>

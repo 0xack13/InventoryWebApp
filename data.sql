@@ -1,0 +1,10 @@
+CREATE TABLE INV(
+   ID INT PRIMARY KEY     NOT NULL,
+   CODE           TEXT     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   SIZE            TEXT    NOT NULL,
+   QUANTITY		  INT	NOT NULL,
+   TYPE           TEXT    NOT NULL,
+   LOCATION       TEXT		NOT NULL,
+   PICTURE			TEXT	NOT NULL
+);
