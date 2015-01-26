@@ -3,15 +3,33 @@ body {
   font: 1em Helvetica;
 }
 
+
+#panel
+{
+     width: 300px;
+     float: left;
+     color: white;
+}
+
+#click
+{
+     width: 25px;
+     background: red;
+     float: left; 
+     margin-top: 200px;
+     vertical-align: middle;
+
+ 
+}
+
 #container {
-  width: 840px;
+  width: 100%;
   margin: 25px auto;
 }
 
 .whysign {
   float: left;
   background-color: white;
-  width: 480px;
   height: 347px;
   border-radius: 0 5px 5px 0;
   padding-top: 20px;
@@ -20,7 +38,6 @@ body {
 
 .signup {
   float: left;
-  width: 300px;
   padding: 30px 20px;
   background-color: white;
   text-align: center;
@@ -44,7 +61,7 @@ body {
   margin-top: 25px;
   width: 100%;
   border: 0;
-  background-color: #53CACE;
+  background-color: #1abc9c;
   border-radius: 5px;
   height: 50px;
   color: white;
@@ -55,6 +72,12 @@ body {
 [type='text']:focus {
   outline: none;
   border-color: #53CACE;
+}
+
+.form-control {
+  background-color: #53CACE !important;
+  color: white !important;
+  margin-top: 10px; 
 }
 
 h1 {

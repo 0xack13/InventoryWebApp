@@ -1,111 +1,14 @@
-require "rubygems"
-require "sinatra"
-require "data_mapper"
-require 'json'
-
-
-oldverb = $VERBOSE; $VERBOSE = nil
-require 'iconv'
-$VERBOSE = oldverb
-
-# need install dm-sqlite-adapter
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data.dat")
-
-class Inv2
-  include DataMapper::Resource
-  property :id, Serial, :serial => true
-  property :code, String
-  property :name, String
-  property :size, String
-  property :quantity, Integer
-  property :type, String
-  property :location, String
-  property :picture, String
-  #property :created_at, DateTime
-end
-
-# Perform basic sanity checks and initialize all relationships
-# Call this when you've defined all your models
-DataMapper.finalize
-
-# automatically create the post table
-Inv2.auto_upgrade!
-
-
-
-get "/new" do
-  #@posts = Post.all()
-  #Inv2.get(1).picture
-  @inv = Inv2.new
-  @inv.code = params[:code]
-  @inv.name = params[:name]
-  @inv.size = params[:size]
-  @inv.quantity = params[:quantity]
-  @inv.type = params[:type]
-  @inv.location = params[:location]
-  @inv.picture = params[:picture]
-  if @inv.save
-        {:inv => @inv, :status => "success"}.to_json
-  else
-        {:inv => @inv, :status => "failure"}.to_json
-  end
-end
-
-#update	
-put "/inv/:id" do
-  @inv = Inv2.first(:id => params[:id])
-  @inv.code = params[:code]
-  @inv.name = params[:name]
-  @inv.size = params[:size]
-  @inv.quantity = params[:quantity]
-  @inv.type = params[:type]
-  @inv.location = params[:location]
-  @inv.picture = params[:picture]
-  if @inv.save
-        {:inv => @inv, :status => "success"}.to_json
-  else
-        {:inv => @inv, :status => "failure"}.to_json
-  end
-end
-
-#delete
-delete "/inv/:id" do
-    #@inv = Inv2.find(params[:id])
-    @inv = Inv2.first(:id => params[:id])
-    if @inv.destroy
-        {:inv => @inv, :status => "success"}.to_json
-    else
-        {:inv => @inv, :status => "failure"}.to_json
-    end
-end
-
-#find
-get "/sel/:id" do
-    #@inv = Inv2.find(params[:id])
-    @inv = Inv2.first(:id => params[:id])
-    @inv.to_json
-end
-
-get "/" do
-  #@posts = Post.all()
-  Inv2.get(1).picture
-  #@inv = Inv2.all
-  erb :home
-end
-
-__END__
-@@layout
-<% title="Inventory Management" %>
 <!doctype html>
 
 <html class=''>
 <head><meta charset='UTF-8'><meta name="robots" content="noindex">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <!--<script src="<%= url("app.js")%>"></script>-->
+  <link href="http://localhost:4567/style.css" media="all" rel="stylesheet" type="text/css" />
+
   <style type="text/css">
       .bs-example{
         margin: 20px;
@@ -121,10 +24,8 @@ __END__
   </script>
 </head>
 <body>
-<div id='header'></div>
 <div id='container'>
   
-  <div id='click'></div>
   <div class='signup form-group' id='panel'>
      <form>
        <input type='text' placeholder='Code:'  />
@@ -157,8 +58,11 @@ __END__
        <input type='submit' placeholder='SUBMIT' />
      </form>
 </div>
+  <div id='click'>
+    >>
+  </div>
   <div class='whysign'>
-    <h1>Inventory Management v1</h1>
+    <h1>Inventory Management</h1>
     <p>Stock Summary</p>
       <table class="table table-striped">
         <thead>
@@ -278,14 +182,3 @@ __END__
 </body>
 
 </html>
-
-@@home
-<p>Welcome to this website that's all about the songs of the great
-  Frank Sinatra.</p>
-
-@@about
-<p>This site is a demonstration of how to build a website using 
-  Sinatra.</p>
-
-@@contact
-<p>You can contact me by sending an email to daz at gmail.com</p>

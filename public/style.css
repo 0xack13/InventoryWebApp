@@ -1,6 +1,7 @@
-body {
+html, body {
   background-color: #1abc9c;
   font: 1em Helvetica;
+  margin:0;padding:0;height:100%;
 }
 
 
@@ -16,31 +17,35 @@ body {
 #click
 {
      width: 25px;
-     background: red;
+     background: #1abc9c;
+     color: white;
      float: left; 
-     margin-top: 200px;
      vertical-align: middle;
+     cursor: pointer;
+     height: 100%;
+     /*margin-right: 20px;*/
+}
 
-     padding:5px;
-    width:10px;
-    float:left;
-    background:#d9dada;
-    font:400 12px Arial, Helvetica, sans-serif;
-    color:#000;
-    text-decoration:none;
-    position:relative;
-    left:-300px;
+#header
+{
+     width: 100%;
+     background: gray;
+     color: white;
+     float: left; 
+     vertical-align: middle;
+     cursor: pointer;
+     height: 5px;
 }
 
 #container {
-  width: 100%;
-  margin: 25px auto;
+  height: 100%;
 }
 
 .whysign {
   float: left;
   background-color: white;
   height: 347px;
+  width: 70%;
   border-radius: 0 5px 5px 0;
   padding-top: 20px;
   padding-right: 20px;
