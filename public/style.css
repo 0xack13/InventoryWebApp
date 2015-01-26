@@ -6,19 +6,20 @@ body {
 
 #panel
 {
-     width: 200px;
+     width: 300px;
      float: left;
      display: none;    
      color: white;
+     position: relative;
 }
 
 #click
 {
-     height: 50px;
      width: 25px;
      background: red;
      float: left; 
      margin-top: 200px;
+     vertical-align: middle;
 }
 
 #container {
@@ -29,7 +30,6 @@ body {
 .whysign {
   float: left;
   background-color: white;
-  width: 80%;
   height: 347px;
   border-radius: 0 5px 5px 0;
   padding-top: 20px;
@@ -38,7 +38,6 @@ body {
 
 .signup {
   float: left;
-  width: 20%;
   padding: 30px 20px;
   background-color: white;
   text-align: center;

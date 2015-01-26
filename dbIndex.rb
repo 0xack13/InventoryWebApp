@@ -24,12 +24,20 @@ __END__
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="<%= url("app.js")%>"></script>
+  <!--<script src="<%= url("app.js")%>"></script>-->
   <style type="text/css">
       .bs-example{
         margin: 20px;
       }
   </style>
+  <script type='text/javascript'>//<![CDATA[ 
+    $(window).load(function(){
+      $('#click').click(function()
+      {
+          $("#panel").animate({width:'toggle'},500);       
+      });
+    });//]]>  
+  </script>
 </head>
 <body>
 <div id='container'>
@@ -67,6 +75,7 @@ __END__
      </form>
 </div>
   <div id='click'>
+    >>
 </div>
   <div class='whysign'>
     <h1>Inventory Management</h1>
