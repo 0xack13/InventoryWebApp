@@ -200,7 +200,7 @@ __END__
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
                 <td><%= inv[:picture] %></td>
-                <td><a href="/<%= inv[:id] %>/delete">Edit</a> | <a href="/<%= inv[:id] %>/delete">Delete</a></td>
+                <td><a href="/<%= inv[:id] %>/delete">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
