@@ -124,3 +124,9 @@ span:hover {
 p:nth-of-type(2) {
   font-size: 1em;
 }
+
+.notice {
+  background-color: #66E167;
+   border-color: #D6E9C6;
+   color: black;
+}

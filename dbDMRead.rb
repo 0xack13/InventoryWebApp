@@ -1,5 +1,6 @@
 require "rubygems"
 require "sinatra"
+require 'sinatra/flash'
 require "data_mapper"
 require 'json'
 
@@ -7,6 +8,9 @@ require 'json'
 oldverb = $VERBOSE; $VERBOSE = nil
 require 'iconv'
 $VERBOSE = oldverb
+
+enable :sessions
+
 
 # need install dm-sqlite-adapter
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data.dat")
@@ -46,6 +50,8 @@ get "/new" do
   @inv.picture = params[:picture]
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
+          flash[:notice] = "Record inserted correctly!"
+
         redirect '/'
   else
         {:inv => @inv, :status => "failure"}.to_json
@@ -76,6 +82,7 @@ get "/:id/delete" do
     @inv = Inv2.first(:id => params[:id])
     if @inv.destroy
         {:inv => @inv, :status => "success"}.to_json
+        flash[:notice] = "The record was deleted.."
         redirect '/'
     else
         {:inv => @inv, :status => "failure"}.to_json
@@ -93,6 +100,7 @@ get "/" do
   #@posts = Post.all()
   #Inv2.get(1).picture
   @inv = Inv2.all
+  flash[:notice] = "Logged in at #{Time.now}."
   erb :home
 end
 
@@ -150,17 +158,21 @@ __END__
       </select>
       <select class="form-control" name="location">
         <option value="" disabled selected>Location</option>
-        <option value="Catalogue">Catalogue</option>
-        <option value="Flyer">Flyer</option>
-        <option value="Sticker">Sticker</option>
-        <option value="Poster">Poster</option>
-        <option value="Folder">Folder</option>
+        <option value="JED">JED</option>
+        <option value="RYD">RYD</option>
+        <option value="DMM">DMM</option>
+        <option value="MAK">MAK</option>
+        <option value="DAH">DAH</option>
       </select>
        <input type="file" name="picture" class="form-control">
        <input type='submit' placeholder='SUBMIT' />
      </form>
 </div>
   <div class='whysign'>
+    <div id='flash' class='notice'>
+     <a class="close" data-dismiss="alert">&#215;</a>
+     <p><%= flash[:notice] %></p>
+    </div>
     <h1>Inventory Management v1</h1>
     <p>Stock Summary</p>
       <table class="table table-striped">
