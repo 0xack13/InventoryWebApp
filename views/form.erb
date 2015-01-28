@@ -1,13 +1,42 @@
-<html>
-    <head>
-        <title>Image Upload</title>
-    </head>
+<!doctype html>
+<head><meta charset='UTF-8'><meta name="robots" content="noindex">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <!--<script src="<%= url("app.js")%>"></script>-->
+  <style type="text/css">
+      .bs-example{
+        margin: 20px;
+      }
+  </style>
+</head>
     <body>
-        <h1>Upload Image</h1>
-        
-        <form action="/save_image" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" value="Upload image">
-        </form>
+    <div class='signup form-group'>
+     <form action="/new" type="post">
+        <input type="hidden" name="_method" value="put" />
+       <input type='text' name="code" placeholder='Code:' value='<%= @inv.code %>'  />
+       <input type='text' name="name" placeholder='Name:' value='<%= @inv.name %>' />
+      <select class="form-control" name="size">
+          <% ["A3", "A4", "XL", "XXL"].each do |selectInvValue| %>
+            <option <%= 'selected="selected"' if selectInvValue == @inv.size %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
+          <% end %>
+      </select>
+       <input type='text' name="quantity" placeholder='Quantity:' value='<%= @inv.quantity %>' />
+      <select class="form-control" name="type">
+          <% ["Catalogue", "Flayer", "Sticker", "Poster", "Folder"].each do |selectInvValue| %>
+            <option <%= 'selected="selected"' if selectInvValue == @inv.type %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
+          <% end %>
+      </select>
+      <select class="form-control" name="location">
+          <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
+            <option <%= 'selected="selected"' if selectInvValue == @inv.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
+          <% end %>
+      </select>
+       <input type="file" name="picture" class="form-control">
+       <input type='submit' placeholder='SUBMIT' />
+     </form>
+    </div>
     </body>
 </html>
