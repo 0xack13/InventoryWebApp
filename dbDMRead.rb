@@ -46,6 +46,7 @@ get "/new" do
   @inv.picture = params[:picture]
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
+        redirect '/'
   else
         {:inv => @inv, :status => "failure"}.to_json
   end
@@ -63,6 +64,7 @@ put "/inv/:id" do
   @inv.picture = params[:picture]
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
+        redirect '/'
   else
         {:inv => @inv, :status => "failure"}.to_json
   end
@@ -74,6 +76,7 @@ get "/:id/delete" do
     @inv = Inv2.first(:id => params[:id])
     if @inv.destroy
         {:inv => @inv, :status => "success"}.to_json
+        redirect '/'
     else
         {:inv => @inv, :status => "failure"}.to_json
     end
@@ -175,99 +178,22 @@ __END__
                 <th>Type</th>
                 <th>Location</th>
                 <th>Picture</th>
+
             </tr>
         </thead>
         <tbody>
+          <% @inv.each do |inv| %>
             <tr>
-                <td>1</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
+                <td><%= inv[:id] %></td>
+                <td><%= inv[:code] %></td>
+                <td><%= inv[:name] %></td>
+                <td><%= inv[:size] %></td>
+                <td><%= inv[:quantity] %></td>
+                <td><%= inv[:type] %></td>
+                <td><%= inv[:location] %></td>
+                <td><%= inv[:picture] %></td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>213444</td>
-                <td>Caps Green</td>
-                <td>JED-WH</td>
-                <td>14</td>
-                <td>14</td>
-                <td>JED-WH</td>
-                <td>14</td>
-            </tr>
+          <% end %>
         </tbody>
       </table>
     <p>Learn: 
