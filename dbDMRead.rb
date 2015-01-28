@@ -69,7 +69,7 @@ put "/inv/:id" do
 end
 
 #delete
-delete "/inv/:id" do
+get "/:id/delete" do
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.first(:id => params[:id])
     if @inv.destroy
@@ -88,8 +88,8 @@ end
 
 get "/" do
   #@posts = Post.all()
-  Inv2.get(1).picture
-  #@inv = Inv2.all
+  #Inv2.get(1).picture
+  @inv = Inv2.all
   erb :home
 end
 
@@ -122,6 +122,10 @@ __END__
 </head>
 <body>
 <div id='header'></div>
+<% @inv.each do |inv| %>
+  <%= inv[:id] %>
+  <a href="/<%= inv[:id] %>/delete">Delete</a>
+ <% end %>
 <div id='container'>
   
   <div id='click'></div>
