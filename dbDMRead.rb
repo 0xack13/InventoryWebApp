@@ -125,10 +125,6 @@ __END__
 </head>
 <body>
 <div id='header'></div>
-<% @inv.each do |inv| %>
-  <%= inv[:id] %>
-  <a href="/<%= inv[:id] %>/delete">Delete</a>
- <% end %>
 <div id='container'>
   
   <div id='click'></div>
@@ -178,7 +174,7 @@ __END__
                 <th>Type</th>
                 <th>Location</th>
                 <th>Picture</th>
-
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -192,6 +188,7 @@ __END__
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
                 <td><%= inv[:picture] %></td>
+                <td><a href="/<%= inv[:id] %>/delete">Edit</a> | <a href="/<%= inv[:id] %>/delete">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
