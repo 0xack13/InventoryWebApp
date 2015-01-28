@@ -178,9 +178,9 @@ __END__
             </tr>
         </thead>
         <tbody>
-          <% @inv.each do |inv| %>
+          <% @inv.each_with_index do |inv, index| %>
             <tr>
-                <td><%= inv[:id] %></td>
+                <td><%= index += 1 %></td>
                 <td><%= inv[:code] %></td>
                 <td><%= inv[:name] %></td>
                 <td><%= inv[:size] %></td>
