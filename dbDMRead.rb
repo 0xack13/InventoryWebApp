@@ -155,9 +155,10 @@ __END__
   </script>
 </head>
 <body>
-<div id='header'></div>  
 
 <div id='container'>
+<div id='header'></div>  
+
   <div id='click'></div>
   <div class='signup form-group' id='panel'>
     <%= yield %>
@@ -167,9 +168,11 @@ __END__
      <a class="close" data-dismiss="alert">&#215;</a>
      <p><%= flash[:notice] %></p>
     </div>
+   
     <h1>Inventory Management v1</h1>
     <p>Stock Summary</p>
-      <table class="table table-striped"  style='overflow:hidden;table-layout:fixed;width:100%'>
+    <div>
+      <table class="table table-striped"  style='width:100% !important'>
         <thead>
             <tr>
                 <th>Row</th>
@@ -199,14 +202,10 @@ __END__
           <% end %>
         </tbody>
       </table>
-    <p>Learn: 
-      <span>In</span>
-      <span>Out</span>
-      <span>All</span>
-    </p>
+    </div>
   </div>
-</div>
 
+</div>
 
 </body>
 
