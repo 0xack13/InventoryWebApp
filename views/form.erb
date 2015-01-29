@@ -14,8 +14,8 @@
 </head>
     <body>
     <div class='signup form-group'>
-     <form action="/new" type="post">
-        <input type="hidden" name="_method" value="put" />
+     <form action="/<%= @inv.id %>/save" method="POST">
+        <input name="_method" type="hidden" value="PUT" />
        <input type='text' name="code" placeholder='Code:' value='<%= @inv.code %>'  />
        <input type='text' name="name" placeholder='Name:' value='<%= @inv.name %>' />
       <select class="form-control" name="size">

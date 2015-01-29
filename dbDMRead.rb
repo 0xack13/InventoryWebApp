@@ -9,6 +9,13 @@ oldverb = $VERBOSE; $VERBOSE = nil
 require 'iconv'
 $VERBOSE = oldverb
 
+use Rack::MethodOverride
+set :method_override, true
+
+configure do
+  enable :method_override
+end
+
 enable :sessions
 
 
@@ -59,7 +66,7 @@ get "/new" do
 end
 
 #update	
-put "/inv/:id" do
+put "/:id/save" do
   @inv = Inv2.first(:id => params[:id])
   @inv.code = params[:code]
   @inv.name = params[:name]
@@ -70,6 +77,7 @@ put "/inv/:id" do
   @inv.picture = params[:picture]
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
+        flash[:notice] = "Saved correctly!"
         redirect '/'
   else
         {:inv => @inv, :status => "failure"}.to_json
@@ -93,7 +101,7 @@ end
 get "/:id/edit" do
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.first(:id => params[:id])
-    @inv.to_json
+    #@inv.to_json
     erb :form
 end
 
