@@ -4,6 +4,11 @@ require 'sinatra/flash'
 require "data_mapper"
 require 'json'
 
+require 'fileutils'
+
+include FileUtils::Verbose
+
+
 
 oldverb = $VERBOSE; $VERBOSE = nil
 require 'iconv'
@@ -75,6 +80,9 @@ put "/:id/save" do
   @inv.type = params[:type]
   @inv.location = params[:location]
   @inv.picture = params[:picture]
+  tempfile = params[:picture][:tempfile] 
+  filename = params[:picture][:filename] 
+  cp(tempfile.path, "./public/uploads/#{filename}")
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
         flash[:notice] = "Saved correctly!"
@@ -127,7 +135,6 @@ __END__
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  <!--<script src="<%= url("app.js")%>"></script>-->
   <style type="text/css">
       .bs-example{
         margin: 20px;
@@ -141,15 +148,16 @@ __END__
       });
       $('#editLink').click(function()
       {
+        console.log("link clicked!");
           $("#panel").animate({width:'toggle'},500);       
       });
     });//]]>  
   </script>
 </head>
 <body>
-<div id='header'></div>
+<div id='header'></div>  
+
 <div id='container'>
-  
   <div id='click'></div>
   <div class='signup form-group' id='panel'>
     <%= yield %>
@@ -161,7 +169,7 @@ __END__
     </div>
     <h1>Inventory Management v1</h1>
     <p>Stock Summary</p>
-      <table class="table table-striped">
+      <table class="table table-striped"  style='overflow:hidden;table-layout:fixed;width:100%'>
         <thead>
             <tr>
                 <th>Row</th>
@@ -185,8 +193,8 @@ __END__
                 <td><%= inv[:quantity] %></td>
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
-                <td><%= inv[:picture] %></td>
-                <td><a id="editLink" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><img class="thumbnail" src="../public/<%= inv[:picture] %>"><%= inv[:picture] %></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
@@ -206,7 +214,7 @@ __END__
 
 
 @@index
-<form action="/new" type="post">
+<form action="/new" type="post" enctype="multipart/form-data">
        <input type='text' name="code" placeholder='Code:'  />
        <input type='text' name="name" placeholder='Name:'  />
        <select class="form-control" name="size">
@@ -234,7 +242,7 @@ __END__
         <option value="DAH">DAH</option>
       </select>
        <input type="file" name="picture" class="form-control">
-       <input type='submit' placeholder='SUBMIT' />
+       <input type='submit' placeholder='SUBMIT' value="Add new Record" />
      </form>
 
 @@form
@@ -259,5 +267,5 @@ __END__
           <% end %>
       </select>
        <input type="file" name="picture" class="form-control">
-       <input type='submit' placeholder='SUBMIT' />
+       <input type='submit' placeholder='Save Changes' value="Save Changes" />
      </form>

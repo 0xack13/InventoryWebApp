@@ -129,12 +129,3 @@ p:nth-of-type(2) {
    border-color: #D6E9C6;
    color: black;
 }
-
-dialog::backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-}
