@@ -157,3 +157,30 @@ table
   ul li img { border: 2px solid white; cursor: pointer; }
   ul li img:hover { border: 2px solid black; }
   ul li img.hover { border: 2px solid black; }
+
+.thumbnail {
+  position: relative;
+  width: 50;
+  height: 50px;
+  overflow: hidden;
+  text-align: center !important;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+
+tr, td {
+  vertical-align: middle !important;
+  text-align: center !important;
+}

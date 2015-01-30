@@ -1,5 +1,5 @@
 <% @files.each { |x| %>
-<p><%= x %></p>
+<p><img class="thumbnail" src="<%= x.sub!(/public\//, '') %>"><%= x %></img></p>
 <% } %>
 <br>Hello
 <% @files.each { |x| puts x } %>
