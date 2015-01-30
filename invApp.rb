@@ -206,132 +206,162 @@ __END__
 <!doctype html>
 
 <html class=''>
-<head><meta charset='UTF-8'><meta name="robots" content="noindex">
-         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<head>
+  <meta charset='UTF-8'><meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
+  <!--<link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />-->
 
-  <style class="cp-pen-styles">/* Navigation Menu - Background */
-.navigation {
-  /* critical sizing and position styles */
+
+  <style>
+  @import "http://fonts.googleapis.com/css?family=Montserrat:300,400,700";
+.responsive-table-input-matrix {
+  margin: 1em 0;
   width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 0;
-  
-  /* non-critical appearance styles */
-  list-style: none;
-  background: #111;
 }
-
-/* Navigation Menu - List items */
-.nav-item {
-  /* non-critical appearance styles */
-  width: 200px;
-  border-top: 1px solid #111;
-  border-bottom: 1px solid #000;
+@media (min-width: 480px) {
+  .responsive-table-input-matrix .responsive-table-input-matrix {
+    width: auto;
+  }
 }
-
-.nav-item a {
-  /* non-critical appearance styles */
+.responsive-table-input-matrix tr {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.responsive-table-input-matrix tr td {
+  text-align: left;
+}
+@media (min-width: 480px) {
+  .responsive-table-input-matrix tr td {
+    text-align: center;
+  }
+}
+.responsive-table-input-matrix tr td:first-of-type {
+  text-align: left;
+}
+.responsive-table-input-matrix th {
+  display: none;
+}
+.responsive-table-input-matrix td {
   display: block;
-  padding: 1em;
-  background: -webkit-linear-gradient(315deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%);
-  background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
-  color: white;
-  font-size: 1.2em;
-  text-decoration: none;
-  -webkit-transition: color 0.2s, background 0.5s;
-          transition: color 0.2s, background 0.5s;
 }
-
-.nav-item a:hover {
-  color: #c74438;
-  background: -webkit-linear-gradient(315deg, rgba(0,0,0,0) 0%, rgba(75,20,20,0.65) 100%);
-  background: linear-gradient(135deg, rgba(0,0,0,0) 0%,rgba(75,20,20,0.65) 100%);
+.responsive-table-input-matrix td:first-child {
+  padding-top: .5em;
 }
-
-/* Site Wrapper - Everything that isn't navigation */
-.site-wrap {
-  /* Critical position and size styles */
-  min-height: 100%;
-  min-width: 100%;
-  background-color: white; /* Needs a background or else the nav will show through */
-  position: relative;
-  top: 0;
-  bottom: 100%;
-  left: 0;
-  z-index: 1;
-  
-  /* non-critical apperance styles */
-  padding: 4em;
-  background-image: -webkit-linear-gradient(315deg, rgb(254,255,255) 0%, rgb(221,241,249) 35%, rgb(160,216,239) 100%);
-  background-image: linear-gradient(135deg, rgb(254,255,255) 0%,rgb(221,241,249) 35%,rgb(160,216,239) 100%);
-  background-size: 200%;
+.responsive-table-input-matrix td:last-child {
+  padding-bottom: .5em;
 }
-
-/* Nav Trigger */
-.nav-trigger {
-  /* critical styles - hide the checkbox input */
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
+.responsive-table-input-matrix td:before {
+  content: attr(data-th) ": ";
+  font-weight: bold;
+  width: 9em;
+  display: inline-block;
 }
-
-label[for="nav-trigger"] {
-  /* critical positioning styles */
-  position: fixed;
-  left: 15px; top: 15px;
-  z-index: 2;
-  
-  /* non-critical apperance styles */
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30' xml:space='preserve'><rect width='30' height='6'/><rect y='24' width='30' height='6'/><rect y='12' width='30' height='6'/></svg>");
-  background-size: contain;
+@media (min-width: 480px) {
+  .responsive-table-input-matrix td:before {
+    display: none;
+  }
 }
-
-/* Make the Magic Happen */
-.nav-trigger + label, .site-wrap {
-  -webkit-transition: left 0.2s;
-          transition: left 0.2s;
+.responsive-table-input-matrix th:first-of-type {
+  text-align: left;
 }
-
-.nav-trigger:checked + label {
-  left: 215px;
+.responsive-table-input-matrix th, .responsive-table-input-matrix td {
+  text-align: center;
 }
-
-.nav-trigger:checked ~ .site-wrap {
-  left: 200px;
-  box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
+@media (min-width: 480px) {
+  .responsive-table-input-matrix th, .responsive-table-input-matrix td {
+    display: table-cell;
+    padding: .25em .5em;
+  }
+  .responsive-table-input-matrix th:first-child, .responsive-table-input-matrix td:first-child {
+    padding-left: 0;
+  }
+  .responsive-table-input-matrix th:last-child, .responsive-table-input-matrix td:last-child {
+    padding-right: 0;
+  }
 }
 
 body {
-  /* Without this, the body has excess horizontal scroll when the menu is open */
+  padding: 0 2em;
+  font-family: Montserrat, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  color: #444;
+  background: #eee;
   overflow-x: hidden;
 }
 
-/* Additional non-critical styles */
-
-h1, h3, p {
-  max-width: 600px;
-  margin: 0 auto 1em;
+h1 {
+  font-weight: normal;
+  letter-spacing: -1px;
+  color: #34495E;
 }
 
-code {
-  padding: 2px;
-  background: #ddd;
+.responsive-table {
+  background: #34495E;
+  color: #fff;
+  border-radius: .4em;
+  overflow: hidden;
+}
+.responsive-table tr {
+  border-color: #46627f;
+}
+.responsive-table th, .responsive-table td {
+  margin: .5em 1em;
+  vertical-align: middle;
+  text-align: center;
+}
+@media (min-width: 480px) {
+  .responsive-table th, .responsive-table td {
+    padding: 1em !important;
+  }
+}
+.responsive-table th, .responsive-table td:before {
+  color: #dd5;
 }
 
-/* Micro reset */
-*,*:before,*:after{-moz-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;}
-html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-serif; }</style>
+
+
+.thumbnail {
+  position: relative;
+  width: 100;
+  height: 100px;
+  overflow: hidden;
+  text-align: center !important;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+
+tr, td {
+  vertical-align: middle !important;
+  text-align: center !important;
+}
+
+  </style>
+
+
+
+
+
+
+
+
+
+
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
       $('#click').click(function()
@@ -374,16 +404,6 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
 </head>
 <body>
 
-<ul class="navigation">
-  <li class="nav-item"><a href="/">Home</a></li>
-  <li class="nav-item"><a href="/add">New Item</a></li>
-  <li class="nav-item"><a href="#">Edit</a></li>
-  <li class="nav-item"><a href="/upload">Upload</a></li>
-  <li class="nav-item"><a href="#">Contact</a></li>
-</ul>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger"></label>
 
 <div class="site-wrap">
       <%= yield %>
@@ -393,9 +413,8 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
 
 @@default
  <h1>Inventory Management v1</h1>
-    <p>Stock Summary</p>
 <div class="table-responsive">
-      <table class="table table-condensed table-striped table-bordered table-hover no-margin">
+      <table class="responsive-table responsive-table-input-matrix">
         <thead>
             <tr>
                 <th>Row</th>
@@ -419,7 +438,7 @@ html, body { height: 100%; width: 100%; font-family: Helvetica, Arial, sans-seri
                 <td><%= inv[:quantity] %></td>
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
-                <td><img class="thumbnail" src="/<%= inv[:picture] %>"><%= inv[:picture] %></td>
+                <td><img class="thumbnail" src="/<%= inv[:picture] %>" title="<%= inv[:picture] %>"></td>
                 <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
