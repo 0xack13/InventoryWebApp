@@ -1,7 +1,7 @@
 require 'sinatra'
  
 get "/" do
-  erb :form
+  erb :form2
 end
  
 post '/save_image' do
