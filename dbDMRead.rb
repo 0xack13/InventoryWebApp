@@ -232,8 +232,18 @@ __END__
         //var imgs = $("img.hover").length;    
         var imgs = $("img.hover").attr('src');    
         alert('there are ' + imgs + ' images selected: ' );
+        var element = document.getElementById("picture");
+        element.value = "Hello there!";
+        
+        setValue();
         
       });
+      function setValue(){
+          //document.sampleForm.total.value = 100;
+          //document.forms["picture"].submit();
+          var element = document.getElementById("picture");
+          element.value = "Hello there!";
+      }
     });//]]>  
   </script>
 </head>
@@ -330,6 +340,7 @@ __END__
         <li><img class="thumbnail" src="<%= x.sub!(/public\//, '') %>"></img></li>
         <% } %>
       </ul>
+        <input type="hidden" name="picture" id="picture" value="">
        <input type='submit' placeholder='SUBMIT' value="Add new Record" />
      </form>
 
