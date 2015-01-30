@@ -3,6 +3,8 @@ require "sinatra"
 require 'sinatra/flash'
 require "data_mapper"
 require 'json'
+require 'find'
+
 
 require 'fileutils'
 
@@ -140,7 +142,52 @@ post '/save_image' do
   erb :show_image
 end
 
+get '/list' do
+  @inv = Inv2.all
+  @files = Dir.glob("public/*.jpg")
+  #p files
+  #files = Dir['public/*']
+  #@ary = ['a','b','c']
+  #p files
+  erb :list
+ 
+end
 
+
+
+# get all images
+get '/debug/posts/images/' do
+  puts '>> debug > posts > images > get'
+
+  all_images = Array.new
+
+    # build substitute prefix path 
+  uri = URI(request.url)
+  prefix ='http://' + uri.host
+  if request.port
+    prefix += ':' + request.port.to_s
+  end
+  prefix += '/content/'
+
+  begin
+    content_type :json
+        # get list of images
+    pics = Dir['public/*.jpg']
+    pics.map { |pic|
+            # build hash for use with tinyMCE
+      pic.split('/')
+      pic_hash = {:title => File.basename(pic).to_s, :value => prefix + File.basename(pic).to_s}
+      all_images.push(pic_hash)
+    }
+
+        # convert to json
+    pic_json = JSON.generate(all_images)    
+    body(pic_json)
+  rescue Sequel::Error => e
+    puts e.message
+    status(400).to_json
+  end
+end
 
 __END__
 @@layout
@@ -169,6 +216,20 @@ __END__
       {
         console.log("link clicked!");
           $("#panel").animate({width:'toggle'},500);       
+      });
+      $("img").click(function() {
+
+      $("img").not(this).removeClass("hover");
+
+      $(this).toggleClass("hover");
+
+      });
+
+      $("#btn").click(function() {
+      
+        var imgs = $("img.hover").length;    
+        alert('there are ' + imgs + ' images selected');
+        
       });
     });//]]>  
   </script>
@@ -260,6 +321,39 @@ __END__
         <option value="DAH">DAH</option>
       </select>
        <input type="file" name="picture" class="form-control">
+        <a href="#" id="btn">What images are selected?</a>
+  <ul>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+    <li><img src="http://placehold.it/80x80" /></li>
+  </ul>
        <input type='submit' placeholder='SUBMIT' value="Add new Record" />
      </form>
 
