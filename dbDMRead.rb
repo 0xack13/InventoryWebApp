@@ -62,6 +62,7 @@ get "/new" do
   @inv.type = params[:type]
   @inv.location = params[:location]
   @inv.picture = params[:picture]
+  @inv.picture.sub!(/\//, '');
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
           flash[:notice] = "Record inserted correctly!"
@@ -82,9 +83,10 @@ put "/:id/save" do
   @inv.type = params[:type]
   @inv.location = params[:location]
   @inv.picture = params[:picture]
-  tempfile = params[:picture][:tempfile] 
-  filename = params[:picture][:filename] 
-  cp(tempfile.path, "./public/uploads/#{filename}")
+  @inv.picture.sub!(/\//, '');
+  #tempfile = params[:picture][:tempfile] 
+  #filename = params[:picture][:filename] 
+  #cp(tempfile.path, "./public/uploads/#{filename}")
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
         flash[:notice] = "Saved correctly!"
@@ -112,6 +114,7 @@ get "/:id/edit" do
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.all
     @sinv = Inv2.first(:id => params[:id])
+    @files = Dir.glob("public/*.jpg")
     #@inv.to_json
     erb :form
 end
@@ -219,11 +222,14 @@ __END__
           $("#panel").animate({width:'toggle'},500);       
       });
       $("img").click(function() {
-
-      $("img").not(this).removeClass("hover");
-
-      $(this).toggleClass("hover");
-
+        $("img").not(this).removeClass("hover");
+        $(this).toggleClass("hover");
+        var imgs = $("img.hover").attr('src');    
+        //alert('there are ' + imgs + ' images selected: ' );
+        var element = document.getElementById("picture");
+        element.value = $("img.hover").attr('src');
+        console.log(element.value);
+        
       });
 
       $("#btn").click(function() {
@@ -233,10 +239,7 @@ __END__
         var imgs = $("img.hover").attr('src');    
         alert('there are ' + imgs + ' images selected: ' );
         var element = document.getElementById("picture");
-        element.value = "Hello there!";
-
-        setValue();
-        
+        element.value = $("img.hover").attr('src');
       });
       function setValue(){
           //document.sampleForm.total.value = 100;
@@ -289,7 +292,7 @@ __END__
                 <td><%= inv[:quantity] %></td>
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
-                <td><img class="thumbnail" src="<%= inv[:picture] %>"><%= inv[:picture] %></td>
+                <td><img class="thumbnail" src="/<%= inv[:picture] %>"><%= inv[:picture] %></td>
                 <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
@@ -337,7 +340,7 @@ __END__
         <a href="#" id="btn">What images are selected?</a>
       <ul>
         <% @files.each { |x| %>
-        <li><img class="thumbnail" src="<%= x.sub!(/public\//, '') %>"></img></li>
+        <li><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></li>
         <% } %>
       </ul>
         <input type="hidden" name="picture" id="picture" value="">
@@ -365,8 +368,15 @@ __END__
             <option <%= 'selected="selected"' if selectInvValue == @sinv.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
           <% end %>
       </select>
-       <input type="file" name="picture" class="form-control">
-       <input type='submit' placeholder='Save Changes' value="Save Changes" />
+<!-- <input type="file" name="picture" class="form-control">-->
+        <a href="#" id="btn">What images are selected?</a>
+      <ul>
+        <% @files.each { |x| %>
+        <li><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></li>
+        <% } %>
+      </ul>
+        <input type="hidden" name="picture" id="picture" value="">
+        <input type='submit' placeholder='Save Changes' value="Save Changes" />
      </form>
 
 @@form2
