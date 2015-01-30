@@ -234,7 +234,7 @@ __END__
         alert('there are ' + imgs + ' images selected: ' );
         var element = document.getElementById("picture");
         element.value = "Hello there!";
-        
+
         setValue();
         
       });
@@ -242,7 +242,7 @@ __END__
           //document.sampleForm.total.value = 100;
           //document.forms["picture"].submit();
           var element = document.getElementById("picture");
-          element.value = "Hello there!";
+          element.value = $("img.hover").attr('src');
       }
     });//]]>  
   </script>
