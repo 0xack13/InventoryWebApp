@@ -120,6 +120,7 @@ get "/" do
   #@posts = Post.all()
   #Inv2.get(1).picture
   @inv = Inv2.all
+  @files = Dir.glob("public/*.jpg")
   flash[:notice] = "Logged in at #{Time.now}."
   erb :index
 end
@@ -322,38 +323,11 @@ __END__
       </select>
        <input type="file" name="picture" class="form-control">
         <a href="#" id="btn">What images are selected?</a>
-  <ul>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-    <li><img src="http://placehold.it/80x80" /></li>
-  </ul>
+      <ul>
+        <% @files.each { |x| %>
+        <li><img class="thumbnail" src="<%= x.sub!(/public\//, '') %>"></img></li>
+        <% } %>
+      </ul>
        <input type='submit' placeholder='SUBMIT' value="Add new Record" />
      </form>
 
