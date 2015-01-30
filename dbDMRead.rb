@@ -227,9 +227,11 @@ __END__
       });
 
       $("#btn").click(function() {
-      
-        var imgs = $("img.hover").length;    
-        alert('there are ' + imgs + ' images selected');
+        //$("img.hover").attr('src').filename();
+        //$("img.hover").attr('src');
+        //var imgs = $("img.hover").length;    
+        var imgs = $("img.hover").attr('src');    
+        alert('there are ' + imgs + ' images selected: ' );
         
       });
     });//]]>  
@@ -321,7 +323,7 @@ __END__
         <option value="MAK">MAK</option>
         <option value="DAH">DAH</option>
       </select>
-       <input type="file" name="picture" class="form-control">
+       <!-- <input type="file" name="picture" class="form-control">-->
         <a href="#" id="btn">What images are selected?</a>
       <ul>
         <% @files.each { |x| %>
