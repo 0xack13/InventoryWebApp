@@ -123,6 +123,25 @@ get "/" do
 end
 
 
+get "/upload" do
+  @inv = Inv2.all
+  erb :form2
+end
+ 
+post '/save_image' do
+  @inv = Inv2.all
+  @filename = params[:file][:filename]
+  file = params[:file][:tempfile]
+ 
+  File.open("public/#{@filename}", 'wb') do |f|
+    f.write(file.read)
+  end
+  
+  erb :show_image
+end
+
+
+
 __END__
 @@layout
 <% title="Inventory Management" %>
@@ -196,7 +215,7 @@ __END__
                 <td><%= inv[:quantity] %></td>
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
-                <td><img class="thumbnail" src="../public/<%= inv[:picture] %>"><%= inv[:picture] %></td>
+                <td><img class="thumbnail" src="<%= inv[:picture] %>"><%= inv[:picture] %></td>
                 <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
@@ -268,3 +287,9 @@ __END__
        <input type="file" name="picture" class="form-control">
        <input type='submit' placeholder='Save Changes' value="Save Changes" />
      </form>
+
+@@form2
+ <form action="/save_image" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload image">
+        </form>
