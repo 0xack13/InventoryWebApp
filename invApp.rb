@@ -316,8 +316,9 @@ __END__
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 <form action="/new" type="post" enctype="multipart/form-data">
-   <h2>Please Add a new item </h2><br>
-   <small>It's free and always will be.</small>
+   <h2>New
+   <small>Add a new stock item</small>
+ </h2>
       <hr class="colorgraph">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -437,7 +438,7 @@ __END__
         <form action="/save_image" method="POST" enctype="multipart/form-data">
           <div class="row">
           <hr class="colorgraph">
-           <h2>Upload New Image<small>Browse and upload the new image</small></h2>
+           <h2>Upload <small>a new image to your gallery</small></h2>
            </div>
                 <div class="row">
                   <div class="col-xs-6 col-sm-6 col-md-6">
