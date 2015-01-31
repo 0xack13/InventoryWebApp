@@ -214,14 +214,6 @@ __END__
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
 
-
-
-
-
-
-
-
-
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
       $('#click').click(function()
@@ -281,6 +273,7 @@ __END__
 </html>
 
 @@default
+<hr class="colorgraph">
  <h1>Inventory Management v1</h1>
  <h3>Simple stock management solution</h3>
 <div class="table-responsive">
@@ -319,124 +312,89 @@ __END__
 @@index
  <div class="container">
 
+
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    <form role="form">
-      <h2>Please Add a new item <small>It's free and always will be.</small></h2>
-      <hr class="colorgraph">
-      <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-                        <input type="text" name="code" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1">
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-            <input type="text" name="name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2">
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <input type="text" name="size" id="display_name" class="form-control input-lg" placeholder="Display Name" tabindex="3">
-      </div>
-      <div class="form-group">
-        <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
-      </div>
-      <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-            <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3">
-          <span class="button-checkbox">
-            <button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-                        <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-          </span>
-        </div>
-        <div class="col-xs-9 col-sm-9 col-md-9">
-           By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
-        </div>
-      </div>
-
-      <hr class="colorgraph">
-      <div class="row">
-        <div class="col-xs-6 col-md-6"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-        <div class="col-xs-6 col-md-6"><a href="#" class="btn btn-success btn-block btn-lg">Sign In</a></div>
-      </div>
-    </form>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
-      </div>
-      <div class="modal-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-</div>
-
-
 <form action="/new" type="post" enctype="multipart/form-data">
-       <input type='text' class="form-control input-lg" name="code" placeholder='Code:'  />
-       <input type='text' name="name" placeholder='Name:'  />
-       <select class="form-control input-lg" name="size">
-        <option value="" disabled selected>Size</option>
-        <option value="A3">A3</option>
-        <option value="A4">A4</option>
-        <option value="XL">XL</option>
-        <option value="XXL">XXL</option>
-      </select>
-       <input type='text' name="quantity" placeholder='Quantity:'  />
-       <select class="form-control" name="type">
-        <option value="" disabled selected>Type</option>
-        <option value="Catalogue">Catalogue</option>
-        <option value="Flyer">Flyer</option>
-        <option value="Sticker">Sticker</option>
-        <option value="Poster">Poster</option>
-        <option value="Folder">Folder</option>
-      </select>
-      <select class="form-control" name="location">
-        <option value="" disabled selected>Location</option>
-        <option value="JED">JED</option>
-        <option value="RYD">RYD</option>
-        <option value="DMM">DMM</option>
-        <option value="MAK">MAK</option>
-        <option value="DAH">DAH</option>
-      </select>
-       <!-- <input type="file" name="picture" class="form-control">-->
-        <a href="#" id="btn">Selected Image:</a>
-      <ul>
-        <% @files.each { |x| %>
-        <li><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></li>
-        <% } %>
-      </ul>
+   <h2>Please Add a new item </h2><br>
+   <small>It's free and always will be.</small>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+              <input type='text' class="form-control input-lg" name="code" placeholder='Code:' class="form-control input-lg"  />
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="name" placeholder='Name:' class="form-control input-lg" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+              <select class="form-control input-lg" name="size">
+                <option value="" disabled selected>Size</option>
+                <option value="A3">A3</option>
+                <option value="A4">A4</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            </div>
+          </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+               <div class="form-group">
+                <input type='text' name="quantity" placeholder='Quantity:'  class="form-control input-lg" />
+               </div>
+             </div>
+           </div>
+
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+               <select class="form-control input-lg" name="type">
+                <option value="" disabled selected>Type</option>
+                <option value="Catalogue">Catalogue</option>
+                <option value="Flyer">Flyer</option>
+                <option value="Sticker">Sticker</option>
+                <option value="Poster">Poster</option>
+                <option value="Folder">Folder</option>
+              </select>
+            </div>
+          </div>
+           <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+              <select name="location" class="form-control input-lg">
+                <option value="" disabled selected>Location</option>
+                <option value="JED">JED</option>
+                <option value="RYD">RYD</option>
+                <option value="DMM">DMM</option>
+                <option value="MAK">MAK</option>
+                <option value="DAH">DAH</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+        <table width="100%" class="table blocks">
+            <tr>
+                <% @files.each { |x| %>
+                <td>
+                    <p class="centeredimage" ><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></p>
+                </td>
+                <% } %>
+
+               
+            </tr>
+        </table>
         <input type="hidden" name="picture" id="picture" value="">
-       <input type='submit' placeholder='SUBMIT' value="Add new Record" />
+       <input type='submit' placeholder='SUBMIT' value="Add new Record" class="btn btn-primary btn-block btn-lg" />
      </form>
+   </div>
+ </div>
 
 @@form
  <form action="/<%= @sinv.id %>/save" method="POST">
@@ -469,11 +427,33 @@ __END__
         <% } %>
       </ul>
         <input type="hidden" name="picture" id="picture" value="">
-        <input type='submit' placeholder='Save Changes' value="Save Changes" />
+        <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
      </form>
 
 @@form2
- <form action="/save_image" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <input type="submit" value="Upload image">
+ <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form action="/save_image" method="POST" enctype="multipart/form-data">
+          <div class="row">
+          <hr class="colorgraph">
+           <h2>Upload New Image<small>Browse and upload the new image</small></h2>
+           </div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="form-group">
+                      <input type="file" name="file" class="form-control input-lg">
+                    </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                      <input type="submit" value="Upload image" class="btn btn-primary btn-block btn-lg">
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+                </div>
         </form>
+      </div>
+    </div>
+  </div>
