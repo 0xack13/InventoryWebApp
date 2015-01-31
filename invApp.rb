@@ -391,6 +391,7 @@ __END__
                
             </tr>
         </table>
+        <hr class="colorgraph">
         <input type="hidden" name="picture" id="picture" value="">
        <input type='submit' placeholder='SUBMIT' value="Add new Record" class="btn btn-primary btn-block btn-lg" />
      </form>
@@ -427,9 +428,11 @@ __END__
         <li><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></li>
         <% } %>
       </ul>
+        <hr class="colorgraph">
         <input type="hidden" name="picture" id="picture" value="">
         <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
      </form>
+
 
 @@form2
  <div class="container">
@@ -454,7 +457,18 @@ __END__
                     </div>
                   </div>
                 </div>
+
         </form>
       </div>
     </div>
   </div>
+
+@@show_image
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <h1>Uploaded Image</h1>
+      <img src="./<%= @filename %>" />
+    </div>
+  </div>
+</div>

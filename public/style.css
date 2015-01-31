@@ -249,7 +249,7 @@ html, body { height: 100%; width: 100%; }
 .blocks.table td {
     width: 300px;
     height: 300px;
-    border: 1px solid #ff0000;
+    border: 1px solid gray;
     vertical-align: middle;
     text-align: center;
 }
