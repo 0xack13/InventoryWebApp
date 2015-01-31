@@ -212,147 +212,7 @@ __END__
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
         
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <!--<link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />-->
-
-
-  <style>
-  @import "http://fonts.googleapis.com/css?family=Montserrat:300,400,700";
-.responsive-table-input-matrix {
-  margin: 1em 0;
-  width: 100%;
-}
-@media (min-width: 480px) {
-  .responsive-table-input-matrix .responsive-table-input-matrix {
-    width: auto;
-  }
-}
-.responsive-table-input-matrix tr {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-.responsive-table-input-matrix tr td {
-  text-align: left;
-}
-@media (min-width: 480px) {
-  .responsive-table-input-matrix tr td {
-    text-align: center;
-  }
-}
-.responsive-table-input-matrix tr td:first-of-type {
-  text-align: left;
-}
-.responsive-table-input-matrix th {
-  display: none;
-}
-.responsive-table-input-matrix td {
-  display: block;
-}
-.responsive-table-input-matrix td:first-child {
-  padding-top: .5em;
-}
-.responsive-table-input-matrix td:last-child {
-  padding-bottom: .5em;
-}
-.responsive-table-input-matrix td:before {
-  content: attr(data-th) ": ";
-  font-weight: bold;
-  width: 9em;
-  display: inline-block;
-}
-@media (min-width: 480px) {
-  .responsive-table-input-matrix td:before {
-    display: none;
-  }
-}
-.responsive-table-input-matrix th:first-of-type {
-  text-align: left;
-}
-.responsive-table-input-matrix th, .responsive-table-input-matrix td {
-  text-align: center;
-}
-@media (min-width: 480px) {
-  .responsive-table-input-matrix th, .responsive-table-input-matrix td {
-    display: table-cell;
-    padding: .25em .5em;
-  }
-  .responsive-table-input-matrix th:first-child, .responsive-table-input-matrix td:first-child {
-    padding-left: 0;
-  }
-  .responsive-table-input-matrix th:last-child, .responsive-table-input-matrix td:last-child {
-    padding-right: 0;
-  }
-}
-
-body {
-  padding: 0 2em;
-  font-family: Montserrat, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  color: #444;
-  background: #eee;
-  overflow-x: hidden;
-}
-
-h1 {
-  font-weight: normal;
-  letter-spacing: -1px;
-  color: #34495E;
-}
-
-.responsive-table {
-  background: #34495E;
-  color: #fff;
-  border-radius: .4em;
-  overflow: hidden;
-}
-.responsive-table tr {
-  border-color: #46627f;
-}
-.responsive-table th, .responsive-table td {
-  margin: .5em 1em;
-  vertical-align: middle;
-  text-align: center;
-}
-@media (min-width: 480px) {
-  .responsive-table th, .responsive-table td {
-    padding: 1em !important;
-  }
-}
-.responsive-table th, .responsive-table td:before {
-  color: #dd5;
-}
-
-
-
-.thumbnail {
-  position: relative;
-  width: 100;
-  height: 100px;
-  overflow: hidden;
-  text-align: center !important;
-}
-.thumbnail img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100%;
-  width: auto;
-  -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
-}
-.thumbnail img.portrait {
-  width: 100%;
-  height: auto;
-}
-
-tr, td {
-  vertical-align: middle !important;
-  text-align: center !important;
-}
-
-  </style>
-
+  <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
 
 
 
@@ -404,6 +264,16 @@ tr, td {
 </head>
 <body>
 
+<ul class="navigation">
+  <li class="nav-item"><a href="#">Home</a></li>
+  <li class="nav-item"><a href="#">Portfolio</a></li>
+  <li class="nav-item"><a href="#">About</a></li>
+  <li class="nav-item"><a href="#">Blog</a></li>
+  <li class="nav-item"><a href="#">Contact</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
 
 <div class="site-wrap">
       <%= yield %>
@@ -413,6 +283,7 @@ tr, td {
 
 @@default
  <h1>Inventory Management v1</h1>
+ <h3>Simple stock management solution</h3>
 <div class="table-responsive">
       <table class="responsive-table responsive-table-input-matrix">
         <thead>
