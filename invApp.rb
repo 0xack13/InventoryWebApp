@@ -378,19 +378,12 @@ __END__
             </div>
           </div>
         </div>
-
-
-        <table width="100%" class="table blocks">
-            <tr>
-                <% @files.each { |x| %>
-                <td>
-                    <p class="centeredimage" ><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></p>
-                </td>
-                <% } %>
-
-               
-            </tr>
-        </table>
+        <% @files.each_with_index { |x, index| %>
+        <div class="img">
+         <a target="_blank" href="klematis_big.htm"><p class="centeredimage" ><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></p></a>
+         <div class="desc">Add a description of the image here</div>
+        </div>
+        <% } %>
         <hr class="colorgraph">
         <input type="hidden" name="picture" id="picture" value="">
        <input type='submit' placeholder='SUBMIT' value="Add new Record" class="btn btn-primary btn-block btn-lg" />
