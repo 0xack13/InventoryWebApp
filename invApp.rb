@@ -258,10 +258,6 @@ __END__
 <body>
 
 <ul class="navigation">
-  <i class="icon-large icon-search"></i>
-<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
-<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span> Search</button>
-  <span class="glyphicons glyphicons-home"></span>
   <li class="nav-item"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
   <li class="nav-item"><a href="/add">New</a></li>
   <li class="nav-item"><a href="/upload">Upload</a></li>
