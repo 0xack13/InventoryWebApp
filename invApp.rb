@@ -256,12 +256,11 @@ __END__
   </script>
 </head>
 <body>
-
 <ul class="navigation">
   <li class="nav-item"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
-  <li class="nav-item"><a href="/add">New</a></li>
-  <li class="nav-item"><a href="/upload">Upload</a></li>
-  <li class="nav-item"><a href="#">Support</a></li>
+  <li class="nav-item"><a href="/add"><span class="glyphicon glyphicon-plus"></span></a></li>
+  <li class="nav-item"><a href="/upload"><span class="glyphicon glyphicon-upload"></span></a></li>
+  <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />

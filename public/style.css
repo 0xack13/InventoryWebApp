@@ -3,7 +3,7 @@
   margin: 1em 0;
   width: 100%;
 }
-@media (min-width: 480px) {
+@media (min-width: 280px) {
   .responsive-table-input-matrix .responsive-table-input-matrix {
     width: auto;
   }
@@ -15,7 +15,7 @@
 .responsive-table-input-matrix tr td {
   text-align: left;
 }
-@media (min-width: 480px) {
+@media (min-width: 280px) {
   .responsive-table-input-matrix tr td {
     text-align: center;
   }
@@ -41,7 +41,7 @@
   width: 9em;
   display: inline-block;
 }
-@media (min-width: 480px) {
+@media (min-width: 280px) {
   .responsive-table-input-matrix td:before {
     display: none;
   }
@@ -52,7 +52,7 @@
 .responsive-table-input-matrix th, .responsive-table-input-matrix td {
   text-align: center;
 }
-@media (min-width: 480px) {
+@media (min-width: 280px) {
   .responsive-table-input-matrix th, .responsive-table-input-matrix td {
     display: table-cell;
     padding: .25em .5em;
@@ -96,7 +96,7 @@ h1 {
   vertical-align: middle;
   text-align: center;
 }
-@media (min-width: 480px) {
+@media (min-width: 280px) {
   .responsive-table th, .responsive-table td {
     padding: 1em !important;
   }
@@ -155,7 +155,7 @@ tr, td {
 /* Navigation Menu - List items */
 .nav-item {
   /* non-critical appearance styles */
-  width: 200px;
+  width: 80px;
 }
 
 .nav-item a {
@@ -259,5 +259,6 @@ p.centeredimage img {
 }
 
 .glyphicon {
-    font-size: 70px;
+    font-size: 40px;
+    text-align: center !important;
 }
