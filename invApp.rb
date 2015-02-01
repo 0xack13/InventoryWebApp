@@ -210,9 +210,15 @@ __END__
   <meta charset='UTF-8'><meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.icon-large.min.css" rel="stylesheet">
         
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
+  <style>
+    .glyphicon {
+    font-size: 70px;
+}
+  </style>
 
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
@@ -257,10 +263,14 @@ __END__
 <body>
 
 <ul class="navigation">
-  <li class="nav-item"><a href="/">Home</a></li>
+  <i class="icon-large icon-search"></i>
+<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
+<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span> Search</button>
+  <span class="glyphicons glyphicons-home"></span>
+  <li class="nav-item"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
   <li class="nav-item"><a href="/add">New</a></li>
   <li class="nav-item"><a href="/upload">Upload</a></li>
-  <li class="nav-item"><a href="#">Contact</a></li>
+  <li class="nav-item"><a href="#">Support</a></li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
