@@ -150,12 +150,16 @@ tr, td {
   /* non-critical appearance styles */
   list-style: none;
   background: #34495E;
+
+  text-align: center;
 }
 
 /* Navigation Menu - List items */
 .nav-item {
   /* non-critical appearance styles */
   width: 80px;
+
+  text-align: center;
 }
 
 .nav-item a {
@@ -164,6 +168,7 @@ tr, td {
   padding: 1em;
   color: white;
   font-size: 0.9em;
+  text-align: center;
   text-decoration: none;
 }
 
@@ -218,11 +223,11 @@ label[for="nav-trigger"] {
 }
 
 .nav-trigger:checked + label {
-  left: 215px;
+  left: 115px;
 }
 
 .nav-trigger:checked ~ .site-wrap {
-  left: 200px;
+  left: 100px;
   box-shadow: 0 0 5px 5px rgba(0,0,0,0.5);
 }
 
