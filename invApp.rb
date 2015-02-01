@@ -116,7 +116,7 @@ get "/:id/edit" do
     @sinv = Inv2.first(:id => params[:id])
     @files = Dir.glob("public/*.jpg")
     #@inv.to_json
-    erb :form
+    erb :edit
 end
 
 get "/" do
@@ -132,7 +132,7 @@ end
 get "/add" do
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
-  erb :index
+  erb :add
 end
 
 
@@ -309,7 +309,7 @@ __END__
       </table>
     </div>
 
-@@index
+@@add
  <div class="container">
 
 
@@ -398,7 +398,7 @@ __END__
    </div>
  </div>
 
-@@form
+@@edit
  <form action="/<%= @sinv.id %>/save" method="POST">
         <input name="_method" type="hidden" value="PUT" />
        <input type='text' name="code" placeholder='Code:' value='<%= @sinv.code %>'  />
