@@ -138,7 +138,7 @@ end
 
 get "/upload" do
   @inv = Inv2.all
-  erb :form2
+  erb :upload
 end
  
 post '/save_image' do
@@ -434,7 +434,7 @@ __END__
      </form>
 
 
-@@form2
+@@upload
  <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
