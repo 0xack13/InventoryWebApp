@@ -272,6 +272,7 @@ __END__
 </html>
 
 @@default
+ <div class="container">
 <hr class="colorgraph">
  <h1>Inventory Management v1</h1>
  <h3>Simple stock management solution</h3>
@@ -307,10 +308,9 @@ __END__
         </tbody>
       </table>
     </div>
-
+</div>
 @@add
  <div class="container">
-
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -378,25 +378,14 @@ __END__
           </div>
         </div>
         
-
+<div>
         <ul>
         <% @files.each { |x| %>
-        <li><img src="<%= x.sub!(/public\//, '/') %>" style="width:80px; height:80px;"/></li>
+        <li><img src="<%= x.sub!(/public\//, '/') %>" style="width:180px; height:180px;"/></li>
         <% } %>
 </ul>
-
-        <div class="row">
-          <% @files.each_with_index { |x, index| %>
-           <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group">
-              <div class="img">
-                  <img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img>
-                 <!--<div class="desc">Add a description of the image here</div>-->
-              </div>
-            </div>
-          </div>
-          <% } %>
-        </div>
+</div>
+       
 
         <br>
         <input type="hidden" name="picture" id="picture" value="">
@@ -408,7 +397,18 @@ __END__
  </div>
 
 @@edit
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
  <form action="/<%= @sinv.id %>/save" method="POST">
+   <h2>Edit
+   <small>an existing stock item</small>
+ </h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
        <input type='text' name="code" placeholder='Code:' value='<%= @sinv.code %>'  />
        <input type='text' name="name" placeholder='Name:' value='<%= @sinv.name %>' />
@@ -445,7 +445,9 @@ __END__
         <input type="hidden" name="picture" id="picture" value="">
         <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
      </form>
-
+</div>
+</div>
+</div>
 
 @@upload
  <div class="container">

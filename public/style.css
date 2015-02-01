@@ -135,7 +135,6 @@ tr, td {
 }
 
 
-
 .navigation {
   /* critical sizing and position styles */
   width: 100%;
@@ -294,10 +293,15 @@ div.img img:hover {
     border: 1px solid red;
 }
 
-ul { list-style: none !important; }
-  ul li { display: inline !important; } 
 
-ul li img { border: 2px solid white; cursor: pointer; }
+div ul { list-style: none !important; }
+div ul li { display: inline !important; } 
+
+div ul li img { border: 2px solid white; cursor: pointer; }
   ul li img:hover { border: 2px solid black; }
-  ul li img.hover { border: 2px solid black; }
+  ul li img.hover { border: 2px solid black;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  background: url(http://www.surveyshare.com/images/icons/check.png) 50% 50% no-repeat;
+  }
 
