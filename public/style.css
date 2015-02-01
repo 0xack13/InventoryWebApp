@@ -257,3 +257,7 @@ p.centeredimage img {
     max-height: 300px;
     max-width: 300px;
 }
+
+.glyphicon {
+    font-size: 70px;
+}

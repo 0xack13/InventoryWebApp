@@ -214,12 +214,7 @@ __END__
         
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
-  <style>
-    .glyphicon {
-    font-size: 70px;
-}
-  </style>
-
+  
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
       $('#click').click(function()
