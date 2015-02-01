@@ -210,7 +210,6 @@ __END__
   <meta charset='UTF-8'><meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/bootstrap.icon-large.min.css" rel="stylesheet">
         
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
@@ -226,6 +225,7 @@ __END__
         console.log("link clicked!");
           $("#panel").animate({width:'toggle'},500);       
       });
+      
       $("img").click(function() {
         $("img").not(this).removeClass("hover");
         $(this).toggleClass("hover");
@@ -234,7 +234,6 @@ __END__
         var element = document.getElementById("picture");
         element.value = $("img.hover").attr('src');
         console.log(element.value);
-        
       });
 
       $("#btn").click(function() {
@@ -378,14 +377,31 @@ __END__
             </div>
           </div>
         </div>
-        <% @files.each_with_index { |x, index| %>
-        <div class="img">
-         <a target="_blank" href="klematis_big.htm"><p class="centeredimage" ><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></p></a>
-         <div class="desc">Add a description of the image here</div>
-        </div>
+        
+
+        <ul>
+        <% @files.each { |x| %>
+        <li><img src="<%= x.sub!(/public\//, '/') %>" style="width:80px; height:80px;"/></li>
         <% } %>
-        <hr class="colorgraph">
+</ul>
+
+        <div class="row">
+          <% @files.each_with_index { |x, index| %>
+           <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <div class="img">
+                  <img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img>
+                 <!--<div class="desc">Add a description of the image here</div>-->
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+
+        <br>
         <input type="hidden" name="picture" id="picture" value="">
+              <hr class="colorgraph">
+
        <input type='submit' placeholder='SUBMIT' value="Add new Record" class="btn btn-primary btn-block btn-lg" />
      </form>
    </div>
@@ -421,6 +437,10 @@ __END__
         <li><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></li>
         <% } %>
       </ul>
+      <ul>
+        <% @files.each { |x| %>
+        <li><img src="<%= x.sub!(/public\//, '/') %>"></img></li>
+        <% } %>
         <hr class="colorgraph">
         <input type="hidden" name="picture" id="picture" value="">
         <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />

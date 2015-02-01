@@ -113,12 +113,12 @@ h1 {
   height: 100px;
   overflow: hidden;
   text-align: center !important;
+  background-color: orange;
 }
 .thumbnail img {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 100%;
+  width: 300px;
+  height: 300px;
   width: auto;
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
@@ -258,10 +258,7 @@ html, body { height: 100%; width: 100%; }
     vertical-align: middle;
     text-align: center;
 }
-p.centeredimage img {
-    max-height: 300px;
-    max-width: 300px;
-}
+
 
 .glyphicon {
     font-size: 40px;
@@ -272,28 +269,35 @@ a:hover {
 }
 
 div.img {
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid #0000ff;
-    height: auto;
-    width: auto;
-    float: left;
-    text-align: center;
+  border: 1px solid gray;
+  width: 150px;
+  height: 150px;
+  text-align: center;
 } 
 
 div.img img {
     display: inline;
-    margin: 5px;
     border: 1px solid #ffffff;
+  width: 150px;
+  height: 150px;
 }
 
-div.img a:hover img {
-    border: 1px solid #0000ff;
+div.img img:hover {
+    border: 1px solid blue;
 }
 
-div.desc {
-  text-align: center;
-  font-weight: normal;
-  width: 120px;
-  margin: 5px;
+div.img img:hover {
+    border: 2px solid blue;
 }
+
+.selected {
+    border: 1px solid red;
+}
+
+ul { list-style: none !important; }
+  ul li { display: inline !important; } 
+
+ul li img { border: 2px solid white; cursor: pointer; }
+  ul li img:hover { border: 2px solid black; }
+  ul li img.hover { border: 2px solid black; }
+
