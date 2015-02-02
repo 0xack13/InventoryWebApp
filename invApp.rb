@@ -165,6 +165,18 @@ get '/list' do
 end
 
 
+get '/media' do
+  @inv = Inv2.all
+  @files = Dir.glob("public/*.jpg")
+  #p files
+  #files = Dir['public/*']
+  #@ary = ['a','b','c']
+  #p files
+  erb :media
+ 
+end
+
+
 
 # get all images
 get '/debug/posts/images/' do
@@ -518,7 +530,7 @@ __END__
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
- <form action="/<%= @sinv.id %>/save" method="POST">
+ <form action="/" method="POST">
    <h2>Media
    <small>Delete existing images</small>
  </h2>
@@ -531,7 +543,7 @@ __END__
         </div>
         <hr class="colorgraph">
         <input type="hidden" name="picture" id="picture" value="">
-        <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
+        <input type='submit' placeholder='Delete Selected Image' value="Delete Selected Image" class="btn btn-primary btn-block btn-lg" />
      </form>
 </div>
 </div>
