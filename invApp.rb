@@ -512,3 +512,27 @@ __END__
     </div>
   </div>
 </div>
+
+@@media
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+ <form action="/<%= @sinv.id %>/save" method="POST">
+   <h2>Media
+   <small>Delete existing images</small>
+ </h2>
+      <div>
+          <ul>
+            <% @files.each { |x| %>
+              <li><img src="<%= x.sub!(/public\//, '/') %>" title="<%= x.sub!(/\//, '') %>"  style="width:180px; height:180px;"/></li>
+            <% } %>
+          </ul>
+        </div>
+        <hr class="colorgraph">
+        <input type="hidden" name="picture" id="picture" value="">
+        <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
+     </form>
+</div>
+</div>
+</div>
