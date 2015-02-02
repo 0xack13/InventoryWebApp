@@ -259,6 +259,8 @@ __END__
   <li class="nav-item"><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
   <li class="nav-item"><a href="/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
   <li class="nav-item"><a href="/upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
+  <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
+
   <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Support</a></li>
 </ul>
 
@@ -377,16 +379,13 @@ __END__
             </div>
           </div>
         </div>
-        
-<div>
-        <ul>
-        <% @files.each { |x| %>
-        <li><img src="<%= x.sub!(/public\//, '/') %>" style="width:180px; height:180px;"/></li>
-        <% } %>
-</ul>
-</div>
-       
-
+        <div>
+          <ul>
+            <% @files.each { |x| %>
+              <li><img src="<%= x.sub!(/public\//, '/') %>" style="width:180px; height:180px;"/></li>
+            <% } %>
+          </ul>
+        </div>
         <br>
         <input type="hidden" name="picture" id="picture" value="">
               <hr class="colorgraph">
@@ -410,37 +409,63 @@ __END__
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
-       <input type='text' name="code" placeholder='Code:' value='<%= @sinv.code %>'  />
-       <input type='text' name="name" placeholder='Name:' value='<%= @sinv.name %>' />
-      <select class="form-control" name="size">
+       <input type='text' name="code" class="form-control input-lg" placeholder='Code:' value='<%= @sinv.code %>'  />
+        </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+       <input type='text' name="name" class="form-control input-lg" placeholder='Name:' value='<%= @sinv.name %>' />
+          </div>
+        </div>
+      </div>
+
+       <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+      <select name="size" class="form-control input-lg">
           <% ["A3", "A4", "XL", "XXL"].each do |selectInvValue| %>
             <option <%= 'selected="selected"' if selectInvValue == @sinv.size %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
           <% end %>
       </select>
-       <input type='text' name="quantity" placeholder='Quantity:' value='<%= @sinv.quantity %>' />
-      <select class="form-control" name="type">
+      </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+       <input type='text' name="quantity" class="form-control input-lg" placeholder='Quantity:' value='<%= @sinv.quantity %>' />
+     </div>
+   </div>
+ </div>
+ <div class="row">
+ <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+      <select class="form-control input-lg" name="type">
           <% ["Catalogue", "Flayer", "Sticker", "Poster", "Folder"].each do |selectInvValue| %>
             <option <%= 'selected="selected"' if selectInvValue == @sinv.type %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
           <% end %>
       </select>
-      <select class="form-control" name="location">
+      </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+      <select class="form-control input-lg" name="location">
           <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
             <option <%= 'selected="selected"' if selectInvValue == @sinv.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
           <% end %>
       </select>
+    </div>
+  </div>
+</div>
 <!-- <input type="file" name="picture" class="form-control">-->
         <a href="#" id="btn">Selected image:</a>
          <img class="thumbnail" src="/<%= @sinv.picture %>">
         <hr>
-      <ul>
-        <% @files.each { |x| %>
-        <li><img class="thumbnail" src="<%= x.sub!(/public\//, '/') %>"></img></li>
-        <% } %>
-      </ul>
-      <ul>
-        <% @files.each { |x| %>
-        <li><img src="<%= x.sub!(/public\//, '/') %>"></img></li>
-        <% } %>
+      <div>
+          <ul>
+            <% @files.each { |x| %>
+              <li><img src="<%= x.sub!(/public\//, '/') %>" title="<%= x.sub!(/\//, '') %>"  style="width:180px; height:180px;"/></li>
+            <% } %>
+          </ul>
+        </div>
         <hr class="colorgraph">
         <input type="hidden" name="picture" id="picture" value="">
         <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
