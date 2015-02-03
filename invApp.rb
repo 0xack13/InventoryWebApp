@@ -10,6 +10,7 @@ require 'fileutils'
 
 include FileUtils::Verbose
 
+set :bind, '0.0.0.0'
 
 
 oldverb = $VERBOSE; $VERBOSE = nil
@@ -228,6 +229,15 @@ __END__
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
+      if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+  var msViewportStyle = document.createElement('style');
+  msViewportStyle.appendChild(
+    document.createTextNode(
+      '@-ms-viewport{width:auto!important}'
+    )
+  );
+  document.querySelector('head').appendChild(msViewportStyle)
+}
       $('#click').click(function()
       {
           $("#panel").animate({width:'toggle'},500);       
@@ -273,7 +283,7 @@ __END__
   <li class="nav-item"><a href="/upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
 
-  <li class="nav-item"><a href="#"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Support</a></li>
+  <li class="nav-item"><a href="mailto:support@support.com"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Support</a></li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -282,11 +292,11 @@ __END__
 <div class="site-wrap">
       <%= yield %>
 </div>
+
 </body>
 </html>
 
 @@default
- <div class="container">
 <hr class="colorgraph">
  <h1>Inventory Management v1</h1>
  <h3>Simple stock management solution</h3>
@@ -323,6 +333,10 @@ __END__
       </table>
     </div>
 </div>
+
+
+
+
 @@add
  <div class="container">
 
