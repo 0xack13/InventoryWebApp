@@ -178,6 +178,12 @@ get '/media' do
 end
 
 
+post '/delete_image' do
+  @filename = params[:picture]
+  FileUtils.rm_rf(Dir.glob("public/#{@filename}"))
+  @files = Dir.glob("public/*.jpg")
+  erb :media
+end
 
 # get all images
 get '/debug/posts/images/' do
@@ -544,7 +550,7 @@ __END__
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
- <form action="/" method="POST">
+ <form action="/delete_image" method="POST">
    <h2>Media
    <small>Delete existing images</small>
  </h2>
