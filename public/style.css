@@ -175,7 +175,7 @@ tr, td {
 .nav-item a {
   /* non-critical appearance styles */
   display: block;
-  padding: 1em;
+  padding: 1px;
   color: white;
   font-size: 0.9em;
   text-align: center;
