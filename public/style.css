@@ -38,10 +38,10 @@
   display: block;
 }
 .responsive-table-input-matrix td:first-child {
-  padding-top: .1em;
+  padding-top: .5em;
 }
 .responsive-table-input-matrix td:last-child {
-  padding-bottom: .1em;
+  padding-bottom: .5em;
 }
 .responsive-table-input-matrix td:before {
   content: attr(data-th) ": ";
@@ -63,7 +63,7 @@
 @media (min-width: 780px) {
   .responsive-table-input-matrix th, .responsive-table-input-matrix td {
     display: table-cell;
-    padding: .01em .01em;
+    padding: .25em .5em;
   }
   .responsive-table-input-matrix th:first-child, .responsive-table-input-matrix td:first-child {
     padding-left: 0;
@@ -175,7 +175,7 @@ tr, td {
 .nav-item a {
   /* non-critical appearance styles */
   display: block;
-  padding: 1px;
+  padding: 1em;
   color: white;
   font-size: 0.9em;
   text-align: center;
