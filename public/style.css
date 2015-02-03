@@ -80,7 +80,7 @@ body {
   text-rendering: optimizeLegibility;
   color: #444;
   overflow-x: hidden;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 h1 {
@@ -175,7 +175,7 @@ tr, td {
 .nav-item a {
   /* non-critical appearance styles */
   display: block;
-  padding: 1px;
+  padding: 1em;
   color: white;
   font-size: 0.9em;
   text-align: center;
