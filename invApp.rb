@@ -235,6 +235,11 @@ __END__
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
+
+      $link = $('label');
+$link[0].click()
+
+
       if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   var msViewportStyle = document.createElement('style');
   msViewportStyle.appendChild(
@@ -285,7 +290,7 @@ __END__
 <body>
 <ul class="navigation">
   <li class="nav-item"><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
-  <li class="nav-item"><a href="/add"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
+  <li class="nav-item"><a href="/add" accesskey="a"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
   <li class="nav-item"><a href="/upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
 
