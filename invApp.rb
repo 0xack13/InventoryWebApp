@@ -236,8 +236,6 @@ __END__
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
 
-      $link = $('label');
-$link[0].click()
 
 
       if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
@@ -248,7 +246,19 @@ $link[0].click()
     )
   );
   document.querySelector('head').appendChild(msViewportStyle)
-}
+}     
+      var isCtrl = false;$(document).keyup(function (e) {
+if(e.which == 17) isCtrl=false;
+}).keydown(function (e) {
+    if(e.which == 17) isCtrl=true;
+    if(e.which == 83 && isCtrl == true) {
+        //alert('Keyboard shortcuts + JQuery are even more cool!');
+        $link = $('label');
+        $link[0].click()
+
+  return false;
+ }
+});
       $('#click').click(function()
       {
           $("#panel").animate({width:'toggle'},500);       
