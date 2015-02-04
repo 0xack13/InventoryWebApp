@@ -432,7 +432,7 @@ __END__
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
- <form action="/<%= @sinv.id %>/save" method="POST">
+ <form action="/<%= @sinv.id %>/save" autocomplete="off" method="POST">
    <h2>Edit
    <small>an existing stock item</small>
  </h2>
