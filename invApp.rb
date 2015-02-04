@@ -348,7 +348,7 @@ __END__
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-<form action="/new" type="post" enctype="multipart/form-data">
+<form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
    <h2>New
    <small>Add a new stock item</small>
  </h2>
