@@ -255,9 +255,8 @@ if(e.which == 17) isCtrl=false;
         //alert('Keyboard shortcuts + JQuery are even more cool!');
         $link = $('label');
         $link[0].click()
-
-  return false;
- }
+        return false;
+    }
 });
       $('#click').click(function()
       {
