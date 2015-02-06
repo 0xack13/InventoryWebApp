@@ -251,9 +251,15 @@ __END__
 if(e.which == 17) isCtrl=false;
 }).keydown(function (e) {
     if(e.which == 17) isCtrl=true;
-    if(e.which == 83 && isCtrl == true) {
+    if(e.which == 76 && isCtrl == true) {
         //alert('Keyboard shortcuts + JQuery are even more cool!');
         $link = $('label');
+        $link[0].click()
+        return false;
+    // new "n"
+    } else if(e.which == 78 && isCtrl == true) {
+        alert('Keyboard shortcuts + JQuery are even more cool!');
+        $link = $('#newRecord');
         $link[0].click()
         return false;
     }
@@ -299,7 +305,7 @@ if(e.which == 17) isCtrl=false;
 <body>
 <ul class="navigation">
   <li class="nav-item"><a href="/"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
-  <li class="nav-item"><a href="/add" accesskey="a"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
+  <li class="nav-item"><a href="/add" id="newRecord" accesskey="a"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
   <li class="nav-item"><a href="/upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
 
