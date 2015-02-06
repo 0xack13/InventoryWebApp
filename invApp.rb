@@ -317,7 +317,7 @@ if(e.which == 17) isCtrl=false;
   <li class="nav-item"><a href="/upload" id="upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
 
-  <li class="nav-item"><a href="mailto:support@support.com"><span class="glyphicon glyphicon-envelope"></span>&nbsp;Help</a></li>
+  <li class="nav-item"><a href="mailto:support@support.com"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Help</a></li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
