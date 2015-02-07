@@ -270,6 +270,10 @@ if(e.which == 17) isCtrl=false;
         $link = $('#upload');
         $link[0].click()
         return false;
+        //help
+    } else if(e.which == 13 && isCtrl == true) {
+        alert('Ctrl+l: Open the left pane \n Ctrl+h: List All Records \n Ctrl+n: Add New Record \n Ctrl+u: Upload New Image \n Ctrl+Enter: Show Help \n ');
+        return false;
     }
 });
       $('#click').click(function()
