@@ -43,6 +43,15 @@ class Inv2
   #property :created_at, DateTime
 end
 
+class Users
+  include DataMapper::Resource
+
+  property :id, Serial
+  property :name, String
+  property :username, Text
+end
+
+
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
 DataMapper.finalize
