@@ -58,6 +58,7 @@ DataMapper.finalize
 
 # automatically create the post table
 Inv2.auto_upgrade!
+Users.auto_upgrade!
 
 
 
