@@ -43,12 +43,12 @@ class Inv2
   #property :created_at, DateTime
 end
 
-class Users
+class User
   include DataMapper::Resource
 
   property :id, Serial
   property :name, String
-  property :username, Text
+  property :password, BCryptHash
 end
 
 
@@ -58,9 +58,18 @@ DataMapper.finalize
 
 # automatically create the post table
 Inv2.auto_upgrade!
-Users.auto_upgrade!
+User.auto_upgrade!
 
 
+user = User.new :name => 'chris', :password => 'password'
+
+puts "Password stored in database: #{user.password}"
+
+if user.password == 'password'
+  puts "Logged in!"
+else
+  puts "Something went wrong."
+end
 
 get "/new" do
   #@posts = Post.all()
