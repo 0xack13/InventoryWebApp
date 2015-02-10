@@ -619,3 +619,73 @@ if(e.which == 17) isCtrl=false;
 </div>
 </div>
 </div>
+
+
+
+@@addUser
+ <div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+<form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
+   <h2>New
+   <small>Add a new user</small>
+ </h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+              <input type='text' class="form-control input-lg" name="code" placeholder='Name:' class="form-control input-lg"  />
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="name" placeholder='Username:' class="form-control input-lg" />
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="name" placeholder='Password:' class="form-control input-lg" />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+              <select class="form-control input-lg" name="size">
+                <option value="" disabled selected>Size</option>
+                <option value="A3">A3</option>
+                <option value="A4">A4</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            </div>
+          </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+               <div class="form-group">
+                <input type='text' name="quantity" placeholder='Quantity:'  class="form-control input-lg" />
+               </div>
+             </div>
+           </div>
+
+      <div class="row">
+           <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+              <select name="location" class="form-control input-lg">
+                <option value="" disabled selected>Location</option>
+                <option value="JED">JED</option>
+                <option value="RYD">RYD</option>
+                <option value="DMM">DMM</option>
+                <option value="MAK">MAK</option>
+                <option value="DAH">DAH</option>
+              </select>
+            </div>
+          </div>
+        </div>
+              <hr class="colorgraph">
+
+       <input type='submit' placeholder='SUBMIT' value="Add new Record" class="btn btn-primary btn-block btn-lg" />
+     </form>
+   </div>
+ </div>
