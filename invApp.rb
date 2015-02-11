@@ -201,6 +201,11 @@ get '/addUser' do
   erb :addUser
 end
 
+#Add User
+get '/login' do
+  erb :login
+end
+
 post '/delete_image' do
   @filename = params[:picture]
   FileUtils.rm_rf(Dir.glob("public/#{@filename}"))
@@ -671,6 +676,38 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
         
        <input type='submit' placeholder='SUBMIT' value="Add new user" class="btn btn-primary btn-block btn-lg" />
+     </div></div>
+     </form>
+   </div>
+ </div>
+
+
+@@login
+<div class="container">
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+<form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
+   <h2>New
+   <small>Login Form</small>
+    </h2>
+      <hr class="colorgraph">
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="name" placeholder='Username:' class="form-control input-lg" />
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="name" placeholder='Password:' class="form-control input-lg" />
+          </div>
+        </div>
+      </div>
+              <hr class="colorgraph">
+  <div class="row">
+          <div class="form-group">
+        
+       <input type='submit' placeholder='SUBMIT' value="Submit" class="btn btn-primary btn-block btn-lg" />
      </div></div>
      </form>
    </div>
