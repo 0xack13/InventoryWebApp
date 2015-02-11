@@ -49,6 +49,8 @@ class User
   property :id, Serial
   property :name, String
   property :password, BCryptHash
+  property :location, String
+
 end
 
 
