@@ -204,6 +204,14 @@ get '/list' do
  
 end
 
+#add users
+get '/listUsers' do
+  @user = User.all
+  puts "... ... .. Password stored in database: #{user.password}"
+  erb :addUser
+ 
+end
+
 
 get '/media' do
   @inv = Inv2.all
