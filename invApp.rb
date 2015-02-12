@@ -48,6 +48,7 @@ class User
 
   property :id, Serial
   property :name, String
+  property :username, String
   property :password, BCryptHash
   property :location, String
 
@@ -92,6 +93,23 @@ get "/new" do
         redirect '/'
   else
         {:inv => @inv, :status => "failure"}.to_json
+  end
+end
+
+get "/newUser" do
+  #@posts = Post.all()
+  #Inv2.get(1).picture
+  @user = User.new
+  @user.name = params[:name]
+  @user.username = params[:username]
+  @user.password = params[:password]
+  @user.location = params[:location]
+  if @user.save
+        {:user => @user, :status => "success"}.to_json
+          flash[:notice] = "Record inserted correctly!"
+          redirect '/'
+  else
+        {:user => @user, :status => "failure"}.to_json
   end
 end
 
@@ -639,25 +657,25 @@ if(e.which == 17) isCtrl=false;
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-<form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
+<form action="/newUser" autocomplete="off" type="post" enctype="multipart/form-data">
    <h2>New
    <small>Add a new user</small>
     </h2>
       <hr class="colorgraph">
       <div class="row">
           <div class="form-group">
-              <input type='text' class="form-control input-lg" name="code" placeholder='Name:' class="form-control input-lg"  />
+              <input type='text' class="form-control input-lg" name="name" placeholder='Name:' class="form-control input-lg"  />
           </div>
       </div>
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type='text' name="name" placeholder='Username:' class="form-control input-lg" />
+            <input type='text' name="username" placeholder='Username:' class="form-control input-lg" />
           </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type='text' name="name" placeholder='Password:' class="form-control input-lg" />
+            <input type='text' name="password" placeholder='Password:' class="form-control input-lg" />
           </div>
         </div>
       </div>
