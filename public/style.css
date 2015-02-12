@@ -156,11 +156,9 @@ tr, td {
   bottom: 0;
   left: 0;
   z-index: 0;
-  
   /* non-critical appearance styles */
   list-style: none;
   background: #34495E;
-
   text-align: center;
 }
 
@@ -168,7 +166,6 @@ tr, td {
 .nav-item {
   /* non-critical appearance styles */
   width: 80px;
-
   text-align: center;
 }
 
@@ -280,7 +277,7 @@ html, body {
 
 
 .glyphicon {
-    font-size: 40px;
+    font-size: 1.5em;
 }
 
 a:hover { 

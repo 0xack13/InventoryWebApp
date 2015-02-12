@@ -348,9 +348,10 @@ if(e.which == 17) isCtrl=false;
 <ul class="navigation">
   <li class="nav-item"><a href="/" id="home"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
   <li class="nav-item"><a href="/add" id="newRecord" accesskey="a"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
+  <li class="nav-item"><a href="/trasnfer" id="newRecord" accesskey="a"><span class="glyphicon glyphicon-transfer"></span>&nbsp;Trasnfers</a></li>
   <li class="nav-item"><a href="/upload" id="upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
-
+  <li class="nav-item"><a href="/addUser"><span class="glyphicon glyphicon-user"></span>&nbsp;Users</a></li>
   <li class="nav-item"><a href="mailto:support@support.com"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Help</a></li>
 </ul>
 
