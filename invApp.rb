@@ -50,6 +50,8 @@ class Trasnfer
   property :trasnferStatus, String
   property :from, String
   property :to, String
+  property :quantity, Integer
+  property :created_by, String
   property :created_at, DateTime
 end
 
