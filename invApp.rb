@@ -39,8 +39,9 @@ class Inv2
   property :quantity, Integer
   property :type, String
   property :location, String
+  property :status, String
   property :picture, String
-  #property :created_at, DateTime
+  property :created_at, DateTime
 end
 
 class User
@@ -285,6 +286,7 @@ __END__
   <meta charset='UTF-8'><meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/jqueryui/dataTables.jqueryui.css" rel="stylesheet">
 
         
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
