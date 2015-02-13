@@ -86,6 +86,7 @@ get "/new" do
   @inv.type = params[:type]
   @inv.location = params[:location]
   @inv.picture = params[:picture]
+  @inv.status = "on-hand"
   @inv.picture.sub!(/\//, '');
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
@@ -416,6 +417,7 @@ if(e.which == 17) isCtrl=false;
                 <th>Quantity</th>
                 <th>Type</th>
                 <th>Location</th>
+                <th>Status</th>
                 <th>Picture</th>
                 <th>Action</th>
             </tr>
@@ -430,6 +432,8 @@ if(e.which == 17) isCtrl=false;
                 <td><%= inv[:quantity] %></td>
                 <td><%= inv[:type] %></td>
                 <td><%= inv[:location] %></td>
+                <td><%= inv[:status] %></td>
+
                 <td><img class="thumbnail" src="/<%= inv[:picture] %>" title="<%= inv[:picture] %>"></td>
                 <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
