@@ -42,6 +42,8 @@ class Inv2
   property :status, String
   property :picture, String
   property :created_at, DateTime
+
+  has n, :Trasnfer
 end
 
 class Trasnfer
@@ -53,6 +55,8 @@ class Trasnfer
   property :quantity, Integer
   property :created_by, String
   property :created_at, DateTime
+
+  belongs_to :Inv2
 end
 
 class User
