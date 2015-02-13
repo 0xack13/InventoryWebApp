@@ -43,20 +43,20 @@ class Inv2
   property :picture, String
   property :created_at, DateTime
 
-  has n, :Trasnfer
+  has n, :transfer
 end
 
-class Trasnfer
+class Transfer
   include DataMapper::Resource
-  property :id, Serial, :serial => true
+  property :tid, Serial, :serial => true
   property :trasnferStatus, String
   property :from, String
   property :to, String
-  property :quantity, Integer
+  property :tquantity, Integer
   property :created_by, String
   property :created_at, DateTime
 
-  belongs_to :Inv2
+  belongs_to :inv2
 end
 
 class User
@@ -70,7 +70,6 @@ class User
 
 end
 
-
 # Perform basic sanity checks and initialize all relationships
 # Call this when you've defined all your models
 DataMapper.finalize
@@ -78,7 +77,7 @@ DataMapper.finalize
 # automatically create the post table
 Inv2.auto_upgrade!
 User.auto_upgrade!
-
+Transfer.auto_upgrade!
 
 user = User.new :name => 'chris', :password => 'password'
 
