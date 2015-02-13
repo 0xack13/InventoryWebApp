@@ -44,6 +44,15 @@ class Inv2
   property :created_at, DateTime
 end
 
+class Trasnfer
+  include DataMapper::Resource
+  property :id, Serial, :serial => true
+  property :trasnferStatus, String
+  property :from, String
+  property :to, String
+  property :created_at, DateTime
+end
+
 class User
   include DataMapper::Resource
 
