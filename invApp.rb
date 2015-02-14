@@ -1311,6 +1311,8 @@ if(e.which == 17) isCtrl=false;
         </option>
         <% end %>
       </select>
+        <%= @inv[2][:name] %>
+
       </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
