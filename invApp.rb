@@ -259,6 +259,7 @@ end
 
 #Add Transfer
 get '/transfer' do
+  @inv = Inv2.all
   erb :transfer
 end
 
@@ -1276,12 +1277,12 @@ if(e.which == 17) isCtrl=false;
  </div>
 
 
- @@transfer
+@@transfer
 <div class="container">
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
- <form action="/<%= @sinv.id %>/save" autocomplete="off" method="POST">
+ <form action="/save" autocomplete="off" method="POST">
    <h2>Edit
    <small>an existing stock item</small>
  </h2>
@@ -1290,12 +1291,12 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
-       <input type='text' name="code" class="form-control input-lg" placeholder='Code:' value='<%= @sinv.code %>'  />
+       <input type='text' name="code" class="form-control input-lg" placeholder='Code:' value=''  />
         </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-       <input type='text' name="name" class="form-control input-lg" placeholder='Name:' value='<%= @sinv.name %>' />
+       <input type='text' name="name" class="form-control input-lg" placeholder='Name:' value='' />
           </div>
         </div>
       </div>
@@ -1304,51 +1305,30 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
       <select name="size" class="form-control input-lg">
-          <% ["A3", "A4", "XL", "XXL"].each do |selectInvValue| %>
-            <option <%= 'selected="selected"' if selectInvValue == @sinv.size %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
-          <% end %>
+        <% @inv.each_with_index do |inv1, index| %>
+          <option value="<%= inv1[:id] %>">
+          <%= inv1[:code] %>
+        </option>
+        <% end %>
       </select>
       </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-       <input type='text' name="quantity" class="form-control input-lg" placeholder='Quantity:' value='<%= @sinv.quantity %>' />
      </div>
    </div>
  </div>
  <div class="row">
  <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-      <select class="form-control input-lg" name="type">
-          <% ["Catalogue", "Flayer", "Sticker", "Poster", "Folder"].each do |selectInvValue| %>
-            <option <%= 'selected="selected"' if selectInvValue == @sinv.type %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
-          <% end %>
-      </select>
       </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-      <select class="form-control input-lg" name="location">
-          <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
-            <option <%= 'selected="selected"' if selectInvValue == @sinv.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
-          <% end %>
-      </select>
     </div>
   </div>
 </div>
-<!-- <input type="file" name="picture" class="form-control">-->
-        <a href="#" id="btn">Selected image:</a>
-         <img class="thumbnail" src="/<%= @sinv.picture %>">
-        <hr>
-      <div>
-          <ul>
-            <% @files.each { |x| %>
-              <li><img src="<%= x.sub!(/public\//, '/') %>" title="<%= x.sub!(/\//, '') %>"  style="width:180px; height:180px;"/></li>
-            <% } %>
-          </ul>
-        </div>
-        <hr class="colorgraph">
-        <input type="hidden" name="picture" id="picture" value="">
+
         <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
      </form>
 </div>
