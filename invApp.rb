@@ -1306,7 +1306,7 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
       <select name="itemMaster" class="form-control input-lg">
         <% @inv.each_with_index do |inv1, index| %>
-          <option value="<%= inv1[:id] %>">
+          <option value="<%= inv1[:id] %>"><%= inv1[:code] %></option>
           <%= inv1[:code] %>
         </option>
         <% end %>
