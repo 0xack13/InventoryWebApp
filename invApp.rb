@@ -1334,17 +1334,17 @@ To:
   </div>
 
       </div>
+              </div>
+       <div class="row">
 
-
-
-        </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
+                    <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
+
     </div>
   </div>
 </div>
 
-        <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
      </form>
 </div>
 </div>
