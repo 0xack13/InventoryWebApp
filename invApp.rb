@@ -1322,15 +1322,18 @@ if(e.which == 17) isCtrl=false;
  </div>
  <div class="row">
  <div class="col-xs-6 col-sm-6 col-md-6">
+ From:
+
           <div class="form-group">
       <select class="form-control input-lg" name="location">
           <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
             <option <%= selectInvValue %>><%= selectInvValue %></option>
           <% end %>
-      </select>->
+      </select>
       </div>
 </div>
      <div class="col-xs-6 col-sm-6 col-md-6">
+To:
           <div class="form-group">  
       <select class="form-control input-lg" name="location">
           <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
