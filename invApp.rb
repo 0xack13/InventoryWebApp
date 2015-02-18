@@ -1321,7 +1321,7 @@ if(e.which == 17) isCtrl=false;
  From:
 
           <div class="form-group">
-      <select class="form-control input-lg" name="location">
+      <select class="form-control input-lg" name="fromLocation">
           <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
             <option <%= selectInvValue %>><%= selectInvValue %></option>
           <% end %>
@@ -1331,7 +1331,7 @@ if(e.which == 17) isCtrl=false;
      <div class="col-xs-6 col-sm-6 col-md-6">
 To:
           <div class="form-group">  
-      <select class="form-control input-lg" name="location">
+      <select class="form-control input-lg" name="toLocation">
           <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
             <option <%= selectInvValue %>><%= selectInvValue %></option>
           <% end %>
