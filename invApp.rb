@@ -1291,7 +1291,7 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
-         <select name="itemMaster" class="form-control input-lg">
+         <select id="itemMaster" name="itemMaster" class="form-control input-lg">
         <% @inv.each_with_index do |inv1, index| %>
           <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %></option>
           <%= inv1[:code] %>
@@ -1302,7 +1302,7 @@ if(e.which == 17) isCtrl=false;
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-       <input type='text' name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
+       <input type='text' id="onhandQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
           </div>
         </div>
       
