@@ -334,6 +334,12 @@ __END__
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
+
+      document.getElementById("itemMaster").onchange = function () {
+          console.log(this.options[this.selectedIndex].getAttribute("quant"));
+          $('#onhandQuantity').val(this.options[this.selectedIndex].getAttribute("quant"));
+      };
+
       console.log("hello");
         $('#table').dataTable({
           "paging":   true,
