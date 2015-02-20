@@ -1354,7 +1354,7 @@ To:
        <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-                        <input type='number' size='10' id='newQuant' min="0" step="1" name='newQuant' value='0' class="form-control input-lg" />
+                        <input type='number' size='10' id='newQuant' pattern="\d+" min="0" step="1" name='newQuant' value='0' class="form-control input-lg" />
                         <span id="totalSummary">Hello</span>
 </div>
 </div>
