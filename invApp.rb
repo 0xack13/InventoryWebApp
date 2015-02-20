@@ -1332,10 +1332,12 @@ if(e.which == 17) isCtrl=false;
  From:
 
           <div class="form-group">
-      <select class="form-control input-lg" name="fromLocation">
-          <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
-            <option <%= selectInvValue %>><%= selectInvValue %></option>
-          <% end %>
+     <select id="itemMaster" name="itemMaster" class="form-control input-lg">
+        <% @inv.each_with_index do |inv1, index| %>
+          <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
+          <%= inv1[:code] %>
+        </option>
+        <% end %>
       </select>
       </div>
 </div>
