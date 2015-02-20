@@ -1310,7 +1310,7 @@ if(e.which == 17) isCtrl=false;
         <input name="_method" type="hidden" value="PUT" />
          <select id="itemMaster" name="itemMaster" class="form-control input-lg">
         <% @inv.each_with_index do |inv1, index| %>
-          <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %></option>
+          <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
           <%= inv1[:code] %>
         </option>
         <% end %>
