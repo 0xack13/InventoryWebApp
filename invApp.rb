@@ -30,6 +30,7 @@ enable :sessions
 # need install dm-sqlite-adapter
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data.dat")
 
+
 class Inv2
   include DataMapper::Resource
   property :id, Serial, :serial => true
