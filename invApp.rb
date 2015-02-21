@@ -1329,39 +1329,34 @@ if(e.which == 17) isCtrl=false;
         
  <div class="row">
  <div class="col-xs-6 col-sm-6 col-md-6">
- From:
+ To:
 
           <div class="form-group">
-     <select id="itemMaster" name="itemMaster" class="form-control input-lg">
-        <% @inv.each_with_index do |inv1, index| %>
-          <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
-          <%= inv1[:code] %>
-        </option>
-        <% end %>
-      </select>
-      </div>
+             <select id="itemMaster" name="itemMaster" class="form-control input-lg">
+                <% @inv.each_with_index do |inv1, index| %>
+                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
+                  <%= inv1[:code] %>
+                </option>
+                <% end %>
+              </select>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                  <input type='text' id="onhandQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
+            </div>
+        </div>
 </div>
-     <div class="col-xs-6 col-sm-6 col-md-6">
-To:
-          <div class="form-group">  
-      <select class="form-control input-lg" name="toLocation">
-          <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
-            <option <%= selectInvValue %>><%= selectInvValue %></option>
-          <% end %>
-      </select>
-    </div>
-  </div>
 
       </div>
               </div>
        <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-                        <input type='number' size='10' id='newQuant' pattern="\d+" min="0" step="1" name='newQuant' value='0' class="form-control input-lg" />
-                        <span id="totalSummary">Hello</span>
-</div>
-</div>
-</div>
+              <input type='number' size='10' id='newQuant' pattern="\d+" min="0" step="1" name='newQuant' value='0' class="form-control input-lg" />
+              <span id="totalSummary">Hello</span>
+          </div>
+        </div>
+      </div>
        <div class="row">
 
         <div class="col-xs-6 col-sm-6 col-md-6">
