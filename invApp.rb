@@ -344,11 +344,12 @@ __END__
       // totalSummary & newQuant
 
 
-      document.getElementById("newQuant").onchange = function () {
+      document.getElementById("toQuant").onchange = function () {
           //console.log(this.options[this.selectedIndex].getAttribute("quant"));
           //$('#totalSummary').val(this.options[this.selectedIndex].getAttribute("quant"));
-          var quantity = parseInt($( "#onhandQuantity" ).val()) + parseInt($( "#newQuant" ).val());
-          $( "#totalSummary" ).html( "<b>Single:</b> " + quantity );
+          console.log("toQuant has changed!");
+          var quantity = parseInt($( "#onhandQuantity" ).val()) + parseInt($( "#toQuant" ).val());
+          $( "#totalSummary" ).html( "<b>Total quantiy is:</b> " + quantity );
       };
 
       console.log("hello");
@@ -1352,7 +1353,7 @@ if(e.which == 17) isCtrl=false;
        <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-              <input type='number' size='10' id='newQuant' pattern="\d+" min="0" step="1" name='newQuant' value='0' class="form-control input-lg" />
+              <input type='number' size='10' id='toQuant' pattern="\d+" min="0" step="1" name='toQuant' value='0' class="form-control input-lg" />
               <span id="totalSummary">Hello</span>
           </div>
         </div>
