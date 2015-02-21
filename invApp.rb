@@ -348,8 +348,12 @@ __END__
           //console.log(this.options[this.selectedIndex].getAttribute("quant"));
           //$('#totalSummary').val(this.options[this.selectedIndex].getAttribute("quant"));
           console.log("toQuant has changed!");
-          var quantity = parseInt($( "#onhandQuantity" ).val()) + parseInt($( "#toQuant" ).val());
-          $( "#totalSummary" ).html( "<b>Total quantiy is:</b> " + quantity );
+
+          //var quantity = parseInt($( "#onhandQuantity" ).val()) + parseInt($( "#toQuant" ).val());
+          //fromItem
+          var quantity = parseInt($( "#onhandQuantity" ).val()) - parseInt($( "#toQuant" ).val());
+          //$( "#totalSummary" ).html( "<b>Total quantiy in " + + " is:</b> " + quantity );
+          $( "#totalSummary" ).html( "<b>Total quantiy in " + $( "#fromItem" ).text() + " is:</b> " + quantity );
       };
 
       console.log("hello");
@@ -1307,9 +1311,10 @@ if(e.which == 17) isCtrl=false;
       <hr class="colorgraph">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
+          From:
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
-         <select id="itemMaster" name="itemMaster" class="form-control input-lg">
+         <select id="fromItem" name="fromItem" class="form-control input-lg">
         <% @inv.each_with_index do |inv1, index| %>
           <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
           <%= inv1[:code] %>
