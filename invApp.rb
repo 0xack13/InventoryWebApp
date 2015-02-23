@@ -1328,15 +1328,13 @@ if(e.which == 17) isCtrl=false;
        <input type='text' id="onhandQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
           </div>
         </div>
-      
+      </div>
 
         <!-- <%= @inv[2][:name] %> -->
 
         
  <div class="row">
  <div class="col-xs-6 col-sm-6 col-md-6">
- To:
-
           <div class="form-group">
              <select id="itemMaster" name="itemMaster" class="form-control input-lg">
                 <% @inv.each_with_index do |inv1, index| %>
@@ -1346,6 +1344,7 @@ if(e.which == 17) isCtrl=false;
                 <% end %>
               </select>
           </div>
+        </div>
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                   <input type='text' id="onhandQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
