@@ -355,7 +355,7 @@ __END__
           var toQuantity = parseInt($( "#toQuantity" ).val()) + parseInt($( "#toQuant" ).val());
           
           //$( "#totalSummary" ).html( "<b>Total quantiy in " + + " is:</b> " + quantity );
-          $( "#totalSummary" ).html( "<b>Total quantiy in " + $( "#fromItem" ).text() + " is:</b> " + fromQuantity + "<br> Total quantiy in " + $( "#toItem" ).text() + " is:</b> " + toQuantity );
+          $( "#totalSummary" ).html( "Total quantiy in " + $( "#fromItem" ).text() + " is: " + fromQuantity + "<br> Total quantiy in " + $( "#toItem" ).text() + " is:</b> " + toQuantity );
       };
 
       console.log("hello");
@@ -1363,11 +1363,11 @@ if(e.which == 17) isCtrl=false;
       </div>
        <div class="row">
 
+       <span id="totalSummary"></span>
+
+
         <div class="col-xs-6 col-sm-6 col-md-6">
           
-          
-          <span id="totalSummary"></span>
-
           <div class="form-group">
                     <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
           </div>
