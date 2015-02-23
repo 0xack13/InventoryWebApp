@@ -1311,7 +1311,7 @@ if(e.which == 17) isCtrl=false;
       <hr class="colorgraph">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
-          From:
+          
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
          <select id="fromItem" name="fromItem" class="form-control input-lg">
@@ -1352,8 +1352,7 @@ if(e.which == 17) isCtrl=false;
         </div>
 </div>
 
-      </div>
-              </div>
+
        <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
