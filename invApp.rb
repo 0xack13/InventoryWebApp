@@ -1346,12 +1346,12 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
          <select id="fromItem" name="fromItem" class="form-control input-lg">
-        <% @inv.each_with_index do |inv1, index| %>
-          <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
-          <%= inv1[:code] %>
-        </option>
-        <% end %>
-      </select>
+          <% @inv.each_with_index do |inv1, index| %>
+            <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+              <%= inv1[:code] %>
+            </option>
+          <% end %>
+        </select>
         </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -1369,7 +1369,7 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
              <select id="toItem" name="toItem" class="form-control input-lg">
                 <% @inv.each_with_index do |inv1, index| %>
-                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
+                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
                   <%= inv1[:code] %>
                 </option>
                 <% end %>
@@ -1393,7 +1393,7 @@ if(e.which == 17) isCtrl=false;
       </div>
        <div class="row">
 
-       <span id="totalSummary"></span>
+       <span id="totalSummary"></span><br>
 
 
         <div class="col-xs-6 col-sm-6 col-md-6">
