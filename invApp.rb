@@ -1356,7 +1356,7 @@ if(e.which == 17) isCtrl=false;
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-       <input type='text' id="fromQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
+       <input type='text' id="fromQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
           </div>
         </div>
       </div>
@@ -1378,7 +1378,7 @@ if(e.which == 17) isCtrl=false;
         </div>
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                  <input type='text' id="toQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
+                  <input type='text' id="toQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
             </div>
         </div>
 </div>
