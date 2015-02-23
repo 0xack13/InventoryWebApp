@@ -1364,8 +1364,10 @@ if(e.which == 17) isCtrl=false;
        <div class="row">
 
         <div class="col-xs-6 col-sm-6 col-md-6">
-          <span id="totalSummary"></span>
           
+          
+          <span id="totalSummary"></span>
+
           <div class="form-group">
                     <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
           </div>
