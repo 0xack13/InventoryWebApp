@@ -336,9 +336,9 @@ __END__
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
 
-      document.getElementById("itemMaster").onchange = function () {
+      document.getElementById("toItem").onchange = function () {
           console.log(this.options[this.selectedIndex].getAttribute("quant"));
-          $('#onhandQuantity').val(this.options[this.selectedIndex].getAttribute("quant"));
+          $('#toQuantity').val(this.options[this.selectedIndex].getAttribute("quant"));
       };
 
       // totalSummary & newQuant
@@ -351,9 +351,11 @@ __END__
 
           //var quantity = parseInt($( "#onhandQuantity" ).val()) + parseInt($( "#toQuant" ).val());
           //fromItem
-          var quantity = parseInt($( "#onhandQuantity" ).val()) - parseInt($( "#toQuant" ).val());
+          var fromQuantity = parseInt($( "#fromQuantity" ).val()) - parseInt($( "#toQuant" ).val());
+          var toQuantity = parseInt($( "#toQuantity" ).val()) + parseInt($( "#toQuant" ).val());
+          
           //$( "#totalSummary" ).html( "<b>Total quantiy in " + + " is:</b> " + quantity );
-          $( "#totalSummary" ).html( "<b>Total quantiy in " + $( "#fromItem" ).text() + " is:</b> " + quantity );
+          $( "#totalSummary" ).html( "<b>Total quantiy in " + $( "#fromItem" ).text() + " is:</b> " + fromQuantity + "<br> Total quantiy in " + $( "#toItem" ).text() + " is:</b> " + toQuantity );
       };
 
       console.log("hello");
@@ -1311,7 +1313,6 @@ if(e.which == 17) isCtrl=false;
       <hr class="colorgraph">
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
-          
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
          <select id="fromItem" name="fromItem" class="form-control input-lg">
@@ -1325,7 +1326,7 @@ if(e.which == 17) isCtrl=false;
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-       <input type='text' id="onhandQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
+       <input type='text' id="fromQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
           </div>
         </div>
       </div>
@@ -1336,7 +1337,7 @@ if(e.which == 17) isCtrl=false;
  <div class="row">
  <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-             <select id="itemMaster" name="itemMaster" class="form-control input-lg">
+             <select id="toItem" name="toItem" class="form-control input-lg">
                 <% @inv.each_with_index do |inv1, index| %>
                   <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  + <%= inv1[:location] %></option>
                   <%= inv1[:code] %>
@@ -1347,7 +1348,7 @@ if(e.which == 17) isCtrl=false;
         </div>
           <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                  <input type='text' id="onhandQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
+                  <input type='text' id="toQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' value='<%= @inv[1][:quantity] %>' />
             </div>
         </div>
 </div>
@@ -1357,16 +1358,18 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
               <input type='number' size='10' id='toQuant' pattern="\d+" min="0" step="1" name='toQuant' value='0' class="form-control input-lg" />
-              <span id="totalSummary">Hello</span>
           </div>
         </div>
       </div>
        <div class="row">
 
         <div class="col-xs-6 col-sm-6 col-md-6">
+          <span id="totalSummary"></span>
+          
           <div class="form-group">
                     <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
           </div>
+
       </div>
     </div>
 
