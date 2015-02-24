@@ -130,20 +130,23 @@ get "/newUser" do
   end
 end
 
-get "/newTransfer" do
+put "/newTransfer" do
   #@posts = Post.all()
   #Inv2.get(1).picture
-  @user = User.new
-  @user.name = params[:name]
-  @user.username = params[:username]
-  @user.password = params[:password]
-  @user.location = params[:location]
-  if @user.save
-        {:user => @user, :status => "success"}.to_json
+  # t = Transfer.new("en-route","JED","RYD",44,"Saleh")
+  @t = Transfer.new
+  @t.trasnferStatus = "en-route"
+  @t.from = params[:fromItem]
+  @t.to = params[:toItem]
+  @t.tquantity = params[:toQuant]
+  @t.created_by = "Saleh" # params[:created_by]
+  @t.inv2 = Inv2.get(1)
+  if @t.save
+        {:t => @t, :status => "success"}.to_json
           flash[:notice] = "Record inserted correctly!"
           redirect '/'
   else
-        {:user => @user, :status => "failure"}.to_json
+        {:t => @t, :status => "failure"}.to_json
   end
 end
 
@@ -1336,7 +1339,7 @@ if(e.which == 17) isCtrl=false;
 
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
- <form action="/save" autocomplete="off" method="POST">
+ <form action="/newTransfer" autocomplete="off" method="POST">
    <h2>Edit
    <small>an existing stock item</small>
  </h2>
