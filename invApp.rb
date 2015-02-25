@@ -150,6 +150,14 @@ put "/newTransfer" do
   end
 end
 
+get "/transfer" do
+  #@posts = Post.all()
+  #Inv2.get(1).picture
+  @t = Transfer.all
+  flash[:notice] = "Logged in at #{Time.now}."
+  erb :transfer
+end
+
 #update	
 put "/:id/save" do
   @inv = Inv2.first(:id => params[:id])
