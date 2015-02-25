@@ -139,7 +139,7 @@ put "/newTransfer" do
   @t.from = params[:fromItem]
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
-  @t.created_by = "Saleh" # params[:created_by]
+  @t.created_by = "Saleh" # static value now! params[:created_by]
   @t.inv2 = Inv2.get(1)
   if @t.save
         {:t => @t, :status => "success"}.to_json
