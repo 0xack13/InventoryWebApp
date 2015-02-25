@@ -556,10 +556,10 @@ if(e.which == 17) isCtrl=false;
         <thead>
             <tr>
                 <th>Row</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Size</th>
+                <th>From</th>
+                <th>To</th>
                 <th>Quantity</th>
+                <th>Created By</th>
                 <th>Action</th>
             </tr>
         </thead>
