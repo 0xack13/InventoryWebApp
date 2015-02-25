@@ -546,6 +546,47 @@ if(e.which == 17) isCtrl=false;
 </div>
 
 
+@@transfer
+<hr class="colorgraph">
+ <h1>Inventory Management v1</h1>
+ <h3>Simple stock management solution</h3>
+<div class="table-responsive">
+      <table class="responsive-table responsive-table-input-matrix">
+        <thead>
+            <tr>
+                <th>Row</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Picture</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @inv.each_with_index do |inv, index| %>
+            <tr>
+                <td><%= index += 1 %></td>
+                <td><%= inv[:code] %></td>
+                <td><%= inv[:name] %></td>
+                <td><%= inv[:size] %></td>
+                <td><%= inv[:quantity] %></td>
+                <td><%= inv[:type] %></td>
+                <td><%= inv[:location] %></td>
+                <td><%= inv[:status] %></td>
+
+                <td><img class="thumbnail" src="/<%= inv[:picture] %>" title="<%= inv[:picture] %>"></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+
 
 
 @@add
