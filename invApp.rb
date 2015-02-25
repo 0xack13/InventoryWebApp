@@ -546,6 +546,7 @@ if(e.which == 17) isCtrl=false;
 </div>
 
 
+
 @@transfer
 <hr class="colorgraph">
  <h1>Inventory Management v1</h1>
@@ -559,27 +560,19 @@ if(e.which == 17) isCtrl=false;
                 <th>Name</th>
                 <th>Size</th>
                 <th>Quantity</th>
-                <th>Type</th>
-                <th>Location</th>
-                <th>Status</th>
-                <th>Picture</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-          <% @inv.each_with_index do |inv, index| %>
+          <% @t.each_with_index do |tt, index| %>
             <tr>
                 <td><%= index += 1 %></td>
-                <td><%= inv[:code] %></td>
-                <td><%= inv[:name] %></td>
-                <td><%= inv[:size] %></td>
-                <td><%= inv[:quantity] %></td>
-                <td><%= inv[:type] %></td>
-                <td><%= inv[:location] %></td>
-                <td><%= inv[:status] %></td>
+                <td><%= tt[:from] %></td>
+                <td><%= tt[:to] %></td>
+                <td><%= tt[:tquantity] %></td>
+                <td><%= tt[:created_by] %></td>
 
-                <td><img class="thumbnail" src="/<%= inv[:picture] %>" title="<%= inv[:picture] %>"></td>
-                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= inv[:id] %>/edit">Edit</a> | <a href="/<%= inv[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:id] %>/edit">Edit</a> | <a href="/<%= tt[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
@@ -1383,7 +1376,7 @@ if(e.which == 17) isCtrl=false;
  </div>
 
 
-@@transfer
+@@newTransfer
 <div class="container">
 
 <div class="row">
