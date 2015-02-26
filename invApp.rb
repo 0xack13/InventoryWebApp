@@ -184,10 +184,24 @@ get "/:tid/editTrans" do
     # 2) ENRT
     # 3) RCVD
     # 4) ONHD => Increases the stock quantity in the "TO" location & Transferred record will be flagged as "archived" 
-    if @t.trasnferStatus == "ENRT"
+    if @t.trasnferStatus == "PCKDUP"
       puts "value validated!"
+      @t.trasnferStatus = "ENRT"
+    elsif @t.trasnferStatus == "ENRT"
+      puts "value validated!"
+      @t.trasnferStatus = "RCVD"
+    else # elsif @t.trasnferStatus == "RCVD"
+      puts "value validated!"
+      @t.trasnferStatus = "ONHD"
     end
-    erb :editTrans
+
+    if @t.save
+        {:t => @t, :status => "success"}.to_json
+        flash[:notice] = "Saved correctly!"
+        redirect '/transfer'
+    else
+          {:inv => @inv, :status => "failure"}.to_json
+    end
 end
 
 #update	
