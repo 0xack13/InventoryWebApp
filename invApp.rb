@@ -171,13 +171,15 @@ get "/:tid/deleteTrans" do
 end
 
 #find and Edit Transfer
-get "/:id/editTrans" do
+get "/:tid/editTrans" do
     #@inv = Inv2.find(params[:id])
-    @inv = Inv2.all
-    @sinv = Inv2.first(:id => params[:id])
-    @files = Dir.glob("public/*.jpg")
-    #@inv.to_json
-    erb :edit
+    @t = Transfer.first(:tid => params[:tid])
+    # If statement to change the inventory trasnfer status
+    # 1) PCKDUP => Decreases the quantity in the "FROM" location
+    # 2) ENRT
+    # 3) RCVD
+    # 4) ONHD => Increases the stock quantity in the "TO" location & Transferred record will be flagged as "archived" 
+    erb :editTrans
 end
 
 #update	
