@@ -158,6 +158,28 @@ get "/transfer" do
   erb :transfer
 end
 
+#delete Transfer
+get "/:tid/deleteTrans" do
+    @t = Transfer.first(:tid => params[:tid])
+    if @t.destroy
+        {:t => @t, :status => "success"}.to_json
+        flash[:notice] = "The record was deleted.."
+        redirect '/transfer'
+    else
+        {:t => @t, :status => "failure"}.to_json
+    end
+end
+
+#find and Edit Transfer
+get "/:id/editTrans" do
+    #@inv = Inv2.find(params[:id])
+    @inv = Inv2.all
+    @sinv = Inv2.first(:id => params[:id])
+    @files = Dir.glob("public/*.jpg")
+    #@inv.to_json
+    erb :edit
+end
+
 #update	
 put "/:id/save" do
   @inv = Inv2.first(:id => params[:id])
@@ -572,7 +594,7 @@ if(e.which == 17) isCtrl=false;
                 <td><%= tt[:tquantity] %></td>
                 <td><%= tt[:created_by] %></td>
 
-                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:id] %>/edit">Edit</a> | <a href="/<%= tt[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:tid] %>/edit">Edit</a> | <a href="/<%= tt[:tid] %>/deleteTrans" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
