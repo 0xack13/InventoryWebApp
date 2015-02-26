@@ -130,12 +130,17 @@ get "/newUser" do
   end
 end
 
+get "/newTransfer" do
+  @inv = Inv2.all
+  erb :newTransfer
+end
+
 put "/newTransfer" do
   #@posts = Post.all()
   #Inv2.get(1).picture
   # t = Transfer.new("en-route","JED","RYD",44,"Saleh")
   @t = Transfer.new
-  @t.trasnferStatus = "en-route"
+  @t.trasnferStatus = "ENRT"
   @t.from = params[:fromItem]
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
@@ -179,6 +184,9 @@ get "/:tid/editTrans" do
     # 2) ENRT
     # 3) RCVD
     # 4) ONHD => Increases the stock quantity in the "TO" location & Transferred record will be flagged as "archived" 
+    if @t.trasnferStatus == "ENRT"
+      puts "value validated!"
+    end
     erb :editTrans
 end
 
@@ -583,6 +591,7 @@ if(e.which == 17) isCtrl=false;
                 <th>From</th>
                 <th>To</th>
                 <th>Quantity</th>
+                <th>Transfer Status</th>
                 <th>Created By</th>
                 <th>Action</th>
             </tr>
@@ -594,9 +603,10 @@ if(e.which == 17) isCtrl=false;
                 <td><%= tt[:from] %></td>
                 <td><%= tt[:to] %></td>
                 <td><%= tt[:tquantity] %></td>
+                <td><%= tt[:trasnferStatus] %></td>
                 <td><%= tt[:created_by] %></td>
 
-                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:tid] %>/edit">Edit</a> | <a href="/<%= tt[:tid] %>/deleteTrans" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:tid] %>/editTrans">Edit</a> | <a href="/<%= tt[:tid] %>/deleteTrans" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
