@@ -140,7 +140,7 @@ put "/newTransfer" do
   #Inv2.get(1).picture
   # t = Transfer.new("en-route","JED","RYD",44,"Saleh")
   @t = Transfer.new
-  @t.trasnferStatus = "ENRT"
+  @t.trasnferStatus = "PCKDUP"
   @t.from = params[:fromItem]
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
@@ -620,7 +620,7 @@ if(e.which == 17) isCtrl=false;
                 <td><%= tt[:trasnferStatus] %></td>
                 <td><%= tt[:created_by] %></td>
 
-                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:tid] %>/editTrans">Edit</a> | <a href="/<%= tt[:tid] %>/deleteTrans" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= tt[:tid] %>/editTrans">Change Status</a> | <a href="/<%= tt[:tid] %>/deleteTrans" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
@@ -1440,7 +1440,7 @@ if(e.which == 17) isCtrl=false;
         <input name="_method" type="hidden" value="PUT" />
          <select id="fromItem" name="fromItem" class="form-control input-lg">
           <% @inv.each_with_index do |inv1, index| %>
-            <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+            <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
               <%= inv1[:code] %>
             </option>
           <% end %>
@@ -1462,7 +1462,7 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
              <select id="toItem" name="toItem" class="form-control input-lg">
                 <% @inv.each_with_index do |inv1, index| %>
-                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
                   <%= inv1[:code] %>
                 </option>
                 <% end %>
