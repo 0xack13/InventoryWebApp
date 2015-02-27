@@ -619,6 +619,7 @@ if(e.which == 17) isCtrl=false;
  <h1>Inventory Management v1</h1>
  <h3>Simple stock management solution</h3>
 <div class="table-responsive">
+      <a href="/newTransfer">Add New Stock Transfer</a>
       <table class="responsive-table responsive-table-input-matrix">
         <thead>
             <tr>
