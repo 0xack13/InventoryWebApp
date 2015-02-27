@@ -544,6 +544,15 @@ if(e.which == 17) isCtrl=false;
 <label for="nav-trigger"></label>
 
 <div class="site-wrap">
+        <% if flash[:notice] %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:error] %>
+       <% flash[:error].each do |e| %>
+         <p class="error message"><%= e + "." %></p>
+        <% end %>
+      <% end %>
+      
       <%= yield %>
 </div>
 
