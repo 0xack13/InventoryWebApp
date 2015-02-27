@@ -656,7 +656,7 @@ if(e.which == 17) isCtrl=false;
  <div class="container">
 
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
 <form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
    <h2>New
    <small>Add a new stock item</small>
@@ -740,7 +740,7 @@ if(e.which == 17) isCtrl=false;
 <div class="container">
 
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
  <form action="/<%= @sinv.id %>/save" autocomplete="off" method="POST">
    <h2>Edit
    <small>an existing stock item</small>
@@ -818,7 +818,7 @@ if(e.which == 17) isCtrl=false;
 @@upload
  <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
         <form action="/save_image" method="POST" enctype="multipart/form-data">
           <div class="row">
           <hr class="colorgraph">
@@ -847,7 +847,7 @@ if(e.which == 17) isCtrl=false;
 @@show_image
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
       <h1>Uploaded Image</h1>
       <img src="./<%= @filename %>" />
     </div>
@@ -858,7 +858,7 @@ if(e.which == 17) isCtrl=false;
 <div class="container">
 
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
  <form action="/delete_image" method="POST">
    <h2>Media
    <small>Delete existing images</small>
@@ -884,7 +884,7 @@ if(e.which == 17) isCtrl=false;
  <div class="container">
 
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
 <form action="/newUser" autocomplete="off" type="post" enctype="multipart/form-data">
    <h2>New
    <small>Add a new user</small>
@@ -1417,7 +1417,7 @@ if(e.which == 17) isCtrl=false;
 @@login
 <div class="container">
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
 <form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
    <h2>New
    <small>Login Form</small>
@@ -1450,7 +1450,7 @@ if(e.which == 17) isCtrl=false;
 <div class="container">
 
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="col-xs-12">
  <form action="/newTransfer" autocomplete="off" method="POST">
    <h2>Edit
    <small>an existing stock item</small>
