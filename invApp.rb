@@ -132,6 +132,7 @@ end
 
 get "/newTransfer" do
   @inv = Inv2.all
+  flash[:notice] = "Logged in at #{Time.now}."
   erb :newTransfer
 end
 
@@ -139,6 +140,8 @@ put "/newTransfer" do
   #@posts = Post.all()
   #Inv2.get(1).picture
   # t = Transfer.new("en-route","JED","RYD",44,"Saleh")
+  flash[:notice] = "Logged in at #{Time.now}."
+
   @t = Transfer.new
   @t.trasnferStatus = "PCKDUP"
   @t.from = params[:fromItem]
@@ -146,10 +149,17 @@ put "/newTransfer" do
   @t.tquantity = params[:toQuant]
   @t.created_by = "Saleh" # static value now! params[:created_by]
   @t.inv2 = Inv2.get(1)
+  
+  if params[:fromItem] == params[:toItem]
+    @t = Transfer.all
+    flash[:error] = "From and To are the same, please choose another"
+    redirect back
+  end
+
   if @t.save
         {:t => @t, :status => "success"}.to_json
-          flash[:notice] = "Record inserted correctly!"
-          redirect '/'
+          flash[:success] = "Record inserted correctly! Please insert another one or return to the homepage."
+          redirect "/newTransfer"
   else
         {:t => @t, :status => "failure"}.to_json
   end
@@ -382,6 +392,7 @@ __END__
   <meta charset='UTF-8'><meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<%= url("bootstrap.min.css") %>" media="all" rel="stylesheet" type="text/css">
   <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/jqueryui/dataTables.jqueryui.css" rel="stylesheet">
 
         
@@ -544,15 +555,16 @@ if(e.which == 17) isCtrl=false;
 <label for="nav-trigger"></label>
 
 <div class="site-wrap">
-        <% if flash[:notice] %>
-        <p class="notice"><%= flash[:notice] %></p>
+      <% if flash[:notice] %>
+        <p class="alert alert-info"><%= flash[:notice] %></p>
+      <% end %>
+      <% if flash[:success] %>
+        <p class="alert alert-success"><%= flash[:success] %></p>
       <% end %>
       <% if flash[:error] %>
-       <% flash[:error].each do |e| %>
-         <p class="error message"><%= e + "." %></p>
-        <% end %>
-      <% end %>
-      
+         <p class="alert alert-danger"><%= flash[:error] %></p>
+       <% end %>
+
       <%= yield %>
 </div>
 
