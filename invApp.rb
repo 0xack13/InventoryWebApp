@@ -101,7 +101,7 @@ get "/new" do
   @inv.type = params[:type]
   @inv.location = params[:location]
   @inv.picture = params[:picture]
-  @inv.status = "on-hand"
+  @inv.status = "ONHD"
   @inv.picture.sub!(/\//, '');
   if @inv.save
         {:inv => @inv, :status => "success"}.to_json
