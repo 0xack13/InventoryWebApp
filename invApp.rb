@@ -203,7 +203,7 @@ get "/:tid/editTrans" do
     else # elsif @t.trasnferStatus == "RCVD"
       puts "value validated!"
       @t.trasnferStatus = "ONHD"
-      @inv = Inv2.first(@t.to)
+      @inv = Inv2.first(:id=>@t.to)
       puts @inv
       @inv.quantity = @inv.quantity + @t.tquantity
       @inv.save
