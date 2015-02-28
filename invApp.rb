@@ -200,7 +200,7 @@ get "/:tid/editTrans" do
     elsif @t.trasnferStatus == "ENRT"
       puts "value validated!"
       @t.trasnferStatus = "RCVD"
-    else # elsif @t.trasnferStatus == "RCVD"
+    elsif @t.trasnferStatus == "RCVD"
       puts "value validated!"
       @t.trasnferStatus = "ONHD"
       @inv = Inv2.first(:id=>@t.to)
@@ -210,7 +210,7 @@ get "/:tid/editTrans" do
     end
 
     if @t.save
-        {:t => @t, :status => "success"}.to_json
+        #{:t => @t, :status => "success"}.to_json
         flash[:notice] = "Saved correctly!"
         redirect '/transfer'
     else
