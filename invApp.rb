@@ -157,7 +157,7 @@ put "/newTransfer" do
   end
 
   if @t.save
-        {:t => @t, :status => "success"}.to_json
+          #{:t => @t, :status => "success"}.to_json
           flash[:success] = "Record inserted correctly! Please insert another one or return to the homepage."
           redirect "/newTransfer"
   else
@@ -176,6 +176,9 @@ end
 #delete Transfer
 get "/:tid/deleteTrans" do
     @t = Transfer.first(:tid => params[:tid])
+    @inv = Inv2.first(:code=>@t.from)
+    @inv.quantity = @inv.quantity + @t.tquantity
+    @inv.save
     if @t.destroy
         {:t => @t, :status => "success"}.to_json
         flash[:notice] = "The record was deleted.."
@@ -197,7 +200,7 @@ get "/:tid/editTrans" do
     if @t.trasnferStatus == "PCKDUP"
       puts "value validated!"
       @t.trasnferStatus = "ENRT"
-      @inv = Inv2.first(:id=>@t.from)
+      @inv = Inv2.first(:code=>@t.from)
       puts @inv
       @inv.quantity = @inv.quantity - @t.tquantity
       @inv.save
@@ -207,7 +210,7 @@ get "/:tid/editTrans" do
     elsif @t.trasnferStatus == "RCVD"
       puts "value validated!"
       @t.trasnferStatus = "ONHD"
-      @inv = Inv2.first(:id=>@t.to)
+      @inv = Inv2.first(:code=>@t.to)
       puts @inv
       @inv.quantity = @inv.quantity + @t.tquantity
       @inv.save
@@ -1499,7 +1502,7 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
              <select id="toItem" name="toItem" class="form-control input-lg">
                 <% @inv.each_with_index do |inv1, index| %>
-                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
                   <%= inv1[:code] %>
                 </option>
                 <% end %>
