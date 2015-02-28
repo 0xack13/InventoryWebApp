@@ -197,6 +197,10 @@ get "/:tid/editTrans" do
     if @t.trasnferStatus == "PCKDUP"
       puts "value validated!"
       @t.trasnferStatus = "ENRT"
+      @inv = Inv2.first(:id=>@t.from)
+      puts @inv
+      @inv.quantity = @inv.quantity - @t.tquantity
+      @inv.save
     elsif @t.trasnferStatus == "ENRT"
       puts "value validated!"
       @t.trasnferStatus = "RCVD"
@@ -407,8 +411,9 @@ __END__
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
-
-      document.getElementById("toItem").onchange = function () {
+      var toItem = document.getElementById("toItem");
+        if(toItem != null) {
+          toItem.onchange = function () {
           console.log(this.options[this.selectedIndex].getAttribute("quant"));
           $('#toQuantity').val(this.options[this.selectedIndex].getAttribute("quant"));
 
@@ -424,9 +429,12 @@ __END__
           
           //$( "#totalSummary" ).html( "<b>Total quantiy in " + + " is:</b> " + quantity );
           $( "#totalSummary" ).html( "Total quantiy in " + $( "#fromItem" ).text() + " is: " + fromQuantity + "<br> Total quantiy in " + $( "#toItem" ).text() + " is:</b> " + toQuantity );
+        }
       };
 
-      document.getElementById("fromItem").onchange = function () {
+      var fromItem = document.getElementById("fromItem");
+      if(fromItem != null) {
+      fromItem.onchange = function () {
           console.log(this.options[this.selectedIndex].getAttribute("quant"));
           $('#fromQuantity').val(this.options[this.selectedIndex].getAttribute("quant"));
 
@@ -441,12 +449,14 @@ __END__
           
           //$( "#totalSummary" ).html( "<b>Total quantiy in " + + " is:</b> " + quantity );
           $( "#totalSummary" ).html( "Total quantiy in " + $( "#fromItem" ).text() + " is: " + fromQuantity + "<br> Total quantiy in " + $( "#toItem" ).text() + " is:</b> " + toQuantity );
+        }
       };
 
       // totalSummary & newQuant
 
-
-      document.getElementById("toQuant").onchange = function () {
+      var toQuant = document.getElementById("toQuant");
+      if(toQuant != null) {
+      toQuant.onchange = function () {
           //console.log(this.options[this.selectedIndex].getAttribute("quant"));
           //$('#totalSummary').val(this.options[this.selectedIndex].getAttribute("quant"));
           console.log("toQuant has changed!");
@@ -458,6 +468,7 @@ __END__
           
           //$( "#totalSummary" ).html( "<b>Total quantiy in " + + " is:</b> " + quantity );
           $( "#totalSummary" ).html( "Total quantiy in " + $( "#fromItem" ).text() + " is: " + fromQuantity + "<br> Total quantiy in " + $( "#toItem" ).text() + " is:</b> " + toQuantity );
+        }
       };
 
       console.log("hello");
