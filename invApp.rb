@@ -203,6 +203,10 @@ get "/:tid/editTrans" do
     else # elsif @t.trasnferStatus == "RCVD"
       puts "value validated!"
       @t.trasnferStatus = "ONHD"
+      @inv = Inv2.first(@t.to)
+      puts @inv
+      @inv.quantity = @inv.quantity + @t.tquantity
+      @inv.save
     end
 
     if @t.save
@@ -1484,7 +1488,7 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
              <select id="toItem" name="toItem" class="form-control input-lg">
                 <% @inv.each_with_index do |inv1, index| %>
-                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
                   <%= inv1[:code] %>
                 </option>
                 <% end %>
