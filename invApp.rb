@@ -13,6 +13,25 @@ include FileUtils::Verbose
 set :bind, '0.0.0.0'
 
 
+use Rack::Auth::Basic, "Restricted Area" do |username, password|
+    [username, password] == ['admin', 'admin']  
+end
+
+helpers do
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+  end
+end
+
+puts @username
+
 oldverb = $VERBOSE; $VERBOSE = nil
 require 'iconv'
 $VERBOSE = oldverb
@@ -272,11 +291,12 @@ get "/:id/edit" do
 end
 
 get "/" do
+  protected!
   #@posts = Post.all()
   #Inv2.get(1).picture
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
-  flash[:notice] = "Logged in at #{Time.now}."
+  flash[:notice] = "<b>" + (@username || "") + "</b> logged in at #{Time.now}."
   erb :default
 end
 
