@@ -7,11 +7,23 @@ require 'find'
 
 
 require 'fileutils'
-
 include FileUtils::Verbose
+
+
+require "sinatra-authentication"
+
+require "dm-core"
+#for using auto_migrate!
+require "dm-migrations"
+require "digest/sha1"
+#require 'rack-flash'
+  
+use Rack::Session::Cookie, :secret => 'Y0ur s3cret se$$ion key'
+
 
 set :bind, '0.0.0.0'
 
+=begin
 
 use Rack::Auth::Basic, "Restricted Area" do |username, password|
     [username, password] == ['admin', 'admin']  
@@ -45,9 +57,14 @@ end
 
 enable :sessions
 
+=end
+
+# If you want the logs displayed you have to do this before the call to setup
+DataMapper::Logger.new($stdout, :debug)
 
 # need install dm-sqlite-adapter
-DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data.dat")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data1.dat")
+#set :sinatra_authentication_view_path, Pathname(__FILE__).dirname.expand_path + "views/"
 
 
 class Inv2
@@ -96,18 +113,22 @@ DataMapper.finalize
 
 # automatically create the post table
 Inv2.auto_upgrade!
-User.auto_upgrade!
+#User.auto_upgrade!
 Transfer.auto_upgrade!
 
-user = User.new :name => 'chris', :password => 'password'
+DataMapper.auto_migrate!
+#DataMapper.auto_upgrade!
 
-puts "Password stored in database: #{user.password}"
 
-if user.password == 'password'
-  puts "Logged in!"
-else
-  puts "Something went wrong."
-end
+#user = User.new :name => 'chris', :password => 'password'
+
+#puts "Password stored in database: #{user.password}"
+
+#if user.password == 'password'
+#  puts "Logged in!"
+#else
+#  puts "Something went wrong."
+#end
 
 get "/new" do
   #@posts = Post.all()
@@ -292,7 +313,7 @@ get "/:id/edit" do
 end
 
 get "/" do
-  protected!
+  #protected!
   #@posts = Post.all()
   #Inv2.get(1).picture
   @inv = Inv2.all
@@ -415,6 +436,7 @@ get '/debug/posts/images/' do
 end
 
 __END__
+
 @@layout
 <% title="Inventory Management" %>
 <!doctype html>
@@ -1515,7 +1537,6 @@ if(e.which == 17) isCtrl=false;
         </div>
       </div>
 
-        <!-- <%= @inv[2][:name] %> -->
 
         
  <div class="row">
