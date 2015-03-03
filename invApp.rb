@@ -216,7 +216,7 @@ get "/:tid/editTrans" do
     # 2) ENRT
     # 3) RCVD
     # 4) ONHD => Increases the stock quantity in the "TO" location & Transferred record will be flagged as "archived" 
-    #
+    # Deleting the transfer before "ONHD" will return the original quantity to the original number
     if @t.trasnferStatus == "PCKDUP"
       puts "value validated!"
       @t.trasnferStatus = "ENRT"
