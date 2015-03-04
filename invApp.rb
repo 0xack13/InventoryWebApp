@@ -64,7 +64,7 @@ DataMapper::Logger.new($stdout, :debug)
 
 # need install dm-sqlite-adapter
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data1.dat")
-#set :sinatra_authentication_view_path, Pathname(__FILE__).dirname.expand_path + "views/"
+set :sinatra_authentication_view_path, Pathname(__FILE__).dirname.expand_path + "/my_views/"
 
 
 class Inv2
