@@ -710,7 +710,7 @@ if(e.which == 17) isCtrl=false;
             <% if temp != tt[:transferName] %>
             <% temp = tt[:transferName] %>            
             <tr  class="header">
-              <td colspan="2"><%= tt[:transferName] %> | <%= tt[:transferDesc] %></td>
+              <td colspan="7"><%= tt[:transferName] %> | <%= tt[:transferDesc] %></td>
             </tr>
             <% end%>
             <tr>

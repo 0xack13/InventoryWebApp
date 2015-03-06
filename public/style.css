@@ -331,4 +331,5 @@ div ul li img { border: 2px solid white; cursor: pointer; }
 tr.header
 {
     cursor:pointer;
+    background-color: brown;
 }
