@@ -86,6 +86,8 @@ end
 class Transfer
   include DataMapper::Resource
   property :tid, Serial, :serial => true
+  property :transferName, String
+  property :transferDesc, String
   property :trasnferStatus, String
   property :from, String
   property :to, String
@@ -1521,6 +1523,7 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
         <input name="_method" type="hidden" value="PUT" />
          <select id="fromItem" name="fromItem" class="form-control input-lg">
+          <option value="" disabled selected>From</option>
           <% @inv.each_with_index do |inv1, index| %>
             <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
               <%= inv1[:code] %>
@@ -1543,6 +1546,7 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
              <select id="toItem" name="toItem" class="form-control input-lg">
+              <option value="" disabled selected>To</option>
                 <% @inv.each_with_index do |inv1, index| %>
                   <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
                   <%= inv1[:code] %>
