@@ -461,6 +461,11 @@ __END__
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
+
+      $('.header').click(function(){
+      $(this).nextUntil('tr.header').slideToggle(1000);
+      });
+
       var toItem = document.getElementById("toItem");
         if(toItem != null) {
           toItem.onchange = function () {
@@ -700,9 +705,12 @@ if(e.which == 17) isCtrl=false;
         </thead>
         <tbody>
           <% @t.each_with_index do |tt, index| %>
+            <tr  class="header">
+            <td colspan="2">Header</td>
+          </tr>
             <tr>
                 <td><%= index += 1 %></td>
-                <td><u><%= tt[:transferName] %><%= tt[:transferDesc] %></u></td>
+                <td><%= tt[:transferName] %></td>
                 <td><%= tt[:from] %></td>
                 <td><%= tt[:to] %></td>
                 <td><%= tt[:tquantity] %></td>
