@@ -116,7 +116,7 @@ Inv2.auto_upgrade!
 #User.auto_upgrade!
 Transfer.auto_upgrade!
 
-DataMapper.auto_migrate!
+#DataMapper.auto_migrate!
 #DataMapper.auto_upgrade!
 
 
@@ -144,9 +144,8 @@ get "/new" do
   @inv.status = "ONHD"
   @inv.picture.sub!(/\//, '');
   if @inv.save
-        {:inv => @inv, :status => "success"}.to_json
-          flash[:notice] = "Record inserted correctly!"
-
+        #{:inv => @inv, :status => "success"}.to_json
+        flash[:notice] = "Record inserted correctly!"
         redirect '/'
   else
         {:inv => @inv, :status => "failure"}.to_json
