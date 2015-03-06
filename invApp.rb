@@ -463,7 +463,7 @@ __END__
     $(window).load(function(){
 
       $('.header').click(function(){
-      $(this).nextUntil('tr.header').slideToggle(1000);
+      $(this).nextUntil('tr.header').slideToggle(1);
       });
 
       var toItem = document.getElementById("toItem");
@@ -694,7 +694,6 @@ if(e.which == 17) isCtrl=false;
         <thead>
             <tr>
                 <th>Row</th>
-                <th>Name</th>
                 <th>From</th>
                 <th>To</th>
                 <th>Quantity</th>
@@ -704,13 +703,18 @@ if(e.which == 17) isCtrl=false;
             </tr>
         </thead>
         <tbody>
+
+          <% temp = "newtest" %>
+          <% puts temp %>
           <% @t.each_with_index do |tt, index| %>
+            <% if temp != tt[:transferName] %>
+            <% temp = tt[:transferName] %>            
             <tr  class="header">
-            <td colspan="2">Header</td>
-          </tr>
+              <td colspan="2"><%= tt[:transferName] %> | <%= tt[:transferDesc] %></td>
+            </tr>
+            <% end%>
             <tr>
                 <td><%= index += 1 %></td>
-                <td><%= tt[:transferName] %></td>
                 <td><%= tt[:from] %></td>
                 <td><%= tt[:to] %></td>
                 <td><%= tt[:tquantity] %></td>
