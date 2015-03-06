@@ -1518,6 +1518,23 @@ if(e.which == 17) isCtrl=false;
    <small>an existing stock item</small>
  </h2>
       <hr class="colorgraph">
+      
+
+ <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="transferName" placeholder='Transfer Name:' class="form-control input-lg" />
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="transferDesc" placeholder="Description" class="form-control input-lg" />
+          </div>
+        </div>
+        </div>
+
+
+
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
