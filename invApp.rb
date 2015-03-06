@@ -117,8 +117,9 @@ DataMapper.finalize
 Inv2.auto_upgrade!
 #User.auto_upgrade!
 Transfer.auto_upgrade!
-
+#clear all data
 #DataMapper.auto_migrate!
+
 #DataMapper.auto_upgrade!
 
 
@@ -185,6 +186,8 @@ put "/newTransfer" do
 
   @t = Transfer.new
   @t.trasnferStatus = "PCKDUP"
+  @t.transferName = params[:transferName]
+  @t.transferDesc = params[:transferDesc]
   @t.from = params[:fromItem]
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
@@ -686,6 +689,7 @@ if(e.which == 17) isCtrl=false;
         <thead>
             <tr>
                 <th>Row</th>
+                <th>Name</th>
                 <th>From</th>
                 <th>To</th>
                 <th>Quantity</th>
@@ -698,6 +702,7 @@ if(e.which == 17) isCtrl=false;
           <% @t.each_with_index do |tt, index| %>
             <tr>
                 <td><%= index += 1 %></td>
+                <td><u><%= tt[:transferName] %><%= tt[:transferDesc] %></u></td>
                 <td><%= tt[:from] %></td>
                 <td><%= tt[:to] %></td>
                 <td><%= tt[:tquantity] %></td>
@@ -1518,17 +1523,19 @@ if(e.which == 17) isCtrl=false;
    <small>an existing stock item</small>
  </h2>
       <hr class="colorgraph">
+              <input name="_method" type="hidden" value="PUT" />
+
       
 
  <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type='text' name="transferName" placeholder='Transfer Name:' class="form-control input-lg" />
+            <input type='text' id="transferName" name="transferName" placeholder='Transfer Name:' class="form-control input-lg" />
           </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type='text' name="transferDesc" placeholder="Description" class="form-control input-lg" />
+            <input type='text' id="transferDesc" name="transferDesc" placeholder="Description" class="form-control input-lg" />
           </div>
         </div>
         </div>
@@ -1538,7 +1545,6 @@ if(e.which == 17) isCtrl=false;
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-        <input name="_method" type="hidden" value="PUT" />
          <select id="fromItem" name="fromItem" class="form-control input-lg">
           <option value="" disabled selected>From</option>
           <% @inv.each_with_index do |inv1, index| %>
