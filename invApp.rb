@@ -165,6 +165,21 @@ get "/dashboard" do
   erb :dashboard
 end
 
+get "/dashboard3" do
+  @inv = Inv2.all
+  #@inv.to_array
+  #render json: Inv2.group_by_day(:created_at).count
+  erb :dashboard3
+end
+
+
+get "/dashboard4" do
+  @inv = Inv2.all
+  #@inv.to_array
+  #render json: Inv2.group_by_day(:created_at).count
+  erb :dashboard4
+end
+
 get '/dashboard2' do
 @graph_data = [["A", 1000], ["B", 2000], ["C", 7000]]
     erb :dashboard2
@@ -1640,8 +1655,13 @@ if(e.which == 17) isCtrl=false;
 </div>
 
 @@dashboard
-<%= pie_chart Inv2.map{|inv| [inv.code, inv.quantity] } %>
+<%= pie_chart Inv2.all(:location => "RYD").map{|inv| [inv.code, inv.quantity] } %>
 
+@@dashboard3
+<%= pie_chart Inv2.aggregate(:location, :all.count) %>
+
+@@dashboard4
+<%= line_chart Inv2.aggregate(:created_at, :all.count) %>
 
 @@dashboard2
 <%= pie_chart @graph_data %>
