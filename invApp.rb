@@ -4,6 +4,9 @@ require 'sinatra/flash'
 require "data_mapper"
 require 'json'
 require 'find'
+require 'chartkick'
+include Chartkick::Helper
+require 'groupdate'
 
 
 require 'fileutils'
@@ -153,6 +156,18 @@ get "/new" do
   else
         {:inv => @inv, :status => "failure"}.to_json
   end
+end
+
+get "/dashboard" do
+  @inv = Inv2.all
+  #@inv.to_array
+  #render json: Inv2.group_by_day(:created_at).count
+  erb :dashboard
+end
+
+get '/dashboard2' do
+@graph_data = [["A", 1000], ["B", 2000], ["C", 7000]]
+    erb :dashboard2
 end
 
 get "/newUser" do
@@ -458,6 +473,8 @@ __END__
   <script src="https://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/plug-ins/f2c75b7247b/integration/bootstrap/3/dataTables.bootstrap.js"></script>
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
+  <script src="//www.google.com/jsapi"></script>
+  <script src=<%= url("chartkick.js")%>></script>
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
@@ -1621,3 +1638,10 @@ if(e.which == 17) isCtrl=false;
      </form>
 </div>
 </div>
+
+@@dashboard
+<%= pie_chart Inv2.map{|inv| [inv.code, inv.quantity] } %>
+
+
+@@dashboard2
+<%= pie_chart @graph_data %>
