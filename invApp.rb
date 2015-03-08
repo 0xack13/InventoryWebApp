@@ -165,6 +165,12 @@ get "/dashboard" do
   erb :dashboard
 end
 
+get "/dashboard5" do
+  #@inv.to_array
+  #render json: Inv2.group_by_day(:created_at).count
+  erb :dashboard5
+end
+
 get "/dashboard3" do
   @inv = Inv2.all
   #@inv.to_array
@@ -1659,6 +1665,9 @@ if(e.which == 17) isCtrl=false;
 
 @@dashboard3
 <%= pie_chart Inv2.aggregate(:location, :all.count) %>
+
+@@dashboard5
+<%= pie_chart Inv2.aggregate(:location, :quantity.sum) %>
 
 @@dashboard4
 <%= line_chart Inv2.aggregate(:created_at, :all.count) %>
