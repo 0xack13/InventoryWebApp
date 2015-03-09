@@ -67,6 +67,25 @@ DataMapper::Logger.new($stdout, :debug)
 
 # need install dm-sqlite-adapter
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/data1.dat")
+enable :sessions
+
+error 400..510 do
+  'http error...'
+end
+
+helpers do
+  def logged_in?
+    (@auth_email && !@auth_email.empty?) ? true : false
+  end
+end
+
+def require_logged_in
+  redirect('/sessions/new') unless is_authenticated?
+end
+ 
+def is_authenticated?
+  return !!session[:user_id]
+end
 
 
 class Inv2
@@ -356,6 +375,7 @@ get "/:id/edit" do
 end
 
 get "/" do
+  require_logged_in
   #protected!
   #@posts = Post.all()
   #Inv2.get(1).picture
@@ -363,6 +383,11 @@ get "/" do
   @files = Dir.glob("public/*.jpg")
   flash[:notice] = "<b>" + (@username || "") + "</b> logged in at #{Time.now}."
   erb :default
+end
+
+get "/sessions1" do
+  session[:user_id] = "saleh" #params["user_id"]
+  redirect('/')
 end
 
 
