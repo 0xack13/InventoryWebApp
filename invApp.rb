@@ -658,6 +658,7 @@ if(e.which == 17) isCtrl=false;
   <li class="nav-item"><a href="/transfer" id="newRecord" accesskey="a"><span class="glyphicon glyphicon-transfer"></span>&nbsp;Trasnfers</a></li>
   <li class="nav-item"><a href="/upload" id="upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
+  <li class="nav-item"><a href="/dashboard"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard</a></li>
   <li class="nav-item"><a href="/addUser"><span class="glyphicon glyphicon-user"></span>&nbsp;Users</a></li>
   <li class="nav-item"><a href="mailto:support@support.com"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Help</a></li>
 </ul>
