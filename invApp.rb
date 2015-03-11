@@ -391,6 +391,16 @@ get "/sessions1" do
   redirect('/')
 end
 
+get "/login" do
+  #require_logged_in
+  #protected!
+  #@posts = Post.all()
+  #Inv2.get(1).picture
+  @username = Inv2.all
+  @files = Dir.glob("public/*.jpg")
+  flash[:notice] = "<b>" + (@username || "") + "</b> logged in at #{Time.now}."
+  erb :default
+end
 
 get "/add" do
   @inv = Inv2.all
