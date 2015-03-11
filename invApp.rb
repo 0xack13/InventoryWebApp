@@ -384,7 +384,7 @@ get "/" do
   #Inv2.get(1).picture
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
-  flash[:notice] = "<b>" + (@username || "") + "</b> logged in at #{Time.now}."
+  flash[:notice] = "<b>Howdy " + (session[:user_id] || "") + "!</b> You logged in at #{Time.now}."
   erb :default
 end
 
