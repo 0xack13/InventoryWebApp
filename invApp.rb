@@ -144,7 +144,10 @@ Transfer.auto_upgrade!
 #DataMapper.auto_upgrade!
 
 
-set :sinatra_authentication_view_path, Pathname(__FILE__).dirname.expand_path + "my_views/"
+configure do
+  set :sinatra_authentication_view_path, Pathname(__FILE__).dirname.expand_path + "views/"
+end
+
 use Rack::Session::Cookie, :secret => "heyhihello"
 
 
