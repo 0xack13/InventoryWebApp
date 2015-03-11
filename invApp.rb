@@ -387,6 +387,7 @@ end
 
 get "/sessions1" do
   session[:user_id] = "saleh" #params["user_id"]
+  session[:branch_code] = "RYD"
   redirect('/')
 end
 
