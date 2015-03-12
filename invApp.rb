@@ -1575,7 +1575,7 @@ if(e.which == 17) isCtrl=false;
 <div class="container">
 <div class="row">
     <div class="col-xs-12">
-<form action="/new" autocomplete="off" type="post" enctype="multipart/form-data">
+<form action="/login" autocomplete="off" type="post" enctype="multipart/form-data">
    <h2>New
    <small>Login Form</small>
     </h2>
@@ -1583,12 +1583,14 @@ if(e.which == 17) isCtrl=false;
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type='text' name="name" placeholder='Username:' class="form-control input-lg" />
+            <input type='text' id="username" name="username" placeholder='Username:' class="form-control input-lg" />
           </div>
         </div>
+        </div>
+        <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-            <input type='text' name="name" placeholder='Password:' class="form-control input-lg" />
+            <input type='password' id="password" name="password" placeholder='Password:' class="form-control input-lg" />
           </div>
         </div>
       </div>
