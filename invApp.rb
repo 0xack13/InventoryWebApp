@@ -252,7 +252,12 @@ post "/login" do
   end
 end
 
-
+get "/logout" do
+  session[:user_id] = nil
+  session[:branch] = nil
+  flash[:success] = "You logged out from the system. You have to enter your username and password to log in back to the system."
+  redirect '/login'
+end
 
 get "/newTransfer" do
   @inv = Inv2.all
