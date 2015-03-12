@@ -406,8 +406,7 @@ end
 get "/" do
   require_logged_in
   #protected!
-  #@posts = Post.all()
-  #Inv2.get(1).picture
+  #@posts = Post.all()  #Inv2.get(1).picture
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
   flash[:notice] = "<b>Howdy " + (session[:user_id] || "") + "!</b> You logged in at #{Time.now}."
@@ -714,6 +713,8 @@ if(e.which == 17) isCtrl=false;
   </script>
 </head>
 <body>
+
+  <% if session[:user_id] != nil %>
 <ul class="navigation">
   <li class="nav-item"><a href="/" id="home"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a></li>
   <li class="nav-item"><a href="/add" id="newRecord" accesskey="a"><span class="glyphicon glyphicon-plus"></span>&nbsp;New</a></li>
@@ -728,7 +729,7 @@ if(e.which == 17) isCtrl=false;
 
 <input type="checkbox" id="nav-trigger" class="nav-trigger" />
 <label for="nav-trigger"></label>
-
+<% end %>
 <div class="site-wrap">
       <% if flash[:notice] %>
         <p class="alert alert-info"><%= flash[:notice] %></p>
