@@ -240,7 +240,7 @@ post "/login" do
     if @user.password == params[:password]
         session[:user_id] = @user.name
         session[:branch_code] = @user.location
-        flash[:notice] = "Logged in correctly!"
+        flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly!"
         redirect '/'
     else
           flash[:notice] = "Username or password is incorrect!"
@@ -251,6 +251,8 @@ post "/login" do
     redirect '/login'
   end
 end
+
+
 
 get "/newTransfer" do
   @inv = Inv2.all
