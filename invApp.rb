@@ -238,8 +238,10 @@ post "/login" do
   @user = User.first(:name => params[:username])
   if @user != nil
     if @user.password == params[:password]
-          flash[:notice] = "Logged in correctly!"
-          redirect '/'
+        session[:user_id] = @user.name
+        session[:branch_code] = @user.location
+        flash[:notice] = "Logged in correctly!"
+        redirect '/'
     else
           flash[:notice] = "Username or password is incorrect!"
           redirect '/login'
