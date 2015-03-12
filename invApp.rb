@@ -233,6 +233,23 @@ get "/newUser" do
   end
 end
 
+
+post "/login" do
+  @user = User.first(:name => params[:username])
+  if @user != nil
+    if @user.password == params[:password]
+          flash[:notice] = "Logged in correctly!"
+          redirect '/'
+    else
+          flash[:notice] = "Username or password is incorrect!"
+          redirect '/login'
+    end
+  else
+    flash[:notice] = "Username or password is incorrect. Please try again!"
+    redirect '/login'
+  end
+end
+
 get "/newTransfer" do
   @inv = Inv2.all
   flash[:notice] = "Logged in at #{Time.now}."
@@ -1575,7 +1592,7 @@ if(e.which == 17) isCtrl=false;
 <div class="container">
 <div class="row">
     <div class="col-xs-12">
-<form action="/login" autocomplete="off" type="post" enctype="multipart/form-data">
+<form action="/login" autocomplete="off" method="post" enctype="multipart/form-data">
    <h2>New
    <small>Login Form</small>
     </h2>
@@ -1595,11 +1612,10 @@ if(e.which == 17) isCtrl=false;
         </div>
       </div>
               <hr class="colorgraph">
-  <div class="row">
+        <div class="row">
           <div class="form-group">
-        
-       <input type='submit' placeholder='SUBMIT' value="Submit" class="btn btn-primary btn-block btn-lg" />
-     </div></div>
+          <input type='submit' placeholder='SUBMIT' value="Submit" class="btn btn-primary btn-block btn-lg" />
+        </div></div>
      </form>
    </div>
  </div>
