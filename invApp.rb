@@ -13,7 +13,7 @@ require 'fileutils'
 include FileUtils::Verbose
 
 
-require "sinatra-authentication"
+#require "sinatra-authentication"
 
 require "dm-core"
 #for using auto_migrate!
@@ -80,7 +80,7 @@ helpers do
 end
 
 def require_logged_in
-  redirect('/sessions/new') unless is_authenticated?
+  redirect('/login') unless is_authenticated?
 end
  
 def is_authenticated?
@@ -399,10 +399,7 @@ get "/login" do
   #protected!
   #@posts = Post.all()
   #Inv2.get(1).picture
-  @username = Inv2.all
-  @files = Dir.glob("public/*.jpg")
-  flash[:notice] = "<b>" + (@username || "") + "</b> logged in at #{Time.now}."
-  erb :default
+  erb :login
 end
 
 get "/add" do
