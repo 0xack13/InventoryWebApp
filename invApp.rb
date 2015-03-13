@@ -162,6 +162,7 @@ use Rack::Session::Cookie, :secret => "heyhihello"
 #end
 
 get "/new" do
+  require_logged_in
   #@posts = Post.all()
   #Inv2.get(1).picture
   @inv = Inv2.new
@@ -184,6 +185,7 @@ get "/new" do
 end
 
 get "/dashboard" do
+  require_logged_in
   @inv = Inv2.all
   #@inv.to_array
   #render json: Inv2.group_by_day(:created_at).count
@@ -217,6 +219,7 @@ get '/dashboard2' do
 end
 
 get "/newUser" do
+  require_logged_in
   #@posts = Post.all()
   #Inv2.get(1).picture
   @user = User.new
@@ -382,6 +385,7 @@ end
 
 #delete
 get "/:id/delete" do
+  require_logged_in
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.first(:id => params[:id])
     if @inv.destroy
@@ -395,6 +399,7 @@ end
 
 #find
 get "/:id/edit" do
+    require_logged_in
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.all
     @sinv = Inv2.first(:id => params[:id])
@@ -428,6 +433,7 @@ get "/login" do
 end
 
 get "/add" do
+  require_logged_in
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
   erb :add
@@ -435,11 +441,13 @@ end
 
 
 get "/upload" do
+  require_logged_in
   @inv = Inv2.all
   erb :upload
 end
  
 post '/save_image' do
+  require_logged_in
   @inv = Inv2.all
   @filename = params[:file][:filename]
   file = params[:file][:tempfile]
@@ -452,6 +460,7 @@ post '/save_image' do
 end
 
 get '/list' do
+  require_logged_in
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
   #p files
@@ -464,6 +473,7 @@ end
 
 #add users
 get '/listUsers' do
+  require_logged_in
   @user = User.all
   puts "... ... .. Password stored in database: #{user.password}"
   erb :addUser
@@ -472,6 +482,7 @@ end
 
 
 get '/media' do
+  require_logged_in
   @inv = Inv2.all
   @files = Dir.glob("public/*.jpg")
   #p files
@@ -484,21 +495,25 @@ end
 
 #Add Transfer
 get '/transfer' do
+  require_logged_in
   @inv = Inv2.all
   erb :transfer
 end
 
 #Add User
 get '/addUser' do
+  require_logged_in
   erb :addUser
 end
 
 #Add User
 get '/login' do
+  require_logged_in
   erb :login
 end
 
 post '/delete_image' do
+  require_logged_in
   @filename = params[:picture]
   FileUtils.rm_rf(Dir.glob("public/#{@filename}"))
   @files = Dir.glob("public/*.jpg")
@@ -507,6 +522,7 @@ end
 
 # get all images
 get '/debug/posts/images/' do
+  require_logged_in
   puts '>> debug > posts > images > get'
 
   all_images = Array.new
@@ -700,8 +716,12 @@ if(e.which == 17) isCtrl=false;
         //var imgs = $("img.hover").length;    
         var imgs = $("img.hover").attr('src');    
         alert('there are ' + imgs + ' images selected: ' );
-        var element = document.getElementById("picture");
-        element.value = $("img.hover").attr('src');
+        //Just make sure not to screw things up with no image is selected
+        if (imgs != null) {
+          var element = document.getElementById("picture");
+          alert("Picture is: " + $("img.hover").attr('src') );
+          element.value = $("img.hover").attr('src');
+        }
       });
       function setValue(){
           //document.sampleForm.total.value = 100;
@@ -993,7 +1013,7 @@ if(e.which == 17) isCtrl=false;
           </ul>
         </div>
         <hr class="colorgraph">
-        <input type="hidden" name="picture" id="picture" value="">
+        <input type="hidden" name="picture" id="picture" value="/<%= @sinv.picture %>">
         <input type='submit' placeholder='Save Changes' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
      </form>
 </div>
@@ -1725,16 +1745,12 @@ if(e.which == 17) isCtrl=false;
 @@dashboard
 <div class="container">
 <div class="row">
-    <div class="col-xs-12">
+            <div class="form-group">
 <p>Type Analysis:
 <%= pie_chart Inv2.aggregate(:type, :quantity.sum) %>
 </p>
-</div>
-<div class="col-xs-12">
 Location Analysis
 <%= pie_chart Inv2.aggregate(:location, :quantity.sum) %>
-</div>
-<div class="col-xs-12">
 Size Analysis
 <%= pie_chart Inv2.aggregate(:size, :quantity.sum) %>
 </div>
