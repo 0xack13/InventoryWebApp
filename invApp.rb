@@ -99,6 +99,7 @@ class Inv2
   property :location, String
   property :status, String
   property :picture, String
+  property :created_by, String
   property :created_at, DateTime
 
   has n, :transfer
@@ -175,6 +176,8 @@ get "/new" do
   @inv.picture = params[:picture]
   @inv.status = "ONHD"
   @inv.picture.sub!(/\//, '');
+  @inv.created_by = session[:user_id]
+  @inv.created_at = Time.now
   if @inv.save
         #{:inv => @inv, :status => "success"}.to_json
         flash[:notice] = "Record inserted correctly!"
@@ -285,6 +288,7 @@ put "/newTransfer" do
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
   @t.created_by = session[:user_id] # static value now! params[:created_by]
+  @t.created_at = Time.now().to_i
   @t.inv2 = Inv2.get(1)
   
   if params[:fromItem] == params[:toItem]
@@ -338,6 +342,8 @@ get "/:tid/editTrans" do
     # 3) RCVD
     # 4) ONHD => Increases the stock quantity in the "TO" location & Transferred record will be flagged as "archived" 
     # Deleting the transfer before "ONHD" will return the original quantity to the original number
+    @t.created_by = session[:user_id]
+    @t.created_at = Time.now
     if @t.trasnferStatus == "PCKDUP"
       puts "value validated!"
       @t.trasnferStatus = "ENRT"
@@ -377,6 +383,8 @@ put "/:id/save" do
   @inv.type = params[:type]
   @inv.location = params[:location]
   @inv.picture = params[:picture]
+  @inv.created_by = session[:user_id]
+  @inv.created_at = Time.now
   @inv.picture.sub!(/\//, '');
   #tempfile = params[:picture][:tempfile] 
   #filename = params[:picture][:filename] 
