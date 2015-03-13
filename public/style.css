@@ -333,3 +333,7 @@ tr.header
     cursor:pointer;
     background-color: brown;
 }
+
+.col-md-6 {
+  width: 100%;
+}
