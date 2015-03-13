@@ -1105,12 +1105,12 @@ if(e.which == 17) isCtrl=false;
               </select>
             </div>
         </div>
-              <hr class="colorgraph">
-  <div class="row">
+        <hr class="colorgraph">
+        <div class="row">
           <div class="form-group">
-        
-       <input type='submit' placeholder='SUBMIT' value="Add new user" class="btn btn-primary btn-block btn-lg" />
-     </div></div>
+            <input type='submit' placeholder='SUBMIT' value="Add new user" class="btn btn-primary btn-block btn-lg" />
+          </div>
+        </div>
      </form>
    </div>
  </div>
@@ -1639,24 +1639,21 @@ if(e.which == 17) isCtrl=false;
     <div class="col-xs-12">
  <form action="/newTransfer" autocomplete="off" method="POST">
    <h2>Edit
-   <small>an existing stock item</small>
- </h2>
-      <hr class="colorgraph">
-              <input name="_method" type="hidden" value="PUT" />
-
-      
-
- <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-            <input type='text' id="transferName" name="transferName" placeholder='Transfer Name:' class="form-control input-lg" />
+    <small>an existing stock item</small>
+   </h2>
+   <hr class="colorgraph">
+        <input name="_method" type="hidden" value="PUT" />
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type='text' id="transferName" name="transferName" placeholder='Transfer Name:' class="form-control input-lg" />
+            </div>
           </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-            <input type='text' id="transferDesc" name="transferDesc" placeholder="Description" class="form-control input-lg" />
+          <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+              <input type='text' id="transferDesc" name="transferDesc" placeholder="Description" class="form-control input-lg" />
+            </div>
           </div>
-        </div>
         </div>
 
 
@@ -1676,33 +1673,31 @@ if(e.which == 17) isCtrl=false;
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
-       <input type='text' id="fromQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
+            <input type='text' id="fromQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
           </div>
         </div>
       </div>
       </div>
-
-
-        
- <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
-          <div class="form-group">
-             <select id="toItem" name="toItem" class="form-control input-lg">
-              <option value="" disabled selected>To</option>
-                <% @inv.each_with_index do |inv1, index| %>
-                  <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
-                  <%= inv1[:code] %>
-                </option>
-                <% end %>
-              </select>
-          </div>
-        </div>
-          <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group">
-                  <input type='text' id="toQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
-            </div>
-        </div>
-</div>
+ 
+       <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                   <select id="toItem" name="toItem" class="form-control input-lg">
+                    <option value="" disabled selected>To</option>
+                      <% @inv.each_with_index do |inv1, index| %>
+                        <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+                        <%= inv1[:code] %>
+                      </option>
+                      <% end %>
+                    </select>
+                </div>
+              </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                        <input type='text' id="toQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
+                  </div>
+              </div>
+      </div>
 
 
        <div class="row">
@@ -1716,11 +1711,9 @@ if(e.which == 17) isCtrl=false;
 
        <span id="totalSummary"></span><br>
 
-
-          
-          <div class="form-group">
-                    <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
-          </div>
+      <div class="form-group">
+        <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
+      </div>
 
       </div>
    
@@ -1730,10 +1723,28 @@ if(e.which == 17) isCtrl=false;
 </div>
 
 @@dashboard
-<%= pie_chart Inv2.all(:location => "RYD").map{|inv| [inv.code, inv.quantity] } %>
+<div class="container">
+<div class="row">
+    <div class="col-xs-12">
+<p>Type Analysis:
+<%= pie_chart Inv2.aggregate(:type, :quantity.sum) %>
+</p>
+</div>
+<div class="col-xs-12">
+Location Analysis
+<%= pie_chart Inv2.aggregate(:location, :quantity.sum) %>
+</div>
+<div class="col-xs-12">
+Size Analysis
+<%= pie_chart Inv2.aggregate(:size, :quantity.sum) %>
+</div>
+</div>
+</div>
+
 
 @@dashboard3
-<%= pie_chart Inv2.aggregate(:location, :all.count) %>
+<%= pie_chart Inv2.all(:location => "RYD").map{|inv| [inv.code, inv.quantity] } %>
+
 
 @@dashboard5
 <%= pie_chart Inv2.aggregate(:location, :quantity.sum) %>
