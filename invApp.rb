@@ -256,6 +256,7 @@ post "/login" do
 end
 
 get "/logout" do
+  require_logged_in
   session[:user_id] = nil
   session[:branch] = nil
   flash[:success] = "You logged out from the system. You have to enter your username and password to log in back to the system."
@@ -263,12 +264,14 @@ get "/logout" do
 end
 
 get "/newTransfer" do
+  require_logged_in
   @inv = Inv2.all
   flash[:notice] = "Logged in at #{Time.now}."
   erb :newTransfer
 end
 
 put "/newTransfer" do
+  require_logged_in
   #@posts = Post.all()
   #Inv2.get(1).picture
   # t = Transfer.new("en-route","JED","RYD",44,"Saleh")
@@ -281,7 +284,7 @@ put "/newTransfer" do
   @t.from = params[:fromItem]
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
-  @t.created_by = "Saleh" # static value now! params[:created_by]
+  @t.created_by = session[:user_id] # static value now! params[:created_by]
   @t.inv2 = Inv2.get(1)
   
   if params[:fromItem] == params[:toItem]
@@ -300,6 +303,7 @@ put "/newTransfer" do
 end
 
 get "/transfer" do
+  require_logged_in
   #@posts = Post.all()
   #Inv2.get(1).picture
   @t = Transfer.all
@@ -309,6 +313,7 @@ end
 
 #delete Transfer
 get "/:tid/deleteTrans" do
+  require_logged_in
     @t = Transfer.first(:tid => params[:tid])
     @inv = Inv2.first(:code=>@t.from)
     @inv.quantity = @inv.quantity + @t.tquantity
@@ -324,6 +329,7 @@ end
 
 #find and Edit Transfer
 get "/:tid/editTrans" do
+  require_logged_in
     #@inv = Inv2.find(params[:id])
     @t = Transfer.first(:tid => params[:tid])
     # If statement to change the inventory trasnfer status
@@ -362,6 +368,7 @@ end
 
 #update	
 put "/:id/save" do
+  require_logged_in
   @inv = Inv2.first(:id => params[:id])
   @inv.code = params[:code]
   @inv.name = params[:name]
@@ -386,6 +393,7 @@ end
 #delete
 get "/:id/delete" do
   require_logged_in
+  require_logged_in
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.first(:id => params[:id])
     if @inv.destroy
@@ -399,6 +407,7 @@ end
 
 #find
 get "/:id/edit" do
+  require_logged_in
     require_logged_in
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.all
