@@ -582,6 +582,8 @@ __END__
 <head>
   <meta charset='UTF-8'><meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="<%= url("bootstrap.min.css") %>" media="all" rel="stylesheet" type="text/css">
   <link href="//cdn.datatables.net/plug-ins/f2c75b7247b/integration/jqueryui/dataTables.jqueryui.css" rel="stylesheet">
@@ -593,6 +595,9 @@ __END__
   <link href="<%= url("style.css")%>" media="all" rel="stylesheet" type="text/css" />
   <script src="//www.google.com/jsapi"></script>
   <script src=<%= url("chartkick.js")%>></script>
+
+
+
   
   <script type='text/javascript'>//<![CDATA[ 
     $(window).load(function(){
@@ -1761,18 +1766,22 @@ if(e.which == 17) isCtrl=false;
 </div>
 
 @@dashboard
+
 <div class="container">
-<div class="row">
-            <div class="form-group">
-<p>Type Analysis:
-<%= pie_chart Inv2.aggregate(:type, :quantity.sum) %>
-</p>
-Location Analysis
-<%= pie_chart Inv2.aggregate(:location, :quantity.sum) %>
-Size Analysis
-<%= pie_chart Inv2.aggregate(:size, :quantity.sum) %>
+    <div class="heading">
+         <div class="col">category ID</div>
+ <div class="col">category </div>
+    </div>
+ <div class="table-row">
+         <div class="col"><%= pie_chart Inv2.aggregate(:location, :quantity.sum) %></div>
+      <div class="col">      <%= pie_chart Inv2.aggregate(:type, :quantity.sum) %>
+      </div>
+    </div>
+ <div class="table-row">
+         <div class="col">              <%= pie_chart Inv2.aggregate(:size, :quantity.sum) %>
 </div>
-</div>
+      <div class="col"><%= pie_chart Inv2.aggregate(:location, :quantity.sum) %></div>
+    </div>
 </div>
 
 
@@ -1787,4 +1796,5 @@ Size Analysis
 <%= line_chart Inv2.aggregate(:created_at, :all.count) %>
 
 @@dashboard2
+
 <%= pie_chart @graph_data %>
