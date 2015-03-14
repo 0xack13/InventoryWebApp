@@ -132,6 +132,8 @@ class User
   property :username, String
   property :password, BCryptHash
   property :location, String
+  property :isAdmin, Boolean, :default  => false
+  property :isActive, Boolean, :default  => true
 
 end
 
