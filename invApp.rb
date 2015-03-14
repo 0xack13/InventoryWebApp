@@ -23,6 +23,10 @@ require "digest/sha1"
   
 use Rack::Session::Cookie, :secret => 'Y0ur s3cret se$$ion key'
 
+Chartkick.options = {
+  colors: ["#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8"]
+}
+
 
 set :bind, '0.0.0.0'
 
