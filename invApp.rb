@@ -292,7 +292,7 @@ put "/newTransfer" do
   @t.to = params[:toItem]
   @t.tquantity = params[:toQuant]
   @t.created_by = session[:user_id] # static value now! params[:created_by]
-  @t.created_at = Time.now().to_i
+  @t.created_at = Time.now
   @t.inv2 = Inv2.get(1)
   
   if params[:fromItem] == params[:toItem]
@@ -1202,7 +1202,7 @@ if(e.which == 17) isCtrl=false;
 
 <div class="row">
     <div class="col-xs-12">
- <form action="/newTransfer" autocomplete="off" method="POST">
+   <form action="/newTransfer" autocomplete="off" method="POST">
    <h2>Edit
     <small>an existing stock item</small>
    </h2>
@@ -1220,8 +1220,6 @@ if(e.which == 17) isCtrl=false;
             </div>
           </div>
         </div>
-
-
 
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
@@ -1242,7 +1240,9 @@ if(e.which == 17) isCtrl=false;
           </div>
         </div>
       </div>
-      </div>
+
+
+
  
        <div class="row">
               <div class="col-xs-6 col-sm-6 col-md-6">
@@ -1262,7 +1262,7 @@ if(e.which == 17) isCtrl=false;
                         <input type='text' id="toQuantity" name="name" class="form-control input-lg" disabled placeholder='Quantity:' />
                   </div>
               </div>
-      </div>
+        </div>
 
 
        <div class="row">
@@ -1272,18 +1272,16 @@ if(e.which == 17) isCtrl=false;
           </div>
         </div>
       </div>
-       <div class="row">
 
-       <span id="totalSummary"></span><br>
-
-      <div class="form-group">
-        <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
+      <div class="row">
+        <span id="totalSummary"></span><br>
+        <div class="form-group">
+          <input type='submit' placeholder='Save Changes'  value="Save Changes" class="btn btn-primary btn-block btn-lg" />
+        </div>
       </div>
-
-      </div>
-   
 
      </form>
+
 </div>
 </div>
 
