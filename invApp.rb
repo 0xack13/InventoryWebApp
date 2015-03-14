@@ -145,6 +145,8 @@ DataMapper.finalize
 Inv2.auto_upgrade!
 #User.auto_upgrade!
 Transfer.auto_upgrade!
+
+User.auto_upgrade!
 #clear all data
 #DataMapper.auto_migrate!
 
@@ -236,6 +238,8 @@ get "/newUser" do
   @user.username = params[:username]
   @user.password = params[:password]
   @user.location = params[:location]
+  @user.isAdmin = params[:isAdmin].nil? ? false : true
+  @user.isActive = params[:isActive].nil? ? false : true
   if @user.save
         {:user => @user, :status => "success"}.to_json
           flash[:notice] = "Record inserted correctly!"
@@ -1154,7 +1158,15 @@ if(e.which == 17) isCtrl=false;
                 <option value="DAH">DAH</option>
               </select>
             </div>
-        </div>
+      </div>
+
+      <div class="row">
+          <div class="form-group">
+                    <input type='checkbox' name='isActive' value='true' checked />Active
+                    <input type='checkbox' name='isAdmin' value='true' />Admin
+            </div>
+      </div>
+
         <hr class="colorgraph">
         <div class="row">
           <div class="form-group">
