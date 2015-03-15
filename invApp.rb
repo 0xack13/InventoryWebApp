@@ -253,7 +253,7 @@ end
 post "/login" do
   @user = User.first(:name => params[:username])
   if @user != nil
-    if @user.password == params[:password]
+    if @user.password == params[:password] and @user.isActive == true
         session[:user_id] = @user.name
         session[:branch_code] = @user.location
         flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly!"
@@ -502,8 +502,7 @@ end
 get '/listUsers' do
   require_logged_in
   @user = User.all
-  puts "... ... .. Password stored in database: #{user.password}"
-  erb :addUser
+  erb :listUsers
  
 end
 
@@ -842,7 +841,32 @@ if(e.which == 17) isCtrl=false;
     </div>
 </div>
 
-
+@@listUsers
+<hr class="colorgraph">
+ <h1>Inventory Management v1</h1>
+ <h3>List Users</h3>
+<div class="table-responsive">
+  <a href="/add">Add a new Item Master</a>
+      <table id="testTable" class="responsive-table responsive-table-input-matrix">
+        <thead>
+            <tr>
+                <th>Row</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @user.each_with_index do |user, index| %>
+            <tr>
+                <td><%= index += 1 %></td>
+                <td><%= user[:name] %></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= user[:id] %>/edit">Edit</a> | <a href="/<%= user[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
 
 @@transfer
 <hr class="colorgraph">
