@@ -253,7 +253,7 @@ end
 post "/login" do
   @user = User.first(:name => params[:username])
   if @user != nil
-    if @user.password == params[:password] and @user.isActive == true
+    if @user.password == params[:password] and @user.isActive
         session[:user_id] = @user.name
         session[:branch_code] = @user.location
         flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly!"
@@ -430,7 +430,10 @@ put "/:id/saveUser" do
   @user = User.first(:id => params[:id])
   @user.name = params[:name]
   @user.username = params[:username]
-  #@user.password = params[:password]
+  @tempPass = @user.password
+  if @tempPass !=  params[:orPass]
+    @user.password = params[:password]
+  end
   @user.location = params[:location]
   @user.isAdmin = params[:isAdmin].nil? ? false : true
   @user.isActive = params[:isActive].nil? ? false : true
@@ -1273,6 +1276,7 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
             <input type='text' name="password" placeholder='Password:' class="form-control input-lg" value='<%= @user.password %>' />
+            <input type="hidden" name="orPass" id="orPass" value='<%= @user.password %>'>
           </div>
         </div>
       </div>
