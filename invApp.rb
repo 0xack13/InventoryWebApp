@@ -430,8 +430,10 @@ put "/:id/saveUser" do
   @user = User.first(:id => params[:id])
   @user.name = params[:name]
   @user.username = params[:username]
-  @user.password = params[:password]
+  #@user.password = params[:password]
   @user.location = params[:location]
+  @user.isAdmin = params[:isAdmin].nil? ? false : true
+  @user.isActive = params[:isActive].nil? ? false : true
   #@inv.created_by = session[:user_id]
   #@inv.created_at = Time.now
   if @user.save
@@ -1251,7 +1253,7 @@ if(e.which == 17) isCtrl=false;
 
 <div class="row">
     <div class="col-xs-12">
-<form action="/<%= @user.id %>/save" autocomplete="off" type="post" enctype="multipart/form-data">
+<form action="/<%= @user.id %>/saveUser" autocomplete="off" method="post" enctype="multipart/form-data">
    <h2>Edit
    <small>Edit user</small>
     </h2>
