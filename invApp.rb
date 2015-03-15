@@ -861,7 +861,7 @@ if(e.which == 17) isCtrl=false;
  <h1>Inventory Management v1</h1>
  <h3>List Users</h3>
 <div class="table-responsive">
-  <a href="/add">Add a new Item Master</a>
+  <a href="/addUser">Add a new User</a>
       <table id="testTable" class="responsive-table responsive-table-input-matrix">
         <thead>
             <tr>
