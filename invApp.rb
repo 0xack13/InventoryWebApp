@@ -423,6 +423,25 @@ put "/:id/save" do
   end
 end
 
+
+#update User
+put "/:id/saveUser" do
+  require_logged_in
+  @user = User.first(:id => params[:id])
+  @user.name = params[:name]
+  @user.username = params[:username]
+  @user.password = params[:password]
+  @user.location = params[:location]
+  #@inv.created_by = session[:user_id]
+  #@inv.created_at = Time.now
+  if @user.save
+        flash[:notice] = "Saved correctly!"
+        redirect '/listUsers'
+  else
+        {:inv => @inv, :status => "failure"}.to_json
+  end
+end
+
 #delete
 get "/:id/delete" do
   require_logged_in
@@ -448,6 +467,15 @@ get "/:id/edit" do
     @files = Dir.glob("public/*.jpg")
     #@inv.to_json
     erb :edit
+end
+
+#Edit User
+get "/:id/editUser" do
+  require_logged_in
+    require_logged_in
+    #@inv = Inv2.find(params[:id])
+    @user = User.first(:id => params[:id])
+    erb :editUser
 end
 
 get "/" do
@@ -875,7 +903,7 @@ if(e.which == 17) isCtrl=false;
             <tr>
                 <td><%= index += 1 %></td>
                 <td><%= user[:name] %></td>
-                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= user[:id] %>/edit">Edit</a> | <a href="/<%= user[:id] %>/deleteUser" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= user[:id] %>/editUser">Edit</a> | <a href="/<%= user[:id] %>/deleteUser" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
@@ -1203,6 +1231,64 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
                     <input type='checkbox' name='isActive' value='true' checked />Active
                     <input type='checkbox' name='isAdmin' value='true' />Admin
+            </div>
+      </div>
+
+        <hr class="colorgraph">
+        <div class="row">
+          <div class="form-group">
+            <input type='submit' placeholder='SUBMIT' value="Add new user" class="btn btn-primary btn-block btn-lg" />
+          </div>
+        </div>
+     </form>
+   </div>
+ </div>
+
+
+
+@@editUser
+ <div class="container">
+
+<div class="row">
+    <div class="col-xs-12">
+<form action="/<%= @user.id %>/save" autocomplete="off" type="post" enctype="multipart/form-data">
+   <h2>Edit
+   <small>Edit user</small>
+    </h2>
+      <hr class="colorgraph">
+      <div class="row">
+          <div class="form-group">
+              <input name="_method" type="hidden" value="PUT" />
+              <input type='text' class="form-control input-lg" name="name" placeholder='Name:' class="form-control input-lg" value='<%= @user.name %>'  />
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="username" placeholder='Username:' class="form-control input-lg" value='<%= @user.username %>' />
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <div class="form-group">
+            <input type='text' name="password" placeholder='Password:' class="form-control input-lg" value='<%= @user.password %>' />
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+          <div class="form-group">
+              <select name="location" class="form-control input-lg">
+                <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
+                <option <%= 'selected="selected"' if selectInvValue == @user.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
+              <% end %>
+              </select>
+            </div>
+      </div>
+
+      <div class="row">
+          <div class="form-group">
+                    <input type='checkbox' name='isActive' value='true' <% if @user.isActive %> checked <% end %> />Active
+                    <input type='checkbox' name='isAdmin' value='true' <% if @user.isAdmin %> checked <% end %>  />Admin
             </div>
       </div>
 
