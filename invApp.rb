@@ -341,6 +341,21 @@ get "/:tid/deleteTrans" do
     end
 end
 
+
+#delete User
+get "/:id/deleteUser" do
+  require_logged_in
+    @t = User.first(:id => params[:id])
+    if @t.destroy
+        {:t => @t, :status => "success"}.to_json
+        flash[:notice] = "The user record was deleted.."
+        redirect '/listUsers'
+    else
+        {:t => @t, :status => "failure"}.to_json
+    end
+end
+
+
 #find and Edit Transfer
 get "/:tid/editTrans" do
   require_logged_in
@@ -860,7 +875,7 @@ if(e.which == 17) isCtrl=false;
             <tr>
                 <td><%= index += 1 %></td>
                 <td><%= user[:name] %></td>
-                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= user[:id] %>/edit">Edit</a> | <a href="/<%= user[:id] %>/delete" onclick="return confirm('are you sure?')">Delete</a></td>
+                <td><a id="editLink" onclick="console.log('clicked!!!');" href="/<%= user[:id] %>/edit">Edit</a> | <a href="/<%= user[:id] %>/deleteUser" onclick="return confirm('are you sure?')">Delete</a></td>
             </tr>
           <% end %>
         </tbody>
