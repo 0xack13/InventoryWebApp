@@ -256,7 +256,8 @@ post "/login" do
     if @user.password == params[:password] and @user.isActive
         session[:user_id] = @user.name
         session[:branch_code] = @user.location
-        flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly!"
+        session[:isAdmin] = @user.isAdmin ? "admin" : "access"
+        flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly! " + session[:isAdmin] 
         redirect '/'
     else
           flash[:notice] = "Username or password is incorrect!"
