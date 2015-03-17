@@ -91,6 +91,17 @@ def is_authenticated?
   return !!session[:user_id]
 end
 
+def require_admin
+  redirect('/') unless is_admin?
+end
+
+def is_admin?
+  if session[:isAdmin] == "admin"
+    return true
+  else
+    return false
+  end
+end
 
 class Inv2
   include DataMapper::Resource
@@ -197,6 +208,7 @@ end
 
 get "/dashboard" do
   require_logged_in
+  require_admin
   @inv = Inv2.all
   #@inv.to_array
   #render json: Inv2.group_by_day(:created_at).count
@@ -257,7 +269,7 @@ post "/login" do
         session[:user_id] = @user.name
         session[:branch_code] = @user.location
         session[:isAdmin] = @user.isAdmin ? "admin" : "access"
-        flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly! " + session[:isAdmin] 
+        flash[:notice] = "Howdy " + session[:user_id] + "! Logged in correctly! " #+ session[:isAdmin] 
         redirect '/'
     else
           flash[:notice] = "Username or password is incorrect!"
@@ -273,6 +285,7 @@ get "/logout" do
   require_logged_in
   session[:user_id] = nil
   session[:branch] = nil
+  session[:isAdmin] = nil
   flash[:success] = "You logged out from the system. You have to enter your username and password to log in back to the system."
   redirect '/login'
 end
@@ -478,10 +491,10 @@ end
 #Edit User
 get "/:id/editUser" do
   require_logged_in
-    require_logged_in
-    #@inv = Inv2.find(params[:id])
-    @user = User.first(:id => params[:id])
-    erb :editUser
+  require_admin
+  #@inv = Inv2.find(params[:id])
+  @user = User.first(:id => params[:id])
+  erb :editUser
 end
 
 get "/" do
@@ -578,6 +591,7 @@ end
 #Add User
 get '/addUser' do
   require_logged_in
+  require_admin
   erb :addUser
 end
 
@@ -821,8 +835,11 @@ if(e.which == 17) isCtrl=false;
   <li class="nav-item"><a href="/transfer" id="newRecord" accesskey="a"><span class="glyphicon glyphicon-transfer"></span>&nbsp;Trasnfers</a></li>
   <li class="nav-item"><a href="/upload" id="upload"><span class="glyphicon glyphicon-upload"></span>&nbsp;Upload</a></li>
   <li class="nav-item"><a href="/media"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;Media</a></li>
+  <% if is_admin? %>
   <li class="nav-item"><a href="/dashboard"><span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard</a></li>
-  <li class="nav-item"><a href="/listUsers"><span class="glyphicon glyphicon-user"></span>&nbsp;Users</a></li>
+    <li class="nav-item"><a href="/listUsers"><span class="glyphicon glyphicon-user"></span>&nbsp;Users</a></li>
+
+  <% end %>
   <li class="nav-item"><a href="mailto:support@support.com"><span class="glyphicon glyphicon-question-sign"></span>&nbsp;Help</a></li>
   <li class="nav-item"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</a></li>
 </ul>
@@ -851,7 +868,9 @@ if(e.which == 17) isCtrl=false;
 <hr class="colorgraph">
  <h1>Inventory Management v1</h1>
  <h3>Simple stock management solution</h3>
+ <!--
  <input type="button" onclick="tableToExcel('testTable', 'W3C Example Table')" value="Export to Excel">
+ -->
 <div class="table-responsive">
   <a href="/add">Add a new Item Master</a>
       <table id="testTable" class="responsive-table responsive-table-input-matrix">
@@ -1302,7 +1321,7 @@ if(e.which == 17) isCtrl=false;
         <hr class="colorgraph">
         <div class="row">
           <div class="form-group">
-            <input type='submit' placeholder='SUBMIT' value="Add new user" class="btn btn-primary btn-block btn-lg" />
+            <input type='submit' placeholder='SUBMIT' value="Save Changes" class="btn btn-primary btn-block btn-lg" />
           </div>
         </div>
      </form>
@@ -1315,8 +1334,8 @@ if(e.which == 17) isCtrl=false;
 <div class="row">
     <div class="col-xs-12">
 <form action="/login" autocomplete="off" method="post" enctype="multipart/form-data">
-   <h2>New
-   <small>Login Form</small>
+   <h2>Login:
+   <small>Please enter your username and password</small>
     </h2>
       <hr class="colorgraph">
       <div class="row">
