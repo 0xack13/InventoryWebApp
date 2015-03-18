@@ -242,7 +242,7 @@ get '/dashboard2' do
 end
 
 get "/newUser" do
-  require_logged_in
+  #require_logged_in
   #@posts = Post.all()
   #Inv2.get(1).picture
   @user = User.new
@@ -590,8 +590,8 @@ end
 
 #Add User
 get '/addUser' do
-  require_logged_in
-  require_admin
+  #require_logged_in
+  #require_admin
   erb :addUser
 end
 
