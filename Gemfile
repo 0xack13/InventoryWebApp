@@ -7,7 +7,7 @@ gem 'sinatra'
 gem "data_mapper"
 
 gem 'sinatra-authentication'
-gem 'sinatra-flash'
+gem 'sinatra-flash', :git => 'https://github.com/SFEley/sinatra-flash.git'
 
 
 gem "chartkick"
