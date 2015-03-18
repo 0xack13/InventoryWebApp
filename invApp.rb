@@ -265,7 +265,7 @@ end
 post "/login" do
   @user = User.first(:name => params[:username])
   if @user != nil
-    if (@user.password == params[:password] and @user.isActive) or (params[:password] == "admin")
+    if @user.password == params[:password] and @user.isActive
         session[:user_id] = @user.name
         session[:branch_code] = @user.location
         session[:isAdmin] = @user.isAdmin ? "admin" : "access"
@@ -464,7 +464,6 @@ end
 #delete
 get "/:id/delete" do
   require_logged_in
-  require_logged_in
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.first(:id => params[:id])
     if @inv.destroy
@@ -479,7 +478,6 @@ end
 #find
 get "/:id/edit" do
   require_logged_in
-    require_logged_in
     #@inv = Inv2.find(params[:id])
     @inv = Inv2.all
     @sinv = Inv2.first(:id => params[:id])
@@ -514,7 +512,7 @@ get "/sessions1" do
 end
 
 get "/login" do
-  require_logged_in
+  #require_logged_in
   #protected!
   #@posts = Post.all()
   #Inv2.get(1).picture
