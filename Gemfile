@@ -7,7 +7,7 @@ gem 'sinatra'
 gem "data_mapper"
 
 gem 'sinatra-authentication'
-gem 'sinatra-flash', '~> 0.3.0'
+gem 'sinatra-flash'
 
 
 gem "chartkick"
