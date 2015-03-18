@@ -24,4 +24,4 @@ group :production do
  gem 'pg'
 end
 
-gem 'do_sqlite3'
+gem 'do_sqlite3', '~> 0.10.15'
