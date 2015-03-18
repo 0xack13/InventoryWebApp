@@ -9,6 +9,6 @@ gem "data_mapper"
 gem 'dm-sqlite-adapter'
 gem 'sinatra-authentication'
 gem 'sinatra-flash', :git => 'https://github.com/SFEley/sinatra-flash.git'
-gem 'do_sqlite3'
+gem 'dm-core'
 gem "chartkick"
 gem "groupdate"
