@@ -15,10 +15,10 @@ gem "chartkick"
 gem "groupdate"
 
 
-group :development, :test do
-  gem 'sqlite3'
-  gem 'dm-sqlite-adapter'
-end
+#group :development, :test do
+#  gem 'sqlite3'
+#  gem 'dm-sqlite-adapter'
+#end
 
 group :production do
   gem 'pg'

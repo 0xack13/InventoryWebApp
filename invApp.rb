@@ -70,7 +70,7 @@ enable :sessions
 DataMapper::Logger.new($stdout, :debug)
 
 # need install dm-sqlite-adapter
-DataMapper::setup(:default, ENV['HEROKU_POSTGRESQL_GOLD'] || "sqlite3://#{Dir.pwd}/data1.dat")
+DataMapper::setup(:default, ENV['HEROKU_POSTGRESQL_GOLD']) # || "sqlite3://#{Dir.pwd}/data1.dat")
 enable :sessions
 
 error 400..510 do
