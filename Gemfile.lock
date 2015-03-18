@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/SFEley/sinatra-flash.git
+  revision: 9060a9c022327ff53cc1971c363fe0ca0d9b262d
+  specs:
+    sinatra-flash (0.3.0)
+      sinatra (>= 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -96,3 +103,4 @@ DEPENDENCIES
   groupdate
   sinatra
   sinatra-authentication
+  sinatra-flash!
