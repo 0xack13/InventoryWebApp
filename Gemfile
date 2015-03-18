@@ -7,7 +7,7 @@ gem 'sinatra'
 gem "data_mapper"
 
 gem 'sinatra-authentication'
-#gem 'sinatra/flash'
+gem 'sinatra-flash'
 
 
 
