@@ -23,3 +23,5 @@ end
 group :production do
  gem 'pg'
 end
+
+gem 'do_sqlite3'
