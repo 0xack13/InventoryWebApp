@@ -71,15 +71,17 @@ DataMapper::Logger.new($stdout, :debug)
 
 # need install dm-sqlite-adapter
 DataMapper::setup(:default, ENV['HEROKU_POSTGRESQL_GOLD_URL']) # || "sqlite3://#{Dir.pwd}/data1.dat")
-enable :sessions
+# Not on heroku
+#enable :sessions
 
 error 400..510 do
   'http error...'
 end
 
 helpers do
-  def logged_in?
-    (@auth_email && !@auth_email.empty?) ? true : false
+  def logged_in
+    #(@auth_email && !@auth_email.empty?) ? true : false
+    redirect('/login') unless is_authenticated?
   end
 end
 
@@ -168,7 +170,7 @@ configure do
   set :sinatra_authentication_view_path, Pathname(__FILE__).dirname.expand_path + "views/"
 end
 
-use Rack::Session::Cookie, :secret => "heyhihello"
+#use Rack::Session::Cookie, :secret => "heyhihello"
 
 
 #user = User.new :name => 'chris', :password => 'password'
