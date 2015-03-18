@@ -18,10 +18,9 @@ gem "groupdate"
 group :development do
  gem 'sqlite3'
  gem "tux"
+ gem 'do_sqlite3', '~> 0.10.15'
 end
 
 group :production do
  gem 'pg'
 end
-
-gem 'do_sqlite3', '~> 0.10.15'
