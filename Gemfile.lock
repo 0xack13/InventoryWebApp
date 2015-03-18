@@ -111,6 +111,7 @@ DEPENDENCIES
   chartkick
   data_mapper
   dm-sqlite-adapter
+  do_sqlite3
   groupdate
   sinatra
   sinatra-authentication
