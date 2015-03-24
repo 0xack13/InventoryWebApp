@@ -2,7 +2,7 @@ require "rubygems"
 require "sinatra"
 require 'sinatra/flash'
 require "data_mapper"
-require 'json'
+#require 'json'
 require 'find'
 require 'chartkick'
 include Chartkick::Helper
@@ -70,7 +70,7 @@ enable :sessions
 DataMapper::Logger.new($stdout, :debug)
 
 # need install dm-sqlite-adapter
-DataMapper::setup(:default, ENV['HEROKU_POSTGRESQL_GOLD_URL']) # || "sqlite3://#{Dir.pwd}/data1.dat")
+DataMapper::setup(:default, ENV['HEROKU_POSTGRESQL_GOLD_URL'] || "sqlite3://#{Dir.pwd}/data1.dat")
 # Not on heroku
 #enable :sessions
 
@@ -1042,11 +1042,12 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
               <select name="location" class="form-control input-lg">
                 <option value="" disabled selected>Location</option>
-                <option value="JED">JED</option>
-                <option value="RYD">RYD</option>
-                <option value="DMM">DMM</option>
-                <option value="MAK">MAK</option>
-                <option value="DAH">DAH</option>
+                <option value="Jeddah">Jeddah</option>
+                <option value="Riyadh">Riyadh</option>
+                <option value="Khobar">Khboar</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Dubai">Dubai</option>
               </select>
             </div>
           </div>
@@ -1120,7 +1121,7 @@ if(e.which == 17) isCtrl=false;
         <div class="col-xs-6 col-sm-6 col-md-6">
           <div class="form-group">
       <select class="form-control input-lg" name="location">
-          <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
+          <% ["Jeddah", "Riyadh", "Khobar", "Bahrain", "Qatar", "Dubai"].each do |selectInvValue| %>
             <option <%= 'selected="selected"' if selectInvValue == @sinv.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
           <% end %>
       </select>
@@ -1243,11 +1244,12 @@ if(e.which == 17) isCtrl=false;
           <div class="form-group">
               <select name="location" class="form-control input-lg">
                 <option value="" disabled selected>Branch</option>
-                <option value="JED">JED</option>
-                <option value="RYD">RYD</option>
-                <option value="DMM">DMM</option>
-                <option value="MAK">MAK</option>
-                <option value="DAH">DAH</option>
+                <option value="Jeddah">Jeddah</option>
+                <option value="Riyadh">Riyadh</option>
+                <option value="Khobar">Khboar</option>
+                <option value="Bahrain">Bahrain</option>
+                <option value="Qatar">Qatar</option>
+                <option value="Dubai">Dubai</option>
               </select>
             </div>
       </div>
@@ -1304,7 +1306,7 @@ if(e.which == 17) isCtrl=false;
       <div class="row">
           <div class="form-group">
               <select name="location" class="form-control input-lg">
-                <% ["JED", "RYD", "DMM", "MAK", "DAH"].each do |selectInvValue| %>
+                <% ["Jeddah", "Riyadh", "Khobar", "Bahrain", "Qatar", "Dubai"].each do |selectInvValue| %>
                 <option <%= 'selected="selected"' if selectInvValue == @user.location %> value="<%= selectInvValue %>"><%= selectInvValue %></option>
               <% end %>
               </select>
