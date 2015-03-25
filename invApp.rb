@@ -319,7 +319,7 @@ put "/newTransfer" do
   
   if params[:fromItem] == params[:toItem]
     @t = Transfer.all
-    flash[:error] = "From and To are the same, please choose another"
+    flash[:error] = "From and To are the same, please choose a different source and destination items"
     redirect back
   end
 
@@ -388,7 +388,8 @@ get "/:tid/editTrans" do
     if @t.trasnferStatus == "PCKDUP"
       puts "value validated!"
       @t.trasnferStatus = "ENRT"
-      @inv = Inv2.first(:code=>@t.from)
+      #@inv = Inv2.first(:code=>@t.from)
+      @inv = Inv2.first(:id=>@t.from)
       puts @inv
       @inv.quantity = @inv.quantity - @t.tquantity
       @inv.save
@@ -398,7 +399,8 @@ get "/:tid/editTrans" do
     elsif @t.trasnferStatus == "RCVD"
       puts "value validated!"
       @t.trasnferStatus = "ONHD"
-      @inv = Inv2.first(:code=>@t.to)
+      #@inv = Inv2.first(:code=>@t.to)
+      @inv = Inv2.first(:id=>@t.to)
       puts @inv
       @inv.quantity = @inv.quantity + @t.tquantity
       @inv.save
@@ -1394,7 +1396,7 @@ if(e.which == 17) isCtrl=false;
          <select id="fromItem" name="fromItem" class="form-control input-lg">
           <option value="" disabled selected>From</option>
           <% @inv.each_with_index do |inv1, index| %>
-            <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+            <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
               <%= inv1[:code] %>
             </option>
           <% end %>
@@ -1417,7 +1419,7 @@ if(e.which == 17) isCtrl=false;
                    <select id="toItem" name="toItem" class="form-control input-lg">
                     <option value="" disabled selected>To</option>
                       <% @inv.each_with_index do |inv1, index| %>
-                        <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:code] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
+                        <option quant="<%= inv1[:quantity] %>" value="<%= inv1[:id] %>"><%= inv1[:code] %>  in <%= inv1[:location] %></option>
                         <%= inv1[:code] %>
                       </option>
                       <% end %>
@@ -1470,15 +1472,31 @@ if(e.which == 17) isCtrl=false;
     </div>
  <div class="table-row">
          <div class="col"><%= pie_chart Inv2.aggregate(:size, :quantity.sum) %>
-                          <p>Number of stock per Item Size</p>
+        <p>Number of stock per Item Size</p>
 
 </div>
       <div class="col">
-        <%= column_chart Inv2.aggregate(:location, :quantity.sum), stacked:true %>
+        <%= column_chart Inv2.aggregate(:code, :quantity.sum), stacked:true %>
                 <p>Number of stock per location</p>
 
       </div>
+</div>
+
+
+ <div class="table-row">
+        <div class="col">
+          <%= column_chart Transfer.all(:trasnferStatus => "ENRT").map{|inv| [inv.from, inv.tquantity] }, stacked:true %>
+                  <p>Items with the carrier</p>
+
+        </div>
+
+           <div class="col"><%= pie_chart Inv2.all(:code => "CAT-RZ001").map{|inv| [inv.location, inv.quantity] } %>
+          <p>Item Distribution <b>"CAT-RZ001"</b> per location</p>
+
+          </div>
     </div>
+
+
 </div>
 
 
