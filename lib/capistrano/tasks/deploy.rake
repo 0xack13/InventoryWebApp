@@ -5,6 +5,12 @@ set :pty, true
 set :format, :pretty
 set :format, :pretty
 set :log_level, :debug
+
+role :web, 'localhost'
+role :app, 'localhost'
+role :db, 'localhost'
+
+
 set :username, ask('Server username: ', nil)
 set :password, ask('Server password: ', nil)
 server 'localhost', user: fetch(:username), port: 22, password: fetch(:password), roles: %w{web app db}
