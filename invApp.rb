@@ -29,6 +29,7 @@ Chartkick.options = {
 
 
 set :bind, '0.0.0.0'
+configure { set :server, :puma }
 
 =begin
 

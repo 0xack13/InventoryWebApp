@@ -84,6 +84,8 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     pg (0.18.1)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-flash (0.1.2)
       rack
@@ -129,6 +131,7 @@ DEPENDENCIES
   dm-postgres-adapter
   groupdate
   pg
+  puma
   sinatra
   sinatra-authentication
   sinatra-flash!
